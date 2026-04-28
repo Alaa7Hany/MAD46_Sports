@@ -1,5 +1,5 @@
 import Foundation
-import Alamofire
+//import Alamofire
 class AlamofireManager
 {
     static let shared = AlamofireManager()

@@ -23,7 +23,7 @@ func testCoreData(){
         
     let leagues = manager.fetchLeague()
         
-        print("📦 Data from CoreData:")
+        print(" Data from CoreData:")
         
         for league in leagues {
             print("ID:", league.leagueId)
