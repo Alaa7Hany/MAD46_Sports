@@ -3,7 +3,6 @@ import Alamofire
 class AlamofireManager : NetworkService
 {
 
-    
     static let shared = AlamofireManager()
     private init() {}
     private let baseUrl = "https://apiv2.allsportsapi.com"
@@ -22,6 +21,35 @@ class AlamofireManager : NetworkService
         }
             
         }
+    
+    func getEvents(sportName: String, from: String, to: String, leagueId: Int, completion: @escaping ([Event]) -> Void) {
+         let url = "\(baseUrl)/\(sportName)?met=Fixtures&APIkey=\(apiKey)&from=\(from)&to=\(to)&leagueId=\(leagueId)&timezone=Africa/Cairo"
+        AF.request(url).responseDecodable(of: EventResponse.self) { response in
+           switch response.result{
+           case .success(let data):
+               completion(data.result ?? [])
+           case .failure(let error):
+               print("error \(error)")
+               
+            }
+            
+        }
+
+    }
+    func getTeam(sportName: String, leagueId: Int, completion: @escaping ([Team]) -> Void) {
+        let url = "\(baseUrl)/\(sportName)?met=Teams&leagueId=\(leagueId)&APIkey=\(apiKey)"
+        AF.request(url).responseDecodable(of: TeamResponse.self) { response in
+           switch response.result{
+           case .success(let data):
+               completion(data.result ?? [])
+           case .failure(let error):
+               print("error \(error)")
+               
+            }
+            
+        }
+    }
+    
     }
     
     
