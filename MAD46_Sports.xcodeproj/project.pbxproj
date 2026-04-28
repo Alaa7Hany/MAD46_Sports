@@ -49,6 +49,20 @@
 			);
 			target = 124DF0392FA0BDB2007647D6 /* MAD46_Sports */;
 		};
+		D2282BA82FA106E300B61B6F /* Exceptions for "MAD46_Sports" folder in "MAD46_SportsTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				sports.json,
+			);
+			target = 124DF0522FA0BDB4007647D6 /* MAD46_SportsTests */;
+		};
+		D2282BA92FA106E300B61B6F /* Exceptions for "MAD46_Sports" folder in "MAD46_SportsUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				sports.json,
+			);
+			target = 124DF05C2FA0BDB4007647D6 /* MAD46_SportsUITests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -56,6 +70,8 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				124DF0652FA0BDB4007647D6 /* Exceptions for "MAD46_Sports" folder in "MAD46_Sports" target */,
+				D2282BA82FA106E300B61B6F /* Exceptions for "MAD46_Sports" folder in "MAD46_SportsTests" target */,
+				D2282BA92FA106E300B61B6F /* Exceptions for "MAD46_Sports" folder in "MAD46_SportsUITests" target */,
 			);
 			path = MAD46_Sports;
 			sourceTree = "<group>";
