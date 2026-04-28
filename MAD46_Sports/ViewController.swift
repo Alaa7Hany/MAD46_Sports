@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        testCoreData()
+        view.backgroundColor = .appPrimary
     }
+    
 func testCoreData(){
     let manager = CoreDataManager.shared
         
