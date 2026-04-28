@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D2282B782FA1036B00B61B6F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D2282B772FA1036B00B61B6F /* Lottie */; };
 		D28E3D892FA0C53E00B10A4E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D28E3D882FA0C53E00B10A4E /* SDWebImage */; };
 		D28E3D8B2FA0C53E00B10A4E /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D28E3D8A2FA0C53E00B10A4E /* SDWebImageMapKit */; };
 		D28E3D8E2FA0C57B00B10A4E /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = D28E3D8D2FA0C57B00B10A4E /* Reachability */; };
@@ -48,6 +49,20 @@
 			);
 			target = 124DF0392FA0BDB2007647D6 /* MAD46_Sports */;
 		};
+		D2282BA82FA106E300B61B6F /* Exceptions for "MAD46_Sports" folder in "MAD46_SportsTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				sports.json,
+			);
+			target = 124DF0522FA0BDB4007647D6 /* MAD46_SportsTests */;
+		};
+		D2282BA92FA106E300B61B6F /* Exceptions for "MAD46_Sports" folder in "MAD46_SportsUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				sports.json,
+			);
+			target = 124DF05C2FA0BDB4007647D6 /* MAD46_SportsUITests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -55,6 +70,8 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				124DF0652FA0BDB4007647D6 /* Exceptions for "MAD46_Sports" folder in "MAD46_Sports" target */,
+				D2282BA82FA106E300B61B6F /* Exceptions for "MAD46_Sports" folder in "MAD46_SportsTests" target */,
+				D2282BA92FA106E300B61B6F /* Exceptions for "MAD46_Sports" folder in "MAD46_SportsUITests" target */,
 			);
 			path = MAD46_Sports;
 			sourceTree = "<group>";
@@ -76,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2282B782FA1036B00B61B6F /* Lottie in Frameworks */,
 				D28E3D8B2FA0C53E00B10A4E /* SDWebImageMapKit in Frameworks */,
 				D28E3DAB2FA0E7F300B10A4E /* Alamofire in Frameworks */,
 				D28E3D8E2FA0C57B00B10A4E /* Reachability in Frameworks */,
@@ -146,6 +164,7 @@
 				D28E3D8A2FA0C53E00B10A4E /* SDWebImageMapKit */,
 				D28E3D8D2FA0C57B00B10A4E /* Reachability */,
 				D28E3DAA2FA0E7F300B10A4E /* Alamofire */,
+				D2282B772FA1036B00B61B6F /* Lottie */,
 			);
 			productName = MAD46_Sports;
 			productReference = 124DF03A2FA0BDB2007647D6 /* MAD46_Sports.app */;
@@ -233,6 +252,7 @@
 				D28E3D872FA0C53E00B10A4E /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				D28E3D8C2FA0C57B00B10A4E /* XCRemoteSwiftPackageReference "Reachability" */,
 				D28E3DA92FA0E7F300B10A4E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				D2282B762FA1036B00B61B6F /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 124DF03B2FA0BDB2007647D6 /* Products */;
@@ -593,6 +613,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D2282B762FA1036B00B61B6F /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.6.0;
+			};
+		};
 		D28E3D872FA0C53E00B10A4E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -620,6 +648,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D2282B772FA1036B00B61B6F /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2282B762FA1036B00B61B6F /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		D28E3D882FA0C53E00B10A4E /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D28E3D872FA0C53E00B10A4E /* XCRemoteSwiftPackageReference "SDWebImage" */;
