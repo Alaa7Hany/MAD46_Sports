@@ -25,6 +25,8 @@ class ViewController: UIViewController {
            
             
         }
+        view.backgroundColor = .appPrimary
+
     }
 }
 

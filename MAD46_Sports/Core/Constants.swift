@@ -4,7 +4,7 @@ enum Constants {
     
     // MARK: - API Configuration
     enum API {
-        static let baseURL = "https://allsportsapi.com/api/"
+        static let baseURL = "https://apiv2.allsportsapi.com"
     }
     
     // MARK: - Storyboards
