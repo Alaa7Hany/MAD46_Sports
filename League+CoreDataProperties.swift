@@ -1,3 +1,10 @@
+//
+//  League+CoreDataProperties.swift
+//  MAD46_Sports
+//
+//  Created by JETSMobileLabMini3 on 28/04/2026.
+//
+//
 
 import Foundation
 import CoreData
@@ -10,8 +17,8 @@ extension League {
     }
 
     @NSManaged public var leagueId: Int16
-    @NSManaged public var leagueName: String?
     @NSManaged public var leagueLogo: Data?
+    @NSManaged public var leagueName: String?
 
 }
 
