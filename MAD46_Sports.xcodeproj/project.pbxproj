@@ -10,8 +10,8 @@
 		124DF0D12FA0DA58007647D6 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 124DF0D02FA0DA58007647D6 /* SDWebImage */; };
 		124DF0D32FA0DA58007647D6 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 124DF0D22FA0DA58007647D6 /* SDWebImageMapKit */; };
 		124DF0D62FA0DA6D007647D6 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 124DF0D52FA0DA6D007647D6 /* Reachability */; };
-		124DF0D92FA0DAE7007647D6 /* League+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124DF0D82FA0DAE7007647D6 /* League+CoreDataProperties.swift */; };
-		124DF0DA2FA0DAE7007647D6 /* League+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124DF0D72FA0DAE7007647D6 /* League+CoreDataClass.swift */; };
+		124DF1112FA0DD98007647D6 /* League+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124DF10F2FA0DD98007647D6 /* League+CoreDataClass.swift */; };
+		124DF1122FA0DD98007647D6 /* League+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124DF1102FA0DD98007647D6 /* League+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +35,8 @@
 		124DF03A2FA0BDB2007647D6 /* MAD46_Sports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAD46_Sports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		124DF0532FA0BDB4007647D6 /* MAD46_SportsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAD46_SportsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		124DF05D2FA0BDB4007647D6 /* MAD46_SportsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAD46_SportsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		124DF0D72FA0DAE7007647D6 /* League+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "League+CoreDataClass.swift"; sourceTree = "<group>"; };
-		124DF0D82FA0DAE7007647D6 /* League+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "League+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		124DF10F2FA0DD98007647D6 /* League+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "League+CoreDataClass.swift"; sourceTree = "<group>"; };
+		124DF1102FA0DD98007647D6 /* League+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "League+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -101,8 +101,8 @@
 		124DF0312FA0BDB2007647D6 = {
 			isa = PBXGroup;
 			children = (
-				124DF0D72FA0DAE7007647D6 /* League+CoreDataClass.swift */,
-				124DF0D82FA0DAE7007647D6 /* League+CoreDataProperties.swift */,
+				124DF10F2FA0DD98007647D6 /* League+CoreDataClass.swift */,
+				124DF1102FA0DD98007647D6 /* League+CoreDataProperties.swift */,
 				124DF03C2FA0BDB2007647D6 /* MAD46_Sports */,
 				124DF0562FA0BDB4007647D6 /* MAD46_SportsTests */,
 				124DF0602FA0BDB4007647D6 /* MAD46_SportsUITests */,
@@ -271,8 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				124DF0D92FA0DAE7007647D6 /* League+CoreDataProperties.swift in Sources */,
-				124DF0DA2FA0DAE7007647D6 /* League+CoreDataClass.swift in Sources */,
+				124DF1112FA0DD98007647D6 /* League+CoreDataClass.swift in Sources */,
+				124DF1122FA0DD98007647D6 /* League+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

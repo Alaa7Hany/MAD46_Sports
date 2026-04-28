@@ -1,6 +1,6 @@
 import Foundation
 
-struct League: Decodable {
+struct LeagueModel: Decodable {
     let leagueKey: Int?
     let leagueName: String?
     let leagueLogo: String?
@@ -13,5 +13,5 @@ struct League: Decodable {
 }
 
 struct LeagueResponse: Decodable {
-    let result: [League]?
+    let result: [LeagueModel]?
 }
