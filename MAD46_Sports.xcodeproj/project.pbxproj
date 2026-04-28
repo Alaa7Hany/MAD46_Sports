@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D28E3D892FA0C53E00B10A4E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D28E3D882FA0C53E00B10A4E /* SDWebImage */; };
+		D28E3D8B2FA0C53E00B10A4E /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D28E3D8A2FA0C53E00B10A4E /* SDWebImageMapKit */; };
+		D28E3D8E2FA0C57B00B10A4E /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = D28E3D8D2FA0C57B00B10A4E /* Reachability */; };
+		D28E3D9E2FA0CAF800B10A4E /* League+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E3D9C2FA0CAF800B10A4E /* League+CoreDataClass.swift */; };
+		D28E3D9F2FA0CAF800B10A4E /* League+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28E3D9D2FA0CAF800B10A4E /* League+CoreDataProperties.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		124DF0542FA0BDB4007647D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +35,8 @@
 		124DF03A2FA0BDB2007647D6 /* MAD46_Sports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAD46_Sports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		124DF0532FA0BDB4007647D6 /* MAD46_SportsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAD46_SportsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		124DF05D2FA0BDB4007647D6 /* MAD46_SportsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAD46_SportsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D28E3D9C2FA0CAF800B10A4E /* League+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "League+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D28E3D9D2FA0CAF800B10A4E /* League+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "League+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,6 +75,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D28E3D8B2FA0C53E00B10A4E /* SDWebImageMapKit in Frameworks */,
+				D28E3D8E2FA0C57B00B10A4E /* Reachability in Frameworks */,
+				D28E3D892FA0C53E00B10A4E /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +101,8 @@
 		124DF0312FA0BDB2007647D6 = {
 			isa = PBXGroup;
 			children = (
+				D28E3D9C2FA0CAF800B10A4E /* League+CoreDataClass.swift */,
+				D28E3D9D2FA0CAF800B10A4E /* League+CoreDataProperties.swift */,
 				124DF03C2FA0BDB2007647D6 /* MAD46_Sports */,
 				124DF0562FA0BDB4007647D6 /* MAD46_SportsTests */,
 				124DF0602FA0BDB4007647D6 /* MAD46_SportsUITests */,
@@ -125,6 +140,9 @@
 			);
 			name = MAD46_Sports;
 			packageProductDependencies = (
+				D28E3D882FA0C53E00B10A4E /* SDWebImage */,
+				D28E3D8A2FA0C53E00B10A4E /* SDWebImageMapKit */,
+				D28E3D8D2FA0C57B00B10A4E /* Reachability */,
 			);
 			productName = MAD46_Sports;
 			productReference = 124DF03A2FA0BDB2007647D6 /* MAD46_Sports.app */;
@@ -208,6 +226,10 @@
 			);
 			mainGroup = 124DF0312FA0BDB2007647D6;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D28E3D872FA0C53E00B10A4E /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				D28E3D8C2FA0C57B00B10A4E /* XCRemoteSwiftPackageReference "Reachability" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 124DF03B2FA0BDB2007647D6 /* Products */;
 			projectDirPath = "";
@@ -249,6 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D28E3D9E2FA0CAF800B10A4E /* League+CoreDataClass.swift in Sources */,
+				D28E3D9F2FA0CAF800B10A4E /* League+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +587,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D28E3D872FA0C53E00B10A4E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.7;
+			};
+		};
+		D28E3D8C2FA0C57B00B10A4E /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D28E3D882FA0C53E00B10A4E /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D28E3D872FA0C53E00B10A4E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		D28E3D8A2FA0C53E00B10A4E /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D28E3D872FA0C53E00B10A4E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		D28E3D8D2FA0C57B00B10A4E /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D28E3D8C2FA0C57B00B10A4E /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 124DF0322FA0BDB2007647D6 /* Project object */;
 }
