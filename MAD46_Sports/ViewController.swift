@@ -11,7 +11,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       testCoreData()
+        AlamofireManager.shared.getLeagues(sportName: "football") { leagues in
+            print(leagues.first?.leagueName)
+          }
+        testCoreData()
     }
 func testCoreData(){
     let manager = CoreDataManager.shared
