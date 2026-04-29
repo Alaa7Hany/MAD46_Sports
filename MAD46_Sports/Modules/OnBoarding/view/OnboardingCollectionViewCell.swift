@@ -9,8 +9,17 @@ import UIKit
 
 class OnboardingCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var imageV: UIImageView!
     
-    func setup(_ slide: OnBoardingModel) {
-   
+    
+    @IBOutlet weak var labelText: UILabel!
+    
+    
+    @IBOutlet weak var desc: UIView!
+    
+    func setup(_ page: OnBoardingModel) {
+        imageV.image = page.image
+        labelText.text = page.title
+     
     }
 }
