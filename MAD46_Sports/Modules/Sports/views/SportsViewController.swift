@@ -9,9 +9,10 @@ protocol SportsViewProtocol: AnyObject {
 class SportsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
     var presenter: SportsPresenterProtocol!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = SportsPresenter(view: self)
@@ -94,4 +95,24 @@ extension SportsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
+    
+    
+    
+    @IBAction func themeToggled(_ sender: UISwitch) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                if sender.isOn {
+                    self.view.window?.overrideUserInterfaceStyle = .dark
+                } else {
+                    self.view.window?.overrideUserInterfaceStyle = .light
+                }
+            }
+    }
+    
+    @IBAction func languageToggled(_ sender: UISwitch) {
+
+    }
+    
+    
+    
+    
 }
