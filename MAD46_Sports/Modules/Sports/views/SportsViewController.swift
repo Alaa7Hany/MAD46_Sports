@@ -1,30 +1,73 @@
 import UIKit
 
+protocol SportsViewProtocol: AnyObject {
+    func displaySports()
+    func navigateToLeagues(for sportName: String)
+}
+
+
 class SportsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var presenter: SportsPresenterProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        presenter = SportsPresenter(view: self)
  
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        let nib = UINib(nibName: "SportCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: "sportsCell")
+        
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                flowLayout.estimatedItemSize = .zero
+            }
+        
+        presenter.viewDidLoad()
     }
 }
 
-extension SportsViewController: UICollectionViewDataSource {
+extension SportsViewController: SportsViewProtocol {
+    
+    func displaySports() {
+        DispatchQueue.main.async {
+             self.collectionView.reloadData()
+        }
+    }
+    
+    func navigateToLeagues(for sportName: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+
+        if let leaguesVC = storyboard.instantiateViewController(withIdentifier: "LeaguesViewController") as? LeaguesViewController {
+            
+
+            self.navigationController?.pushViewController(leaguesVC, animated: true)
+        }
+    }
+}
+
+extension SportsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return presenter.getSportsCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "sportsCell", for: indexPath) as! SportCollectionViewCell
         
-        cell.lblName.text = "Sport \(indexPath.row + 1)"
+         let sport = presenter.getSport(at: indexPath.row)
+         cell.lblName.text = sport.sportName
+         cell.imageV.image = UIImage(named: sport.sportThumb ?? "")
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectSport(at: indexPath.row)
     }
 }
 
