@@ -8,6 +8,12 @@
 import UIKit
 import SDWebImage
 
+protocol LeagueDetailsViewProtocol: AnyObject {
+    func displayData()
+    func startLoading()
+    func stopLoading()
+}
+
 class TeamCell: UICollectionViewCell {
 
     @IBOutlet weak var imageV: UIImageView!

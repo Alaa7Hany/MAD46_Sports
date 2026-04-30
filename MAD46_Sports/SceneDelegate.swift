@@ -27,8 +27,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
         let vc = storyboard.instantiateViewController(withIdentifier: "LeagueDetailsViewController") as! LeagueDetailsViewController
+        
+        let presenter = LeagueDetailsPresenter(view: vc, sportName: "football", leagueId: 152)
+        
+        vc.presenter = presenter
+        
         let navigationController = UINavigationController(rootViewController: vc)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
