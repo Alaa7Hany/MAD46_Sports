@@ -70,10 +70,8 @@ class SplashViewController: UIViewController ,SplashView{
     func goToOnboarding() {
         let onBoarding = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingViewController") as! OnBoardingViewController
         
-        // جعل الشاشة تملأ الشاشة بالكامل حتى لا يستطيع المستخدم سحبها للأسفل
         onBoarding.modalPresentationStyle = .fullScreen
         
-        // عرض الشاشة
         self.present(onBoarding, animated: true, completion: nil)
     }
 

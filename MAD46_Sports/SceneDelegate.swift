@@ -16,13 +16,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
 
+//        guard let windowScene = (scene as? UIWindowScene) else { return }
+//
+//        window = UIWindow(windowScene: windowScene)
+//
+//        let splashVC = SplashViewController()
+//
+//        window?.rootViewController = splashVC
+//        window?.makeKeyAndVisible()
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
-
         window = UIWindow(windowScene: windowScene)
-
-        let splashVC = SplashViewController()
-
-        window?.rootViewController = splashVC
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LeagueDetailsViewController") as! LeagueDetailsViewController
+        let navigationController = UINavigationController(rootViewController: vc)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

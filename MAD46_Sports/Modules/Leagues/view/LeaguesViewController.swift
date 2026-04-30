@@ -13,6 +13,4 @@ class LeaguesViewController: UIViewController {
         super.viewDidLoad()
 
     }
-    
-
 }

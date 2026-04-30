@@ -26,8 +26,9 @@ enum Constants {
     enum Cells {
         static let sportCollectionCell = "SportCollectionViewCell"
         static let leagueTableCell = "LeagueTableViewCell"
-        static let eventCollectionCell = "EventCollectionViewCell"
-        static let teamCollectionCell = "TeamCollectionViewCell"
+        static let upcomingEventCell = "UpcomingEventCell"  
+        static let latestEventCell = "LatestEventCell"
+        static let teamCollectionCell = "TeamCell"
     }
         
 }
