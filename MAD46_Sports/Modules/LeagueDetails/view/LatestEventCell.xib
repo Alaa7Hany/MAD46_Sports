@@ -24,26 +24,26 @@
                         <rect key="frame" x="262.66666666666669" y="50" width="97.333333333333314" height="100"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2U7-7t-aqu">
-                        <rect key="frame" x="58.333333333333343" y="155" width="41" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="61.333333333333343" y="153" width="34.666666666666657" height="14.333333333333343"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                         <color key="textColor" name="AppText"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Away" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qw-hA-mXI">
-                        <rect key="frame" x="293.33333333333331" y="155" width="36" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="295.66666666666669" y="153" width="31.333333333333314" height="14.333333333333343"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                         <color key="textColor" name="AppText"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 - 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2kn-KK-a7W">
-                        <rect key="frame" x="166" y="83" width="58" height="34"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                        <rect key="frame" x="164.66666666666666" y="83" width="61" height="34"/>
+                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="28"/>
                         <color key="textColor" name="AppText"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12/9/2026" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfe-zz-OM3">
-                        <rect key="frame" x="160" y="127" width="70" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="168.33333333333334" y="121.99999999999999" width="53.333333333333343" height="14.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" name="AppSecondaryText"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -52,13 +52,13 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" name="AppSurface"/>
             <constraints>
-                <constraint firstItem="5qw-hA-mXI" firstAttribute="top" secondItem="j9Q-Gf-CzA" secondAttribute="bottom" constant="5" id="Etn-Uc-AL0"/>
+                <constraint firstItem="5qw-hA-mXI" firstAttribute="top" secondItem="j9Q-Gf-CzA" secondAttribute="bottom" constant="3" id="Etn-Uc-AL0"/>
                 <constraint firstItem="j9Q-Gf-CzA" firstAttribute="width" secondItem="RbD-SQ-cxt" secondAttribute="width" id="Ilh-Ve-2iT"/>
-                <constraint firstItem="2U7-7t-aqu" firstAttribute="top" secondItem="RbD-SQ-cxt" secondAttribute="bottom" constant="5" id="MfF-th-Y2t"/>
+                <constraint firstItem="2U7-7t-aqu" firstAttribute="top" secondItem="RbD-SQ-cxt" secondAttribute="bottom" constant="3" id="MfF-th-Y2t"/>
                 <constraint firstItem="j9Q-Gf-CzA" firstAttribute="height" secondItem="RbD-SQ-cxt" secondAttribute="height" id="PhE-du-lEm"/>
                 <constraint firstItem="Tfe-zz-OM3" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Qg1-Rc-JeL"/>
                 <constraint firstItem="j9Q-Gf-CzA" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Sp4-vp-hac"/>
-                <constraint firstItem="Tfe-zz-OM3" firstAttribute="top" secondItem="2kn-KK-a7W" secondAttribute="bottom" constant="10" id="T5o-xN-Dwa"/>
+                <constraint firstItem="Tfe-zz-OM3" firstAttribute="top" secondItem="2kn-KK-a7W" secondAttribute="bottom" constant="5" id="T5o-xN-Dwa"/>
                 <constraint firstItem="2kn-KK-a7W" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="TMv-7w-V3D"/>
                 <constraint firstItem="RbD-SQ-cxt" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.5" id="YyW-3k-lX5"/>
                 <constraint firstItem="RbD-SQ-cxt" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.25" id="aWG-ti-Kss"/>

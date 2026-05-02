@@ -59,6 +59,10 @@ extension LeagueDetailsViewController {
         let teamNib = UINib(nibName: Constants.Cells.teamCollectionCell, bundle: nil)
         collectionView.register(teamNib, forCellWithReuseIdentifier: Constants.Cells.teamCollectionCell)
         
+        let headerNib = UINib(nibName: Constants.Cells.sectionHeaderView, bundle: nil)
+        collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Constants.Cells.sectionHeaderView)
+        
+        collectionView.backgroundColor = .systemGroupedBackground
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.collectionViewLayout = createCompositionalLayout()
@@ -67,25 +71,34 @@ extension LeagueDetailsViewController {
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { [weak self] (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+            let header = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: headerSize,
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top
+            )
+            
             if sectionIndex == 0 {
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.85), heightDimension: .absolute(160))
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.85), heightDimension: .absolute(140))
                 let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .groupPaging
                 section.interGroupSpacing = 16
                 section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 20, trailing: 16)
+                section.boundarySupplementaryItems = [header]
                 return section
                 
             } else if sectionIndex == 1 {
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(120))
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(100))
                 let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
                 let section = NSCollectionLayoutSection(group: group)
                 section.interGroupSpacing = 16
                 section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 20, trailing: 16)
+                section.boundarySupplementaryItems = [header]
                 return section
                 
             } else {
@@ -97,11 +110,39 @@ extension LeagueDetailsViewController {
                 section.orthogonalScrollingBehavior = .continuous
                 section.interGroupSpacing = 16
                 section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 20, trailing: 16)
+                section.boundarySupplementaryItems = [header]
                 return section
             }
         }
         return layout
     }
+    
+    // 👉 ADD THIS NEW FUNCTION
+        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+            
+            // 1. Check that we are actually asking for a header
+            guard kind == UICollectionView.elementKindSectionHeader else {
+                return UICollectionReusableView()
+            }
+            
+            // 2. Dequeue your custom XIB
+            let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: "SectionHeaderView",
+                for: indexPath
+            ) as! SectionHeaderView
+            
+            // 3. Set the title based on the section index
+            if indexPath.section == 0 {
+                header.setup(title: "Upcoming Events")
+            } else if indexPath.section == 1 {
+                header.setup(title:"Latest Results")
+            } else {
+                header.setup(title:"Participating Teams")
+            }
+            
+            return header
+        }
 }
 
 // MARK: - LeagueDetailsViewProtocol

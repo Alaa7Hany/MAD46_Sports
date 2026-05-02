@@ -19,15 +19,17 @@ class TeamCell: UICollectionViewCell {
     @IBOutlet weak var imageV: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        contentView.backgroundColor = .secondarySystemGroupedBackground
+        contentView.layer.borderWidth = 0.5
+        contentView.layer.borderColor = UIColor.tertiaryLabel.cgColor
+        contentView.layer.masksToBounds = true
         imageV.clipsToBounds = true
-        imageV.layer.borderWidth = 1
-        imageV.layer.borderColor = UIColor.systemGray5.cgColor
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layoutIfNeeded()
-        imageV.layer.cornerRadius = imageV.bounds.height / 2
+        contentView.layer.cornerRadius = contentView.bounds.height / 2
     }
     
     func setup(with logoUrlString: String?) {

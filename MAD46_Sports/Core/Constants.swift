@@ -30,6 +30,7 @@ enum Constants {
         static let upcomingEventCell = "UpcomingEventCell"  
         static let latestEventCell = "LatestEventCell"
         static let teamCollectionCell = "TeamCell"
+        static let sectionHeaderView = "SectionHeaderView"
     }
     
     enum Defaults{

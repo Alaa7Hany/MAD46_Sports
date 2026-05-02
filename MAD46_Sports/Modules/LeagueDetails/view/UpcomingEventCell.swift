@@ -19,8 +19,18 @@ class UpcomingEventCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        backgroundColor = .secondarySystemGroupedBackground
+        layer.cornerRadius = 12
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.08
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.shadowRadius = 4
+        layer.masksToBounds = false
+        
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
+        contentView.backgroundColor = .secondarySystemGroupedBackground
+        
     }
 
     func setup(with event: Event) {

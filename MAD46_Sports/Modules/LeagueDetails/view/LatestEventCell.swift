@@ -18,10 +18,16 @@ class LatestEventCell: UICollectionViewCell {
     @IBOutlet weak var imghome: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = .secondarySystemGroupedBackground
+        self.layer.cornerRadius = 12
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.08
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowRadius = 4
+        self.layer.masksToBounds = false
         contentView.layer.cornerRadius = 12
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.systemGray5.cgColor
         contentView.layer.masksToBounds = true
+        contentView.backgroundColor = .secondarySystemGroupedBackground
     }
 
     func setup(with event: Event) {
