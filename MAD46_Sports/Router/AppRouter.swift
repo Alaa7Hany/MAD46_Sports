@@ -65,9 +65,15 @@ class AppRouter: AppRouterProtocol {
     
     // MARK: - In-App Navigation
     
-    func navigateToLeagues(sportName: String){
-        navigateToLeagueDetails(sportName: "football", leagueId: 152, leagueName: "Premier league")
+    func navigateToLeagues(sportName: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let leaguesVC = storyboard.instantiateViewController(withIdentifier: "LeaguesViewController") as? LeaguesViewController else { return }
         
+        // Pass the router so the presenter can navigate further
+        leaguesVC.presenter = LeaguePresenter(view: leaguesVC, sportName: sportName, router: self)
+        
+        navigationController.isNavigationBarHidden = false
+        navigationController.pushViewController(leaguesVC, animated: true)
     }
     
     func navigateToLeagueDetails(sportName: String, leagueId: Int, leagueName: String) {
