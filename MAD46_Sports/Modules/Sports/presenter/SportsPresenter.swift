@@ -4,7 +4,6 @@
 //
 //  Created by JETSMobileLabMini3 on 29/04/2026.
 //
-
 import Foundation
 
 protocol SportsPresenterProtocol {
@@ -17,11 +16,13 @@ protocol SportsPresenterProtocol {
 class SportsPresenter: SportsPresenterProtocol {
     
     private weak var view: SportsViewProtocol?
+    private weak var router: AppRouterProtocol?
     
     private var sportsList: [Sport] = []
     
-    init(view: SportsViewProtocol) {
+    init(view: SportsViewProtocol, router: AppRouterProtocol) {
         self.view = view
+        self.router = router
     }
     
     func viewDidLoad() {
@@ -47,6 +48,7 @@ class SportsPresenter: SportsPresenterProtocol {
         guard index < sportsList.count else { return }
         guard let name = sportsList[index].sportName else { return }
 
-        view?.navigateToLeagues(for: name.lowercased())
+        
+        router?.navigateToLeagues(sportName: name.lowercased())
     }
 }

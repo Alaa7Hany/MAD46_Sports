@@ -1,34 +1,27 @@
-
-
 import Foundation
 
 class SplashPresenter {
-    weak var view : SplashView?
-    private let OnboardingKey = "Onboarding"
-    init(view: SplashView) {
+    private weak var view: SplashView?
+    private weak var router: AppRouterProtocol?
+    
+    init(view: SplashView, router: AppRouterProtocol) {
         self.view = view
-
+        self.router = router
     }
     
     func start() {
-        print("Starttttt")
-        let isFirst = !UserDefaults.standard.bool(forKey: OnboardingKey)
-        print("Starttttt444444")
-               DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                   print("44444Starttttt")
-                   if isFirst {
-                       UserDefaults.standard.set(true, forKey: self.OnboardingKey)
-                       self.view?.goToOnboarding()
-                   } else {
-                       self.view?.goToHome()
-                   }
-               }
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+            self?.timerDidFinish()
+        }
     }
     
-    
-}
-protocol SplashView : AnyObject {
-    func goToHome()
-    func goToOnboarding()
+    func timerDidFinish() {
+        let hasSeenOnboarding = UserDefaults.standard.bool(forKey: Constants.Defaults.onboarding)
+        
+        if hasSeenOnboarding {
+            router?.navigateToMainApp()
+        } else {
+            router?.navigateToOnboarding()
+        }
+    }
 }

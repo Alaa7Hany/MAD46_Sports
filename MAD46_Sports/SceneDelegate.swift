@@ -9,22 +9,29 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+
     var window: UIWindow?
+        var appRouter: AppRouterProtocol?
 
-
-    func scene(_ scene: UIScene,
-               willConnectTo session: UISceneSession,
-               options connectionOptions: UIScene.ConnectionOptions) {
-
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-
-        window = UIWindow(windowScene: windowScene)
-
-        let splashVC = SplashViewController()
-
-        window?.rootViewController = splashVC
-        window?.makeKeyAndVisible()
-    }
+        func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+            
+            
+            guard let windowScene = (scene as? UIWindowScene) else { return }
+            
+            let window = UIWindow(windowScene: windowScene)
+            let navigationController = UINavigationController()
+            
+            let isDarkMode = UserDefaults.standard.bool(forKey: Constants.Defaults.themeKey)
+            window.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
+            
+            appRouter = AppRouter(navigationController: navigationController)
+            
+            window.rootViewController = navigationController
+            self.window = window
+            window.makeKeyAndVisible()
+            
+            appRouter?.start()
+        }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

@@ -1,13 +1,12 @@
 import UIKit
 
 protocol SportsViewProtocol: AnyObject {
-    func displaySports()
-    func navigateToLeagues(for sportName: String)
-}
+    func displaySports()}
 
 
 class SportsViewController: UIViewController {
 
+    @IBOutlet weak var switchtheme: UISwitch!
     @IBOutlet weak var collectionView: UICollectionView!
 
     var presenter: SportsPresenterProtocol!
@@ -15,7 +14,6 @@ class SportsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = SportsPresenter(view: self)
  
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -28,6 +26,9 @@ class SportsViewController: UIViewController {
             }
         
         presenter.viewDidLoad()
+        
+        let isDarkMode = UserDefaults.standard.bool(forKey: Constants.Defaults.themeKey)
+        switchtheme.isOn = isDarkMode
     }
 }
 
@@ -36,20 +37,6 @@ extension SportsViewController: SportsViewProtocol {
     func displaySports() {
         DispatchQueue.main.async {
              self.collectionView.reloadData()
-        }
-    }
-    
-    func navigateToLeagues(for sportName: String) {
-        print("navigate to ",sportName)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-
-        if let leaguesVC = storyboard.instantiateViewController(withIdentifier: "LeaguesViewController") as? LeaguesViewController {
-            leaguesVC.presenter = LeaguePresenter(view: leaguesVC, sportName: sportName)
-            self.present(leaguesVC, animated: true)
-      
-//            self.navigationController?.pushViewController(leaguesVC, animated: true)
-//            print(navigationController ?? "")
         }
     }
 }
@@ -105,20 +92,16 @@ extension SportsViewController: UICollectionViewDelegateFlowLayout {
     
     
     @IBAction func themeToggled(_ sender: UISwitch) {
+        let isDarkMode = sender.isOn
+        
+        UserDefaults.standard.set(isDarkMode, forKey: Constants.Defaults.themeKey)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                if sender.isOn {
-                    self.view.window?.overrideUserInterfaceStyle = .dark
-                } else {
-                    self.view.window?.overrideUserInterfaceStyle = .light
-                }
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first {
+                
+                window.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
             }
+        }
     }
-    
-    @IBAction func languageToggled(_ sender: UISwitch) {
-
-    }
-    
-    
-    
-    
 }

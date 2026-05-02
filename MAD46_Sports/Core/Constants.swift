@@ -15,19 +15,27 @@ enum Constants {
     // MARK: - ViewController Identifiers
     enum ViewControllers {
         static let mainTabBarVC = "MainTabBarController"
+        static let onBoardingVC = "OnBoardingViewController"
         static let sportsVC = "SportsViewController"
         static let leaguesVC = "LeaguesViewController"
         static let leagueDetailsVC = "LeagueDetailsViewController"
-        static let teamDetailsVC = "TeamDetailsViewController"
-        static let favoritesVC = "FavoriteLeaguesViewController"
+        static let teamVC = "TeamViewController"
+        static let favoritesVC = "FavViewController"
     }
     
     // MARK: - Cell Identifiers
     enum Cells {
         static let sportCollectionCell = "SportCollectionViewCell"
         static let leagueTableCell = "LeagueTableViewCell"
-        static let eventCollectionCell = "EventCollectionViewCell"
-        static let teamCollectionCell = "TeamCollectionViewCell"
+        static let upcomingEventCell = "UpcomingEventCell"  
+        static let latestEventCell = "LatestEventCell"
+        static let teamCollectionCell = "TeamCell"
+        static let sectionHeaderView = "SectionHeaderView"
+    }
+    
+    enum Defaults{
+        static let themeKey = "themeKey"
+        static let onboarding = "onboarding"
     }
         
 }

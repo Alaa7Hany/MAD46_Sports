@@ -29,6 +29,7 @@ extension LeaguesViewController : UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.getCount()
     }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
@@ -40,5 +41,5 @@ extension LeaguesViewController : UITableViewDataSource
                        return cell
     }
     
-    
+
 }
