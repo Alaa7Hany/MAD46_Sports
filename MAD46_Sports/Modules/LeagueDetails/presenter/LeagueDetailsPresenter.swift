@@ -19,6 +19,9 @@ protocol LeagueDetailsPresenterProtocol {
     func getTeamsCount() -> Int
     func getTeam(at index: Int) -> Team
     func didSelectTeam(at index: Int)
+    
+    func getLeagueName() -> String
+    func didTapFavorite()
 }
 
 class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
@@ -29,17 +32,19 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     
     private let sportName: String
     private let leagueId: Int
+    private let leagueName: String
     
     private var upcomingEvents: [Event] = []
     private var latestEvents: [Event] = []
     private var teams: [Team] = []
     
-    init(view: LeagueDetailsViewProtocol, networkService: NetworkService, router: AppRouterProtocol, sportName: String, leagueId: Int) {
+    init(view: LeagueDetailsViewProtocol, networkService: NetworkService, router: AppRouterProtocol, sportName: String, leagueId: Int, leagueName: String) {
             self.view = view
             self.networkService = networkService
             self.router = router
             self.sportName = sportName
             self.leagueId = leagueId
+            self.leagueName = leagueName    
         }
     
     func viewDidLoad() {
@@ -132,5 +137,13 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     func didSelectTeam(at index: Int) {
         let selectedTeam = teams[index]
         router?.navigateToTeamDetails(team: selectedTeam)
+    }
+    
+    func getLeagueName() -> String {
+        return self.leagueName
+    }
+        
+    func didTapFavorite() {
+        print("❤️ Presenter received favorite tap for \(leagueName)!")
     }
 }

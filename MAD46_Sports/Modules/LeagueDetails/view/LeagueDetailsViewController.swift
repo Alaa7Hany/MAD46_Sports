@@ -12,8 +12,29 @@ class LeagueDetailsViewController: UIViewController {
         
         setupLoadingIndicator()
         setupCollectionView()
+        setupNavigationBar()
         
         presenter.viewDidLoad()
+    }
+    
+    private func setupNavigationBar() {
+        self.navigationController?.navigationBar.tintColor = .appPrimary
+        
+
+        self.title = presenter.getLeagueName()
+        
+        let favoriteButton = UIBarButtonItem(
+            image: UIImage(systemName: "heart"),
+            style: .plain,
+            target: self,
+            action: #selector(favoriteButtonTapped)
+        )
+        favoriteButton.tintColor = .red
+        
+        self.navigationItem.rightBarButtonItem = favoriteButton
+    }
+    @objc private func favoriteButtonTapped() {
+        presenter.didTapFavorite()
     }
 }
 
@@ -105,6 +126,8 @@ extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
             self.collectionView.reloadData()
         }
     }
+    
+    
 }
 
 // MARK: - UICollectionViewDataSource

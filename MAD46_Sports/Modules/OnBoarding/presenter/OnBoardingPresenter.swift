@@ -29,7 +29,7 @@ class OnBoardingPresenter {
     func getPage(at index: Int) -> OnBoardingModel { return pages[index] }
     
     func finishOnBoarding() {
-        UserDefaults.standard.set(true, forKey: "Onboarding")
+        UserDefaults.standard.set(true, forKey: Constants.Defaults.onboarding)
         
         router?.navigateToMainApp()
     }

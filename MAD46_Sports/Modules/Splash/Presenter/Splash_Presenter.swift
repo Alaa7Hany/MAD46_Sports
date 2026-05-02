@@ -16,7 +16,7 @@ class SplashPresenter {
     }
     
     func timerDidFinish() {
-        let hasSeenOnboarding = UserDefaults.standard.bool(forKey: "Onboarding")
+        let hasSeenOnboarding = UserDefaults.standard.bool(forKey: Constants.Defaults.onboarding)
         
         if hasSeenOnboarding {
             router?.navigateToMainApp()

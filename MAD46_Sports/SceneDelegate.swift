@@ -14,10 +14,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var appRouter: AppRouterProtocol?
 
         func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+            
+            
             guard let windowScene = (scene as? UIWindowScene) else { return }
             
             let window = UIWindow(windowScene: windowScene)
             let navigationController = UINavigationController()
+            
+            let isDarkMode = UserDefaults.standard.bool(forKey: Constants.Defaults.themeKey)
+            window.overrideUserInterfaceStyle = isDarkMode ? .dark : .light
             
             appRouter = AppRouter(navigationController: navigationController)
             

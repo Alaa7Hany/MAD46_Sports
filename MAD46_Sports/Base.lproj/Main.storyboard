@@ -132,7 +132,7 @@
         <!--Favorites-->
         <scene sceneID="hJa-QO-6dy">
             <objects>
-                <viewController id="8UJ-Hg-IpL" customClass="FavViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavViewController" id="8UJ-Hg-IpL" customClass="FavViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C6b-ez-njT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -194,6 +194,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="sKG-x2-0py"/>
                     <connections>
                         <outlet property="collectionView" destination="TRk-oa-mbW" id="MNd-Wk-Qx1"/>
+                        <outlet property="switchtheme" destination="ffb-KX-HJb" id="mNL-36-Qvp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nxz-Lh-J1l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -262,10 +263,10 @@
             </objects>
             <point key="canvasLocation" x="5872.5190839694651" y="-1382.3943661971832"/>
         </scene>
-        <!--View Controller-->
+        <!--Team View Controller-->
         <scene sceneID="PML-WN-xt5">
             <objects>
-                <viewController id="v9R-RI-g1G" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamViewController" id="v9R-RI-g1G" customClass="TeamViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1fa-Zp-EYC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

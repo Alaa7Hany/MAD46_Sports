@@ -19,8 +19,8 @@ enum Constants {
         static let sportsVC = "SportsViewController"
         static let leaguesVC = "LeaguesViewController"
         static let leagueDetailsVC = "LeagueDetailsViewController"
-        static let teamDetailsVC = "TeamDetailsViewController"
-        static let favoritesVC = "FavoritesViewController"
+        static let teamVC = "TeamViewController"
+        static let favoritesVC = "FavViewController"
     }
     
     // MARK: - Cell Identifiers
@@ -30,6 +30,11 @@ enum Constants {
         static let upcomingEventCell = "UpcomingEventCell"  
         static let latestEventCell = "LatestEventCell"
         static let teamCollectionCell = "TeamCell"
+    }
+    
+    enum Defaults{
+        static let themeKey = "themeKey"
+        static let onboarding = "onboarding"
     }
         
 }

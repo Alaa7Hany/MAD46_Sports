@@ -12,7 +12,7 @@ protocol AppRouterProtocol: AnyObject {
     func navigateToMainApp()
     func navigateToLeagues(sportName: String)
     
-    func navigateToLeagueDetails(sportName: String, leagueId: Int)
+    func navigateToLeagueDetails(sportName: String, leagueId: Int, leagueName: String)
     func navigateToTeamDetails(team: Team)
 }
 
@@ -66,11 +66,11 @@ class AppRouter: AppRouterProtocol {
     // MARK: - In-App Navigation
     
     func navigateToLeagues(sportName: String){
-        navigateToLeagueDetails(sportName: "football", leagueId: 142)
+        navigateToLeagueDetails(sportName: "football", leagueId: 152, leagueName: "Premier league")
         
     }
     
-    func navigateToLeagueDetails(sportName: String, leagueId: Int) {
+    func navigateToLeagueDetails(sportName: String, leagueId: Int, leagueName: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let detailsVC = storyboard.instantiateViewController(withIdentifier: Constants.ViewControllers.leagueDetailsVC) as? LeagueDetailsViewController else { return }
         
@@ -79,10 +79,11 @@ class AppRouter: AppRouterProtocol {
             networkService: AlamofireManager.shared,
             router: self,
             sportName: sportName,
-            leagueId: leagueId
+            leagueId: leagueId,
+            leagueName: leagueName
         )
-        navigationController.isNavigationBarHidden = false
         
+        navigationController.isNavigationBarHidden = false
         navigationController.pushViewController(detailsVC, animated: true)
     }
     
