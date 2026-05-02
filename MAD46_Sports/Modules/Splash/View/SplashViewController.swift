@@ -64,16 +64,19 @@ class SplashViewController: UIViewController ,SplashView{
            view.layer.insertSublayer(emitter, at: 0)
        }
     func goToHome() {
+        let home = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SportsViewController") as! SportsViewController
         
+        home.modalPresentationStyle = .fullScreen
+        
+        self.present(home, animated: true, completion: nil)
     }
+    
     
     func goToOnboarding() {
         let onBoarding = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OnBoardingViewController") as! OnBoardingViewController
         
-        // جعل الشاشة تملأ الشاشة بالكامل حتى لا يستطيع المستخدم سحبها للأسفل
         onBoarding.modalPresentationStyle = .fullScreen
         
-        // عرض الشاشة
         self.present(onBoarding, animated: true, completion: nil)
     }
 

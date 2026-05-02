@@ -40,13 +40,16 @@ extension SportsViewController: SportsViewProtocol {
     }
     
     func navigateToLeagues(for sportName: String) {
+        print("navigate to ",sportName)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
 
         if let leaguesVC = storyboard.instantiateViewController(withIdentifier: "LeaguesViewController") as? LeaguesViewController {
-            
-
-            self.navigationController?.pushViewController(leaguesVC, animated: true)
+            leaguesVC.presenter = LeaguePresenter(view: leaguesVC, sportName: sportName)
+            self.present(leaguesVC, animated: true)
+      
+//            self.navigationController?.pushViewController(leaguesVC, animated: true)
+//            print(navigationController ?? "")
         }
     }
 }
@@ -68,7 +71,10 @@ extension SportsViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("navigate ")
         presenter.didSelectSport(at: indexPath.row)
+        print("navigated ")
+
     }
 }
 
