@@ -18,11 +18,13 @@ protocol LeagueDetailsPresenterProtocol {
     
     func getTeamsCount() -> Int
     func getTeam(at index: Int) -> Team
+    func didSelectTeam(at index: Int)
 }
 
 class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     
     private weak var view: LeagueDetailsViewProtocol?
+    private weak var router: AppRouterProtocol?
     private let networkService: NetworkService
     
     private let sportName: String
@@ -32,12 +34,13 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     private var latestEvents: [Event] = []
     private var teams: [Team] = []
     
-    init(view: LeagueDetailsViewProtocol, networkService: NetworkService = AlamofireManager.shared, sportName: String, leagueId: Int) {
-        self.view = view
-        self.networkService = networkService
-        self.sportName = sportName
-        self.leagueId = leagueId
-    }
+    init(view: LeagueDetailsViewProtocol, networkService: NetworkService, router: AppRouterProtocol, sportName: String, leagueId: Int) {
+            self.view = view
+            self.networkService = networkService
+            self.router = router
+            self.sportName = sportName
+            self.leagueId = leagueId
+        }
     
     func viewDidLoad() {
         view?.startLoading()
@@ -124,5 +127,10 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     
     func getTeam(at index: Int) -> Team {
         return teams[index]
+    }
+    
+    func didSelectTeam(at index: Int) {
+        let selectedTeam = teams[index]
+        router?.navigateToTeamDetails(team: selectedTeam)
     }
 }

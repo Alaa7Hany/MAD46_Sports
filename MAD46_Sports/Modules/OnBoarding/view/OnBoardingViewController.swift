@@ -1,45 +1,44 @@
-
-
 import UIKit
 
-class OnBoardingViewController: UIViewController , OnBoardingView {
-    var presenter : OnBoardingPresenter!
+class OnBoardingViewController: UIViewController, OnBoardingView {
     
+    var presenter: OnBoardingPresenter!
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var pageControl: UIPageControl!
-    
-    
     @IBOutlet weak var nextButton: UIButton!
     
     var currentPage = 0 {
-            didSet {
-                pageControl.currentPage = currentPage
-                if currentPage == presenter.getCountPages() - 1 {
-                    nextButton.setTitle("Start Now", for: .normal)
-                } else {
-                    nextButton.setTitle("Next", for: .normal)
-                }
+        didSet {
+            pageControl.currentPage = currentPage
+            if currentPage == presenter.getCountPages() - 1 {
+                nextButton.setTitle("Start Now", for: .normal)
+            } else {
+                nextButton.setTitle("Next", for: .normal)
             }
         }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = OnBoardingPresenter(onBoarding: self)
         collectionView.delegate = self
         collectionView.dataSource = self
         pageControl.numberOfPages = presenter.getCountPages()
-
     }
     
 
-    func navigateToHome() {
-        print("AAAAH")
-        
+    @IBAction func nextButtonClicked(_ sender: UIButton) {
+        if currentPage == presenter.getCountPages() - 1 {
+            presenter.finishOnBoarding()
+        } else {
+            currentPage += 1
+            let indexPath = IndexPath(item: currentPage, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
     }
-     
-
 }
+
+// MARK: - Collection View Setup
 extension OnBoardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

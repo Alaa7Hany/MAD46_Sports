@@ -1,9 +1,7 @@
 import UIKit
 
 protocol SportsViewProtocol: AnyObject {
-    func displaySports()
-    func navigateToLeagues(for sportName: String)
-}
+    func displaySports()}
 
 
 class SportsViewController: UIViewController {
@@ -15,7 +13,6 @@ class SportsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = SportsPresenter(view: self)
  
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -36,17 +33,6 @@ extension SportsViewController: SportsViewProtocol {
     func displaySports() {
         DispatchQueue.main.async {
              self.collectionView.reloadData()
-        }
-    }
-    
-    func navigateToLeagues(for sportName: String) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
-
-        if let leaguesVC = storyboard.instantiateViewController(withIdentifier: "LeaguesViewController") as? LeaguesViewController {
-            
-
-            self.navigationController?.pushViewController(leaguesVC, animated: true)
         }
     }
 }
@@ -107,11 +93,7 @@ extension SportsViewController: UICollectionViewDelegateFlowLayout {
                 }
             }
     }
-    
-    @IBAction func languageToggled(_ sender: UISwitch) {
 
-    }
-    
     
     
     

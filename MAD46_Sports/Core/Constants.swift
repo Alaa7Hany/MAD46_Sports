@@ -15,11 +15,12 @@ enum Constants {
     // MARK: - ViewController Identifiers
     enum ViewControllers {
         static let mainTabBarVC = "MainTabBarController"
+        static let onBoardingVC = "OnBoardingViewController"
         static let sportsVC = "SportsViewController"
         static let leaguesVC = "LeaguesViewController"
         static let leagueDetailsVC = "LeagueDetailsViewController"
         static let teamDetailsVC = "TeamDetailsViewController"
-        static let favoritesVC = "FavoriteLeaguesViewController"
+        static let favoritesVC = "FavoritesViewController"
     }
     
     // MARK: - Cell Identifiers
