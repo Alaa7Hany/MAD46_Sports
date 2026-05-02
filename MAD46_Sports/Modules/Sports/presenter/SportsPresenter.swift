@@ -44,8 +44,9 @@ class SportsPresenter: SportsPresenterProtocol {
     }
     
     func didSelectSport(at index: Int) {
+        guard index < sportsList.count else { return }
         guard let name = sportsList[index].sportName else { return }
-        
+
         view?.navigateToLeagues(for: name.lowercased())
     }
 }
