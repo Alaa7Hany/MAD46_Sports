@@ -48,12 +48,13 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         let today = Date()
-        let lastYear = Calendar.current.date(byAdding: .year, value: -1, to: today)!
-        let nextYear = Calendar.current.date(byAdding: .year, value: 1, to: today)!
+        
+        let lastMonth = Calendar.current.date(byAdding: .month, value: -1, to: today)!
+        let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: today)!
         
         let strToday = formatter.string(from: today)
-        let strLastYear = formatter.string(from: lastYear)
-        let strNextYear = formatter.string(from: nextYear)
+        let strLastMonth = formatter.string(from: lastMonth)
+        let strNextMonth = formatter.string(from: nextMonth)
         
         let group = DispatchGroup()
         
@@ -64,14 +65,20 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
         }
         
         group.enter()
-        networkService.getEvents(sportName: sportName, from: strLastYear, to: strToday, leagueId: leagueId) { [weak self] events in
-            self?.latestEvents = events
+        networkService.getEvents(sportName: sportName, from: strLastMonth, to: strToday, leagueId: leagueId) { [weak self] events in
+            let pastEvents = events.filter { event in
+                return self?.isEventInPast(dateString: event.eventDate, timeString: event.eventTime) ?? false
+            }
+            self?.latestEvents = pastEvents
             group.leave()
         }
         
         group.enter()
-        networkService.getEvents(sportName: sportName, from: strToday, to: strNextYear, leagueId: leagueId) { [weak self] events in
-            self?.upcomingEvents = events
+        networkService.getEvents(sportName: sportName, from: strToday, to: strNextMonth, leagueId: leagueId) { [weak self] events in
+            let futureEvents = events.filter { event in
+                return !(self?.isEventInPast(dateString: event.eventDate, timeString: event.eventTime) ?? false)
+            }
+            self?.upcomingEvents = futureEvents
             group.leave()
         }
         
@@ -79,6 +86,19 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
             self?.view?.stopLoading()
             self?.view?.displayData()
         }
+    }
+    
+    private func isEventInPast(dateString: String?, timeString: String?) -> Bool {
+        guard let date = dateString, let time = timeString else { return false }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        
+        if let eventDate = formatter.date(from: "\(date) \(time)") {
+            return eventDate < Date()
+        }
+        
+        return false
     }
     
     
