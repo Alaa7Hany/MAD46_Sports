@@ -7,6 +7,7 @@ class LeagueDetailsViewController: UIViewController {
     var presenter: LeagueDetailsPresenterProtocol!
     private var activityIndicator: UIActivityIndicatorView!
     private var favoriteBarButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,20 +32,23 @@ class LeagueDetailsViewController: UIViewController {
         favoriteBarButton.tintColor = .red
         
         self.navigationItem.rightBarButtonItem = favoriteBarButton
+        
         let isFav = presenter.isFavorite()
         updateFavoriteIcon(isFav: isFav)
     }
+    
     private func updateFavoriteIcon(isFav: Bool) {
-            let imageName = isFav ? "heart.fill" : "heart"
-            favoriteBarButton.image = UIImage(systemName: imageName)
-        }
+        let imageName = isFav ? "heart.fill" : "heart"
+        favoriteBarButton.image = UIImage(systemName: imageName)
+    }
 
-        @objc private func favoriteButtonTapped() {
-            let isFavNow = presenter.toggleFavorite()
-            updateFavoriteIcon(isFav: isFavNow)
-        }
+    @objc private func favoriteButtonTapped() {
+        let isFavNow = presenter.toggleFavorite()
+        updateFavoriteIcon(isFav: isFavNow)
+    }
 }
 
+// MARK: - UI Setup
 extension LeagueDetailsViewController {
     
     private func setupLoadingIndicator() {
@@ -61,7 +65,6 @@ extension LeagueDetailsViewController {
 
         let latestNib = UINib(nibName: Constants.Cells.latestEventCell, bundle: nil)
         collectionView.register(latestNib, forCellWithReuseIdentifier: Constants.Cells.latestEventCell)
-
 
         let teamNib = UINib(nibName: Constants.Cells.teamCollectionCell, bundle: nil)
         collectionView.register(teamNib, forCellWithReuseIdentifier: Constants.Cells.teamCollectionCell)
@@ -124,29 +127,6 @@ extension LeagueDetailsViewController {
         return layout
     }
     
-        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            
-            guard kind == UICollectionView.elementKindSectionHeader else {
-                return UICollectionReusableView()
-            }
-            
-            let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: "SectionHeaderView",
-                for: indexPath
-            ) as! SectionHeaderView
-            
-            if indexPath.section == 0 {
-                header.setup(title: "Upcoming Events")
-            } else if indexPath.section == 1 {
-                header.setup(title:"Latest Results")
-            } else {
-                header.setup(title:"Participating Teams")
-            }
-        }
-        return layout
-    }
-    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         guard kind == UICollectionView.elementKindSectionHeader else {
@@ -164,7 +144,6 @@ extension LeagueDetailsViewController {
         } else if indexPath.section == 1 {
             header.setup(title: "Latest Results")
         } else {
-            // 👉 UPDATE: Now gets the dynamic string from the Presenter
             header.setup(title: presenter.getParticipantSectionTitle())
         }
         

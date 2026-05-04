@@ -155,21 +155,27 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
         print("❤️ Presenter received favorite tap for \(leagueName)!")
     }
             
+    // MARK: - Favorites Logic
+        
     func isFavorite() -> Bool {
-            let id16 = Int16(self.leagueId)
-            return CoreDataManager.shared.isFavorite(id: id16) != nil
-        }
+        guard let id = self.leagueId else { return false }
+        
+        let id16 = Int16(id)
+        return CoreDataManager.shared.isFavorite(id: id16) != nil
+    }
 
     func toggleFavorite() -> Bool {
-            let id16 = Int16(self.leagueId)
-            
-            let result = CoreDataManager.shared.toggleFavorite(
-                id: id16,
-                name: self.leagueName,
-                logo: nil
-            )
-            
-            return result
-        }
+        guard let id = self.leagueId else { return false }
+        
+        let id16 = Int16(id)
+        
+        let result = CoreDataManager.shared.toggleFavorite(
+            id: id16,
+            name: self.leagueName,
+            logo: nil
+        )
+        
+        return result
     }
+}
 
