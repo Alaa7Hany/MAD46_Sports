@@ -8,6 +8,7 @@ class OnBoardingViewController: UIViewController, OnBoardingView {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var nextButton: UIButton!
     
+    
     var currentPage = 0 {
         didSet {
             pageControl.currentPage = currentPage

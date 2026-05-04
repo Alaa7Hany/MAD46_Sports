@@ -14,12 +14,13 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var labelText: UILabel!
     
-    
-    @IBOutlet weak var desc: UIView!
-    
+        
+    @IBOutlet weak var desc: UITextView!
     func setup(_ page: OnBoardingModel) {
-        imageV.image = page.image
+      //  imageV.image = page.image
         labelText.text = page.title
+        
+        desc.text =  page.desc
      
     }
 }

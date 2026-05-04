@@ -19,9 +19,9 @@ class OnBoardingPresenter {
     
     func setUpPages() {
         pages = [
-            OnBoardingModel(title: "Welcome to Sports", desc: "Follow the latest sports news and tournaments all in one place.", image: UIImage(named: "ball") ?? UIImage()),
-            OnBoardingModel(title: "Accurate Statistics", desc: "Get detailed statistics and info about your favorite teams and players.", image: UIImage(named: "ball") ?? UIImage()),
-            OnBoardingModel(title: "Never Miss a Match", desc: "Stay up to date with upcoming match schedules and sporting events.", image: UIImage(named: "ball") ?? UIImage())
+            OnBoardingModel(title: "Welcome to Sports", desc: "Follow the latest sports news and tournaments all in one place.", image: "" ),
+            OnBoardingModel(title: "Accurate Statistics", desc: "Get detailed statistics and info about your favorite teams and players.", image: ""),
+            OnBoardingModel(title: "Never Miss a Match", desc: "Stay up to date with upcoming match schedules and sporting events.", image: "")
         ]
     }
     

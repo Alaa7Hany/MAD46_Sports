@@ -5,11 +5,11 @@
 //  Created by JETSMobileLabMini11 on 29/04/2026.
 //
 
-import UIKit
+import Foundation
 
 struct OnBoardingModel{
    var  title : String
    var  desc : String
-    var image : UIImage
+    var image : String
     
 }

@@ -51,29 +51,27 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sQH-bq-gpi">
-                                                    <rect key="frame" x="10" y="412" width="366" height="100"/>
-                                                    <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="NYT-Ng-Rf7"/>
-                                                    </constraints>
-                                                </view>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Desc" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MuN-wG-PFf">
+                                                    <rect key="frame" x="21" y="420" width="357" height="96"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="HAW-eC-sQi" firstAttribute="top" secondItem="7LA-7S-4EI" secondAttribute="bottom" constant="30" id="0vx-W0-89R"/>
                                                 <constraint firstItem="HAW-eC-sQi" firstAttribute="leading" secondItem="uSY-0k-Pvt" secondAttribute="leading" constant="43" id="5Na-ai-LHX"/>
                                                 <constraint firstAttribute="trailing" secondItem="HAW-eC-sQi" secondAttribute="trailing" constant="41" id="C4T-wy-EWc"/>
-                                                <constraint firstItem="sQH-bq-gpi" firstAttribute="leading" secondItem="uSY-0k-Pvt" secondAttribute="leading" constant="10" id="OWZ-sa-oFf"/>
                                                 <constraint firstAttribute="trailing" secondItem="7LA-7S-4EI" secondAttribute="trailing" constant="5" id="VeC-eQ-MKz"/>
                                                 <constraint firstItem="7LA-7S-4EI" firstAttribute="leading" secondItem="uSY-0k-Pvt" secondAttribute="leading" constant="5" id="d0b-jx-uxE"/>
-                                                <constraint firstItem="sQH-bq-gpi" firstAttribute="top" secondItem="HAW-eC-sQi" secondAttribute="bottom" constant="24" id="sCc-Pf-4Fw"/>
                                                 <constraint firstItem="7LA-7S-4EI" firstAttribute="top" secondItem="uSY-0k-Pvt" secondAttribute="top" constant="20" id="uqW-vB-Gqk"/>
-                                                <constraint firstAttribute="trailing" secondItem="sQH-bq-gpi" secondAttribute="trailing" constant="10" id="xI5-T8-hnG"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="386" height="524"/>
                                         <connections>
-                                            <outlet property="desc" destination="sQH-bq-gpi" id="wzK-fH-8BI"/>
+                                            <outlet property="desc" destination="MuN-wG-PFf" id="Xyw-l5-u6W"/>
                                             <outlet property="imageV" destination="7LA-7S-4EI" id="uVB-1w-AXZ"/>
                                             <outlet property="labelText" destination="HAW-eC-sQi" id="Nir-dG-J5d"/>
                                         </connections>
@@ -127,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PTY-5J-c3j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="836" y="-996"/>
+            <point key="canvasLocation" x="835.87786259541986" y="-996.47887323943667"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="hJa-QO-6dy">
@@ -348,7 +346,6 @@
         <!--Fav View Controller-->
         <scene sceneID="BR4-vH-4I9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eGB-lP-Mxq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="5s9-Zh-1pB" customClass="FavViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u1N-Gc-uZS">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
@@ -357,6 +354,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eGB-lP-Mxq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7976" y="-1344"/>
         </scene>
@@ -396,8 +394,8 @@
         <namedColor name="AppText">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="scrollViewTexturedBackgroundColor">
-            <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
