@@ -24,9 +24,9 @@ class SplashViewController: UIViewController, SplashView {
     }
     
     private func setupUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .appBackground
         setupLottie()
-        setupBallsBackground()
+       // setupBallsBackground()
     }
 
     private func setupLottie() {
@@ -42,23 +42,23 @@ class SplashViewController: UIViewController, SplashView {
     }
 
     
-       private func setupBallsBackground() {
-           let emitter = CAEmitterLayer()
-           emitter.emitterPosition = CGPoint(x: view.bounds.width / 2, y: view.bounds.height)
-           emitter.emitterShape = .line
-           emitter.emitterSize = CGSize(width: view.bounds.width, height: 1)
-
-           let cell = CAEmitterCell()
-           cell.birthRate = 5
-           cell.lifetime = 10
-           cell.velocity = 60
-           cell.scale = 0.05
-           cell.scaleRange = 0.02
-           cell.contents = UIImage(named: "ball")?.cgImage
-
-           emitter.emitterCells = [cell]
-           view.layer.insertSublayer(emitter, at: 0)
-       }
+//       private func setupBallsBackground() {
+//           let emitter = CAEmitterLayer()
+//           emitter.emitterPosition = CGPoint(x: view.bounds.width / 2, y: view.bounds.height )
+//           emitter.emitterShape = .line
+//           emitter.emitterSize = CGSize(width: view.bounds.width, height: view.bounds.height / 2)
+//
+//           let cell = CAEmitterCell()
+//           cell.birthRate = 5
+//           cell.lifetime = 10
+//           cell.velocity = 60
+//           cell.scale = 0.07
+//           cell.scaleRange = 0.02
+//           cell.contents = UIImage(named: "ball")?.cgImage
+//
+//           emitter.emitterCells = [cell]
+//           view.layer.insertSublayer(emitter, at: 0)
+//       }
     func goToHome() {
         let home = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SportsViewController") as! SportsViewController
         
@@ -76,21 +76,5 @@ class SplashViewController: UIViewController, SplashView {
         self.present(onBoarding, animated: true, completion: nil)
     }
 
-//    private func setupBallsBackground() {
-//        let emitter = CAEmitterLayer()
-//        emitter.emitterPosition = CGPoint(x: view.bounds.width / 2, y: view.bounds.height)
-//        emitter.emitterShape = .line
-//        emitter.emitterSize = CGSize(width: view.bounds.width, height: 1)
-//
-//        let cell = CAEmitterCell()
-//        cell.birthRate = 5
-//        cell.lifetime = 10
-//        cell.velocity = 60
-//        cell.scale = 0.05
-//        cell.scaleRange = 0.02
-//        cell.contents = UIImage(named: "ball")?.cgImage
-//
-//        emitter.emitterCells = [cell]
-//        view.layer.insertSublayer(emitter, at: 0)
-//    }
+
 }
