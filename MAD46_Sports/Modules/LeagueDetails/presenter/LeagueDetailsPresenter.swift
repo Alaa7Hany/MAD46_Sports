@@ -21,7 +21,9 @@ protocol LeagueDetailsPresenterProtocol {
     func didSelectTeam(at index: Int)
     
     func getLeagueName() -> String
-    func didTapFavorite()
+    
+    func isFavorite() -> Bool
+    func toggleFavorite() -> Bool
 }
 
 class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
@@ -146,4 +148,22 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     func didTapFavorite() {
         print("❤️ Presenter received favorite tap for \(leagueName)!")
     }
-}
+            
+    func isFavorite() -> Bool {
+            let id16 = Int16(self.leagueId)
+            return CoreDataManager.shared.isFavorite(id: id16) != nil
+        }
+
+    func toggleFavorite() -> Bool {
+            let id16 = Int16(self.leagueId)
+            
+            let result = CoreDataManager.shared.toggleFavorite(
+                id: id16,
+                name: self.leagueName,
+                logo: nil
+            )
+            
+            return result
+        }
+    }
+

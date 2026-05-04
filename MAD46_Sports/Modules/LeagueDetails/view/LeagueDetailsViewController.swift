@@ -6,7 +6,7 @@ class LeagueDetailsViewController: UIViewController {
     
     var presenter: LeagueDetailsPresenterProtocol!
     private var activityIndicator: UIActivityIndicatorView!
-
+    private var favoriteBarButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,22 +23,29 @@ class LeagueDetailsViewController: UIViewController {
 
         self.title = presenter.getLeagueName()
         
-        let favoriteButton = UIBarButtonItem(
+        favoriteBarButton = UIBarButtonItem(
             image: UIImage(systemName: "heart"),
             style: .plain,
             target: self,
             action: #selector(favoriteButtonTapped)
         )
-        favoriteButton.tintColor = .red
+        favoriteBarButton.tintColor = .red
         
-        self.navigationItem.rightBarButtonItem = favoriteButton
+        self.navigationItem.rightBarButtonItem = favoriteBarButton
+        let isFav = presenter.isFavorite()
+        updateFavoriteIcon(isFav: isFav)
     }
-    @objc private func favoriteButtonTapped() {
-        presenter.didTapFavorite()
-    }
+    private func updateFavoriteIcon(isFav: Bool) {
+            let imageName = isFav ? "heart.fill" : "heart"
+            favoriteBarButton.image = UIImage(systemName: imageName)
+        }
+
+        @objc private func favoriteButtonTapped() {
+            let isFavNow = presenter.toggleFavorite()
+            updateFavoriteIcon(isFav: isFavNow)
+        }
 }
 
-// MARK: - UI Setup
 extension LeagueDetailsViewController {
     
     private func setupLoadingIndicator() {
@@ -117,22 +124,18 @@ extension LeagueDetailsViewController {
         return layout
     }
     
-    // 👉 ADD THIS NEW FUNCTION
         func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
             
-            // 1. Check that we are actually asking for a header
             guard kind == UICollectionView.elementKindSectionHeader else {
                 return UICollectionReusableView()
             }
             
-            // 2. Dequeue your custom XIB
             let header = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
                 withReuseIdentifier: "SectionHeaderView",
                 for: indexPath
             ) as! SectionHeaderView
             
-            // 3. Set the title based on the section index
             if indexPath.section == 0 {
                 header.setup(title: "Upcoming Events")
             } else if indexPath.section == 1 {

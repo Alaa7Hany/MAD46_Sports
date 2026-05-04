@@ -18,13 +18,19 @@ class LeaguesViewController: UIViewController, LeaguesView {
         
         presenter.fetchLeague()
     }
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            
+           
+            tableView.reloadData()
+        }
     
     func showLeagues() {
         tableView.reloadData()
     }
 }
 
-// MARK: - UITableViewDataSource
+
 extension LeaguesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.getCount()
@@ -32,8 +38,22 @@ extension LeaguesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
+
         let league = presenter.getLeague(at: indexPath.row)
+
         cell.setup(league)
+
+        let isFav = presenter.isFavorite(at: indexPath.row)
+        cell.updateFavIcon(isFav: isFav)
+
+        cell.onFavTapped = { [weak self] in
+            guard let self = self else { return }
+            
+            let newState = self.presenter.toggleFavorite(at: indexPath.row)
+            
+            cell.updateFavIcon(isFav: newState)
+        }
+
         return cell
     }
 }

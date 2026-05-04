@@ -41,7 +41,6 @@ class AppRouter: AppRouterProtocol {
         navigationController.pushViewController(onboardingVC, animated: true)
     }
     
-    // MARK: - Programmatically
     func navigateToMainApp() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -53,8 +52,7 @@ class AppRouter: AppRouterProtocol {
                     sportsVC.presenter = SportsPresenter(view: sportsVC, router: self)
                 }
                 else if let favVC = vc as? FavViewController {
-                    // favVC.presenter = FavoritesPresenter(view: favVC, router: self)
-                }
+                    favVC.presenter = FavPresenter(view: favVC, router: self, sportName: "All")                }
             }
         }
         
@@ -63,13 +61,11 @@ class AppRouter: AppRouterProtocol {
         navigationController.isNavigationBarHidden = true
     }
     
-    // MARK: - In-App Navigation
     
     func navigateToLeagues(sportName: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let leaguesVC = storyboard.instantiateViewController(withIdentifier: "LeaguesViewController") as? LeaguesViewController else { return }
         
-        // Pass the router so the presenter can navigate further
         leaguesVC.presenter = LeaguePresenter(view: leaguesVC, sportName: sportName, router: self)
         
         navigationController.isNavigationBarHidden = false

@@ -15,9 +15,9 @@ class LeaguePresenter {
     weak var view: LeaguesView?
     var leagues: [LeagueModel] = []
     var sport: String
-    private weak var router: AppRouterProtocol? // 👉 Add the router
+    private weak var router: AppRouterProtocol?
 
-    // 👉 Update the init to accept the router
+    
     init(view: LeaguesView, sportName: String, router: AppRouterProtocol) {
         self.view = view
         self.sport = sportName
@@ -44,14 +44,34 @@ class LeaguePresenter {
         return leagues[index]
     }
     
-    // 👉 ADD THIS: Handle the click and route to details
+  
     func didSelectLeague(at index: Int) {
         let selectedLeague = leagues[index]
         
-        // Ensure you use the exact variable names from your LeagueModel here
+       
         guard let id = selectedLeague.leagueKey,
               let name = selectedLeague.leagueName else { return }
         
         router?.navigateToLeagueDetails(sportName: self.sport, leagueId: id, leagueName: name)
+    }
+    func isFavorite(at index: Int) -> Bool {
+        let league = leagues[index]
+        let id = Int16(league.leagueKey ?? 0)
+        return CoreDataManager.shared.isFavorite(id: id) != nil
+    }
+
+    func toggleFavorite(at index: Int) -> Bool {
+        let league = leagues[index]
+        
+        let id = Int16(league.leagueKey ?? 0)
+        let name = league.leagueName ?? ""
+        
+        let result = CoreDataManager.shared.toggleFavorite(
+            id: id,
+            name: name,
+            logo: nil
+        )
+        
+        return result
     }
 }

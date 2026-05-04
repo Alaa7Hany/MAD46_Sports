@@ -136,14 +136,48 @@
                     <view key="view" contentMode="scaleToFill" id="C6b-ez-njT">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fav Leagues" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKD-z7-EPi">
+                                <rect key="frame" x="0.0" y="80" width="393" height="40"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rab-mg-pdU">
+                                <rect key="frame" x="0.0" y="144" width="393" height="574"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="lRD-na-uOV" customClass="TableViewCell" customModule="MAD46_Sports" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="47.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lRD-na-uOV" id="3HY-an-bme">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="kw7-69-pI8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="top" secondItem="SKD-z7-EPi" secondAttribute="top" constant="-80" id="5wQ-uJ-Kv3"/>
+                            <constraint firstItem="rab-mg-pdU" firstAttribute="top" secondItem="SKD-z7-EPi" secondAttribute="bottom" constant="24" id="8Xw-tN-GCX"/>
+                            <constraint firstItem="kw7-69-pI8" firstAttribute="bottom" secondItem="rab-mg-pdU" secondAttribute="bottom" constant="17" id="C66-gT-kyE"/>
+                            <constraint firstAttribute="trailing" secondItem="rab-mg-pdU" secondAttribute="trailing" id="OOw-pZ-Ngt"/>
+                            <constraint firstAttribute="trailing" secondItem="SKD-z7-EPi" secondAttribute="trailing" id="WNw-kL-iaK"/>
+                            <constraint firstItem="SKD-z7-EPi" firstAttribute="leading" secondItem="C6b-ez-njT" secondAttribute="leading" id="X20-uf-jqH"/>
+                            <constraint firstItem="rab-mg-pdU" firstAttribute="leading" secondItem="C6b-ez-njT" secondAttribute="leading" id="lbs-Fz-32I"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorites" image="star" catalog="system" id="YpV-aX-7rg"/>
+                    <connections>
+                        <outlet property="tableView" destination="rab-mg-pdU" id="cgm-SZ-dfo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYi-8A-dqL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3621" y="-616"/>
+            <point key="canvasLocation" x="3620.6106870229005" y="-616.19718309859161"/>
         </scene>
         <!--Home-->
         <scene sceneID="Yy4-Pf-ubG">
@@ -310,6 +344,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWR-ij-ESi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6988" y="-1385"/>
+        </scene>
+        <!--Fav View Controller-->
+        <scene sceneID="BR4-vH-4I9">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eGB-lP-Mxq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="5s9-Zh-1pB" customClass="FavViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u1N-Gc-uZS">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Xpm-Is-rhd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="7976" y="-1344"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Mrp-aP-fiH">
