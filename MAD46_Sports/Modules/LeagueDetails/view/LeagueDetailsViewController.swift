@@ -20,7 +20,6 @@ class LeagueDetailsViewController: UIViewController {
     private func setupNavigationBar() {
         self.navigationController?.navigationBar.tintColor = .appPrimary
         
-
         self.title = presenter.getLeagueName()
         
         favoriteBarButton = UIBarButtonItem(
@@ -62,6 +61,7 @@ extension LeagueDetailsViewController {
 
         let latestNib = UINib(nibName: Constants.Cells.latestEventCell, bundle: nil)
         collectionView.register(latestNib, forCellWithReuseIdentifier: Constants.Cells.latestEventCell)
+
 
         let teamNib = UINib(nibName: Constants.Cells.teamCollectionCell, bundle: nil)
         collectionView.register(teamNib, forCellWithReuseIdentifier: Constants.Cells.teamCollectionCell)
@@ -143,9 +143,33 @@ extension LeagueDetailsViewController {
             } else {
                 header.setup(title:"Participating Teams")
             }
-            
-            return header
         }
+        return layout
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        guard kind == UICollectionView.elementKindSectionHeader else {
+            return UICollectionReusableView()
+        }
+        
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: "SectionHeaderView",
+            for: indexPath
+        ) as! SectionHeaderView
+        
+        if indexPath.section == 0 {
+            header.setup(title: "Upcoming Events")
+        } else if indexPath.section == 1 {
+            header.setup(title: "Latest Results")
+        } else {
+            // 👉 UPDATE: Now gets the dynamic string from the Presenter
+            header.setup(title: presenter.getParticipantSectionTitle())
+        }
+        
+        return header
+    }
 }
 
 // MARK: - LeagueDetailsViewProtocol
@@ -170,8 +194,6 @@ extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
             self.collectionView.reloadData()
         }
     }
-    
-    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -184,7 +206,7 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 { return presenter.getUpcomingEventsCount() }
         else if section == 1 { return presenter.getLatestEventsCount() }
-        else { return presenter.getTeamsCount() }
+        else { return presenter.getParticipantsCount() }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -201,7 +223,7 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
             
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.teamCollectionCell, for: indexPath) as! TeamCell
-            cell.setup(with: presenter.getTeam(at: indexPath.row).teamLogo)
+            cell.setup(with: presenter.getParticipant(at: indexPath.row).logo)
             return cell
         }
     }
@@ -212,8 +234,7 @@ extension LeagueDetailsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if indexPath.section == 2 {
-            let selectedTeam = presenter.getTeam(at: indexPath.row)
-            print("Clicked team: \(selectedTeam.teamName ?? "Unknown")")
+            presenter.didSelectParticipant(at: indexPath.row)
         }
     }
 }

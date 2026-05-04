@@ -11,9 +11,9 @@ protocol AppRouterProtocol: AnyObject {
     func navigateToOnboarding()
     func navigateToMainApp()
     func navigateToLeagues(sportName: String)
-    
     func navigateToLeagueDetails(sportName: String, leagueId: Int, leagueName: String)
-    func navigateToTeamDetails(team: Team)
+    
+    func navigateToTeamDetails(sportName: String, teamId: Int, teamName: String)
 }
 
 class AppRouter: AppRouterProtocol {
@@ -89,10 +89,23 @@ class AppRouter: AppRouterProtocol {
         navigationController.pushViewController(detailsVC, animated: true)
     }
     
-    func navigateToTeamDetails(team: Team) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        guard let teamVC = storyboard.instantiateViewController(withIdentifier: "TeamDetailsViewController") as? UIViewController else { return }
-//        
-//        navigationController.pushViewController(teamVC, animated: true)
-    }
+    func navigateToTeamDetails(sportName: String, teamId: Int, teamName: String) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
+
+            guard let teamVC = storyboard.instantiateViewController(withIdentifier: "TeamViewController") as? TeamViewController else { return }
+            
+//
+//            teamVC.presenter = TeamDetailsPresenter(
+//                view: teamVC,
+//                networkService: AlamofireManager.shared,
+//                sportName: sportName,
+//                teamId: teamId,
+//                teamName: teamName
+//            )
+            
+            
+            navigationController.isNavigationBarHidden = false
+            navigationController.pushViewController(teamVC, animated: true)
+        }
 }
