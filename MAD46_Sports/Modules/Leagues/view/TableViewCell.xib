@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,36 +19,32 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ExP-hT-WRC">
                         <rect key="frame" x="10" y="5" width="106.66666666666667" height="54"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Eh-63-cob">
-                        <rect key="frame" x="148.66666666666666" y="22" width="106.66666666666666" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Eh-63-cob">
+                        <rect key="frame" x="121.66666666666666" y="21.666666666666671" width="106.66666666666666" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HB9-0C-qS0">
-                        <rect key="frame" x="224.33333333333334" y="-4" width="106.66666666666666" height="74"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLV-Jr-eff">
+                        <rect key="frame" x="213.33333333333334" y="15.000000000000004" width="106.66666666666666" height="34.333333333333343"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="testCoreAnimationRenderingEngine.TwitterHeartButton-0.png">
-                            <color key="baseForegroundColor" name="AppPrimary"/>
-                        </buttonConfiguration>
+                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
                         <connections>
-                            <action selector="FavButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="W4r-3u-YN3"/>
+                            <action selector="onFav:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="O5f-ih-DD8"/>
                         </connections>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ExP-hT-WRC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="7bw-PP-8pf"/>
                     <constraint firstItem="0Eh-63-cob" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:3" id="Ced-MZ-ywy"/>
+                    <constraint firstAttribute="trailing" secondItem="cLV-Jr-eff" secondAttribute="trailing" id="DRy-Fs-9RT"/>
                     <constraint firstItem="ExP-hT-WRC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="DfT-FN-KW8"/>
+                    <constraint firstItem="0Eh-63-cob" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="IUc-Cw-6Ve"/>
+                    <constraint firstItem="cLV-Jr-eff" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="OmC-r3-Rxr"/>
                     <constraint firstItem="ExP-hT-WRC" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:3" id="P3R-7T-bMz"/>
-                    <constraint firstItem="0Eh-63-cob" firstAttribute="leading" secondItem="ExP-hT-WRC" secondAttribute="trailing" constant="32" id="TGZ-Dv-iC8"/>
-                    <constraint firstAttribute="bottom" secondItem="0Eh-63-cob" secondAttribute="bottom" constant="21" id="aA1-f8-Vv3"/>
+                    <constraint firstItem="0Eh-63-cob" firstAttribute="leading" secondItem="ExP-hT-WRC" secondAttribute="trailing" constant="5" id="TGZ-Dv-iC8"/>
                     <constraint firstAttribute="bottom" secondItem="ExP-hT-WRC" secondAttribute="bottom" constant="5" id="cfm-U4-Bbl"/>
-                    <constraint firstAttribute="trailing" secondItem="HB9-0C-qS0" secondAttribute="trailing" constant="-11" id="dsY-aY-hyX"/>
-                    <constraint firstItem="HB9-0C-qS0" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:3" id="e64-6z-8lY"/>
-                    <constraint firstItem="HB9-0C-qS0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="-4" id="jdt-AG-MOQ"/>
-                    <constraint firstAttribute="bottom" secondItem="HB9-0C-qS0" secondAttribute="bottom" constant="-6" id="p7w-Pn-oIZ"/>
-                    <constraint firstItem="0Eh-63-cob" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="22" id="sER-HF-TVx"/>
+                    <constraint firstItem="cLV-Jr-eff" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:3" id="we9-03-Jme"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -61,9 +56,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="testCoreAnimationRenderingEngine.TwitterHeartButton-0.png" width="60" height="60"/>
-        <namedColor name="AppPrimary">
-            <color red="0.11372549019607843" green="0.72549019607843135" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="heart" catalog="system" width="128" height="107"/>
     </resources>
 </document>

@@ -8,14 +8,13 @@ class LeaguesViewController: UIViewController, LeaguesView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the title dynamically based on the selected sport
         self.title = presenter.sport.capitalized
         
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "cell")
         
         tableView.dataSource = self
-        tableView.delegate = self // 👉 ADD THIS
+        tableView.delegate = self
         
         presenter.fetchLeague()
     }
@@ -39,13 +38,15 @@ extension LeaguesViewController: UITableViewDataSource {
     }
 }
 
-// 👉 ADD THIS EXTENSION: UITableViewDelegate
 extension LeaguesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Remove the gray highlight after click
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // Tell the presenter which row was clicked
         presenter.didSelectLeague(at: indexPath.row)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }
+

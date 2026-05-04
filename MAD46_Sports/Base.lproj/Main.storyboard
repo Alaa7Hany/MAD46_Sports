@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TGV-52-o2d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -10,6 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--On Boarding View Controller-->
         <scene sceneID="nWV-Kg-xFr">
             <objects>
                 <viewController storyboardIdentifier="OnBoardingViewController" id="fm1-Dp-XIi" customClass="OnBoardingViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
@@ -128,6 +129,7 @@
             </objects>
             <point key="canvasLocation" x="836" y="-996"/>
         </scene>
+        <!--Favorites-->
         <scene sceneID="hJa-QO-6dy">
             <objects>
                 <viewController storyboardIdentifier="FavViewController" id="8UJ-Hg-IpL" customClass="FavViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
@@ -143,6 +145,7 @@
             </objects>
             <point key="canvasLocation" x="3621" y="-616"/>
         </scene>
+        <!--Home-->
         <scene sceneID="Yy4-Pf-ubG">
             <objects>
                 <viewController storyboardIdentifier="SportsViewController" id="bEd-V8-QLM" customClass="SportsViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
@@ -151,33 +154,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ffb-KX-HJb">
-                                <rect key="frame" x="87" y="152" width="63" height="28"/>
+                                <rect key="frame" x="87" y="98" width="51" height="31"/>
                                 <color key="onTintColor" name="AppPrimary"/>
                                 <connections>
                                     <action selector="themeToggled:" destination="bEd-V8-QLM" eventType="valueChanged" id="7gt-Gv-8Me"/>
                                 </connections>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Um9-Hz-qhD">
-                                <rect key="frame" x="316" y="152" width="63" height="28"/>
-                                <color key="onTintColor" name="AppPrimary"/>
-                                <connections>
-                                    <action selector="languageToggled:" destination="bEd-V8-QLM" eventType="valueChanged" id="FjI-v9-MAr"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="En/Ar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cO-C1-q5U">
-                                <rect key="frame" x="267" y="155.66666666666666" width="41" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="AppText"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sf0-IJ-Trz">
-                                <rect key="frame" x="26" y="155.66666666666666" width="53" height="21"/>
+                                <rect key="frame" x="26" y="103" width="53" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="AppText"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TRk-oa-mbW">
-                                <rect key="frame" x="16" y="234" width="361" height="454"/>
+                                <rect key="frame" x="16" y="183" width="361" height="505"/>
                                 <color key="backgroundColor" name="AppBackground"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hvb-Gl-rbv">
                                     <size key="itemSize" width="128" height="128"/>
@@ -211,6 +201,7 @@
             </objects>
             <point key="canvasLocation" x="3620.6106870229005" y="-1381.6901408450706"/>
         </scene>
+        <!--Leagues View Controller-->
         <scene sceneID="zpT-ep-Smf">
             <objects>
                 <viewController storyboardIdentifier="LeaguesViewController" id="E6e-eV-bkw" customClass="LeaguesViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
@@ -229,10 +220,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="goy-Qj-Flg" customClass="TableViewCell" customModule="MAD46_Sports" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="53"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="47.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="goy-Qj-Flg" id="4mf-nY-RtN">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="53"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -259,21 +250,7 @@
             </objects>
             <point key="canvasLocation" x="4675.5725190839694" y="-1382.3943661971832"/>
         </scene>
-        <scene sceneID="nav-scene-Qmr">
-            <objects>
-                <navigationController id="TGV-52-o2d" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Np6-2H-d5Q">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="NgJ-Nj-Rid" kind="relationship" relationship="rootViewController" id="root-segue-id"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nav-first-responder" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5000" y="-1382"/>
-        </scene>
+        <!--League Details View Controller-->
         <scene sceneID="Qmr-EU-d5I">
             <objects>
                 <viewController storyboardIdentifier="LeagueDetailsViewController" id="NgJ-Nj-Rid" customClass="LeagueDetailsViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
@@ -319,6 +296,7 @@
             </objects>
             <point key="canvasLocation" x="5872.5190839694651" y="-1382.3943661971832"/>
         </scene>
+        <!--Team View Controller-->
         <scene sceneID="PML-WN-xt5">
             <objects>
                 <viewController storyboardIdentifier="TeamViewController" id="v9R-RI-g1G" customClass="TeamViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
@@ -333,6 +311,7 @@
             </objects>
             <point key="canvasLocation" x="6988" y="-1385"/>
         </scene>
+        <!--Tab Bar Controller-->
         <scene sceneID="Mrp-aP-fiH">
             <objects>
                 <tabBarController storyboardIdentifier="MainTabBarController" id="zOz-jR-d2D" sceneMemberID="viewController">

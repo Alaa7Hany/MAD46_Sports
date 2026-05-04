@@ -15,8 +15,9 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var labelTxt: UILabel!
     var onFavTapped: (() -> Void)?
     
-    @IBAction func FavButton(_ sender: Any) {
-        onFavTapped?()
+
+    @IBAction func onFav(_ sender: Any) {
+        
     }
     
     override func awakeFromNib() {
