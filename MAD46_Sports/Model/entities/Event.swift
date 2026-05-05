@@ -4,22 +4,18 @@ struct Event: Decodable {
     let eventKey: Int?
     let eventTime: String?
     
-    // Dates
     let eventDate: String?
     let eventDateStart: String?
     
-    // Results
     let eventFinalResult: String?
     let eventHomeFinalResult: String?
     let eventAwayFinalResult: String?
     
-    // Competitor Names (Teams vs. Players)
     let eventHomeTeam: String?
     let eventAwayTeam: String?
     let eventFirstPlayer: String?
     let eventSecondPlayer: String?
     
-    // Logos
     let homeTeamLogo: String?
     let awayTeamLogo: String?
     let eventHomeTeamLogo: String?
@@ -51,8 +47,6 @@ struct Event: Decodable {
         case eventSecondPlayerLogo = "event_second_player_logo"
     }
     
-    // MARK: - Computed Properties for the UI
-    // Your UI cells will ONLY use these properties!
     
     var displayHomeName: String? {
         return eventHomeTeam ?? eventFirstPlayer
@@ -75,22 +69,18 @@ struct Event: Decodable {
     }
     
     var displayResult: String? {
-        // Football, Basketball, Tennis (e.g., "2 - 1" or "86 - 71")
         if let combined = eventFinalResult, !combined.isEmpty, combined != "-" {
             return combined
         }
         
-        // Cricket (e.g., "197/6 - 188/7")
-        if let homeScore = eventHomeFinalResult, let awayScore = eventAwayFinalResult {
+        if let homeScore = eventHomeFinalResult, let awayScore = eventAwayFinalResult, !homeScore.isEmpty {
             return "\(homeScore) - \(awayScore)"
         }
         
-        // Match hasn't happened yet
         return "VS"
     }
 }
 
-// Wrapper for the Alamofire response
 struct EventResponse: Decodable {
     let result: [Event]?
 }

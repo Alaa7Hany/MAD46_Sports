@@ -17,13 +17,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="257" height="230"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KYR-Fd-FQX">
-                        <rect key="frame" x="13" y="-8" width="231" height="172.66666666666666"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KYR-Fd-FQX">
+                        <rect key="frame" x="0.0" y="0.0" width="257" height="230"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9w-2z-nBt">
-                        <rect key="frame" x="107.66666666666669" y="179" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9w-2z-nBt">
+                        <rect key="frame" x="20.000000000000004" y="186" width="51.333333333333343" height="24"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -31,12 +31,12 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" name="AppSurface"/>
             <constraints>
-                <constraint firstItem="KYR-Fd-FQX" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.9" id="7oO-kO-iNR"/>
-                <constraint firstItem="KYR-Fd-FQX" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.75" id="M6x-m8-1C1"/>
-                <constraint firstAttribute="top" secondItem="KYR-Fd-FQX" secondAttribute="top" constant="8" id="Qfq-ny-Etb"/>
-                <constraint firstItem="KYR-Fd-FQX" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="fry-m8-2hR"/>
-                <constraint firstItem="W9w-2z-nBt" firstAttribute="top" secondItem="KYR-Fd-FQX" secondAttribute="bottom" constant="14.333333333333343" id="ted-lM-nBP"/>
-                <constraint firstItem="W9w-2z-nBt" firstAttribute="centerX" secondItem="KYR-Fd-FQX" secondAttribute="centerX" id="vjb-R0-AJk"/>
+                <constraint firstAttribute="trailing" secondItem="KYR-Fd-FQX" secondAttribute="trailing" id="2YR-Vb-ltv"/>
+                <constraint firstItem="W9w-2z-nBt" firstAttribute="bottom" secondItem="KYR-Fd-FQX" secondAttribute="bottom" constant="-20" id="B8T-jV-2cP"/>
+                <constraint firstAttribute="bottom" secondItem="KYR-Fd-FQX" secondAttribute="bottom" id="g9c-V8-Jzy"/>
+                <constraint firstItem="KYR-Fd-FQX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mN5-bP-anU"/>
+                <constraint firstItem="W9w-2z-nBt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="uCm-ev-dst"/>
+                <constraint firstItem="KYR-Fd-FQX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yOs-tK-W42"/>
             </constraints>
             <size key="customSize" width="257" height="230"/>
             <connections>
