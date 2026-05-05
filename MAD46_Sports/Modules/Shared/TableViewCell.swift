@@ -19,16 +19,54 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var favBtn: UIButton!
     
     @IBAction func onFav(_ sender: Any) {
-        
         onFavTapped?()
+        
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+        
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.calculationModeCubic], animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2) {
+                self.favBtn.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.2, relativeDuration: 0.3) {
+                let scale = CGAffineTransform(scaleX: 1.4, y: 1.4)
+                let rotate = CGAffineTransform(rotationAngle: 0.2)
+                self.favBtn.transform = scale.concatenating(rotate)
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.3) {
+                let scale = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                let rotate = CGAffineTransform(rotationAngle: -0.2)
+                self.favBtn.transform = scale.concatenating(rotate)
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.8, relativeDuration: 0.2) {
+                self.favBtn.transform = .identity
+            }
+            
+        }, completion: nil)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageV.layer.cornerRadius = imageV.frame.height / 2
         imageV.clipsToBounds = true
 
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.layoutIfNeeded()
+        
+        let radius = min(imageV.bounds.width, imageV.bounds.height) / 2
+        imageV.layer.cornerRadius = radius
+        
+        imageV.layer.borderWidth = 1.5
+      
+        imageV.layer.borderColor = UIColor.systemGray4.cgColor
+     
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

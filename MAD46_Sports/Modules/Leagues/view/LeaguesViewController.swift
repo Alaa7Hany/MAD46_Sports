@@ -8,6 +8,9 @@ class LeaguesViewController: UIViewController, LeaguesView {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.tintColor = .appPrimary
+
+        
         self.title = presenter.sport.capitalized
         
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
