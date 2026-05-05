@@ -36,6 +36,13 @@ enum Constants {
     enum Defaults{
         static let themeKey = "themeKey"
         static let onboarding = "onboarding"
+        static let soundKey = "soundKey"
     }
-        
+    
+    enum Icons{
+        static let lightMode = "moon.fill"
+        static let darkMode = "sun.max.fill"
+        static let soundOff = "speaker.wave.2.fill"
+        static let soundOn = "speaker.slash.fill"
+    }
 }

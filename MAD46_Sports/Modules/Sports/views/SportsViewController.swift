@@ -4,6 +4,7 @@ protocol SportsViewProtocol: AnyObject {
     func displaySports()
 }
 
+
 // MARK: - Main View Controller
 class SportsViewController: UIViewController {
 
@@ -39,9 +40,11 @@ private extension SportsViewController {
     
     func setupInitialUI() {
         let isDarkMode = UserDefaults.standard.bool(forKey: Constants.Defaults.themeKey)
-        let themeIcon = isDarkMode ? "moon.fill" : "sun.max.fill"
+        let themeIcon = isDarkMode ? Constants.Icons.darkMode : Constants.Icons.lightMode
         btnTheme.setImage(UIImage(systemName: themeIcon), for: .normal)
-        btnSound.setImage(UIImage(systemName: "mic.fill"), for: .normal)
+        let isSoundMuted = UserDefaults.standard.bool(forKey: Constants.Defaults.soundKey)
+        let soundIcon = isSoundMuted ? Constants.Icons.soundOff: Constants.Icons.soundOn
+        btnSound.setImage(UIImage(systemName: soundIcon), for: .normal)
     }
     
     func setupCollectionViews() {
@@ -50,7 +53,8 @@ private extension SportsViewController {
         // --- Main Grid Setup ---
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(nib, forCellWithReuseIdentifier: "sportsCell")
+        collectionView.register(nib, forCellWithReuseIdentifier: Constants.Cells.sportCollectionCell)
+        collectionView.delaysContentTouches = false
         
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = .zero
@@ -59,7 +63,7 @@ private extension SportsViewController {
         // --- Banner Setup ---
         bannerCollectionview.delegate = self
         bannerCollectionview.dataSource = self
-        bannerCollectionview.register(nib, forCellWithReuseIdentifier: "sportsCell")
+        bannerCollectionview.register(nib, forCellWithReuseIdentifier: Constants.Cells.sportCollectionCell)
         bannerCollectionview.isPagingEnabled = true
         bannerCollectionview.showsHorizontalScrollIndicator = false
         
@@ -74,7 +78,7 @@ private extension SportsViewController {
 // MARK: - Actions
 extension SportsViewController {
     
-    @IBAction func onThemechanged(_ sender: Any) {
+    @IBAction func onThemechanged(_ sender: UIButton) {
         let isCurrentlyDark = UserDefaults.standard.bool(forKey: Constants.Defaults.themeKey)
         let newDarkModeState = !isCurrentlyDark
         
@@ -85,14 +89,45 @@ extension SportsViewController {
             window.overrideUserInterfaceStyle = newDarkModeState ? .dark : .light
         }
         
-        let iconName = newDarkModeState ? "moon.fill" : "sun.max.fill"
+        let iconName = newDarkModeState ? Constants.Icons.darkMode : Constants.Icons.lightMode
         btnTheme.setImage(UIImage(systemName: iconName), for: .normal)
+        
+        
+        // animation
+        sender.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        UIView.animate(withDuration: 0.8,
+                       delay: 0,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 3,
+                       options: .allowUserInteraction, animations: {
+            sender.transform = .identity
+        })
+        ///////////////////////
     }
     
-    @IBAction func onSoundChanged(_ sender: Any) {
-        let currentImage = btnSound.image(for: .normal)
-        let newIcon = currentImage == UIImage(systemName: "mic.fill") ? "mic.slash.fill" : "mic.fill"
-        btnSound.setImage(UIImage(systemName: newIcon), for: .normal)
+    @IBAction func onSoundChanged(_ sender: UIButton) {
+        let isCurrentlyMuted = UserDefaults.standard.bool(forKey: Constants.Defaults.soundKey)
+        
+        let newMutedState = !isCurrentlyMuted
+        
+        UserDefaults.standard.set(newMutedState, forKey: Constants.Defaults.soundKey)
+        
+        let iconName = newMutedState ? Constants.Icons.soundOff : Constants.Icons.soundOn
+        btnSound.setImage(UIImage(systemName: iconName), for: .normal)
+        
+        
+        // animation
+        sender.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 3,
+                       options: .allowUserInteraction, animations: {
+            sender.transform = .identity
+        })
+        ///////////////////////
+        
+        // TODO: Implement sound logic
     }
 }
 
@@ -163,7 +198,7 @@ extension SportsViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "sportsCell", for: indexPath) as! SportCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.sportCollectionCell, for: indexPath) as! SportCollectionViewCell
         
         let actualIndex = collectionView == bannerCollectionview ? (indexPath.row % presenter.getSportsCount()) : indexPath.row
         let sport = presenter.getSport(at: actualIndex)
@@ -229,5 +264,28 @@ extension SportsViewController {
             currentBannerIndex = Int(round(scrollView.contentOffset.x / pageWidth))
             startBannerTimer()
         }
+    }
+}
+
+// MARK: - Passive Animations
+extension SportsViewController {
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        guard collectionView == self.collectionView else { return }
+        
+        cell.transform = CGAffineTransform(translationX: 0, y: 30)
+        cell.alpha = 0
+        
+        let delay = 0.05 * Double(indexPath.row)
+        
+        UIView.animate(withDuration: 0.5,
+                       delay: delay,
+                       usingSpringWithDamping: 0.8,
+                       initialSpringVelocity: 0.1,
+                       options: [.curveEaseOut, .allowUserInteraction], animations: {
+            cell.transform = .identity
+            cell.alpha = 1
+        })
     }
 }

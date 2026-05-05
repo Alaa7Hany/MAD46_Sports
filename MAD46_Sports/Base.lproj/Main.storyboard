@@ -188,7 +188,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TRk-oa-mbW">
-                                <rect key="frame" x="16" y="383" width="361" height="342"/>
+                                <rect key="frame" x="16" y="333" width="361" height="392"/>
                                 <color key="backgroundColor" name="AppBackground"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hvb-Gl-rbv">
                                     <size key="itemSize" width="128" height="128"/>
@@ -228,10 +228,10 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="u4z-rk-W4H">
-                                <rect key="frame" x="16" y="173" width="361" height="200"/>
-                                <color key="backgroundColor" name="AppBackground"/>
+                                <rect key="frame" x="16" y="173" width="361" height="150"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="CI9-WJ-FLS"/>
+                                    <constraint firstAttribute="height" constant="150" id="CI9-WJ-FLS"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hI9-Mm-af3">
                                     <size key="itemSize" width="128" height="128"/>
