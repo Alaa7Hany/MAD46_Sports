@@ -17,6 +17,9 @@ class LeaguesViewController: UIViewController, LeaguesView {
         tableView.delegate = self
         
         presenter.fetchLeague()
+        
+        
+        
     }
     override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
@@ -41,7 +44,9 @@ extension LeaguesViewController: UITableViewDataSource {
 
         let league = presenter.getLeague(at: indexPath.row)
 
-        cell.setup(league)
+        let placeholderImage = UIImage(named: presenter.sport)
+
+        cell.setup(league, placeholder: placeholderImage)
 
         let isFav = presenter.isFavorite(at: indexPath.row)
         cell.updateFavIcon(isFav: isFav)
@@ -57,7 +62,6 @@ extension LeaguesViewController: UITableViewDataSource {
         return cell
     }
 }
-
 extension LeaguesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -70,3 +74,12 @@ extension LeaguesViewController: UITableViewDelegate {
     }
 }
 
+extension LeaguesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter.filterLeagues(searchText: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder() 
+    }
+}

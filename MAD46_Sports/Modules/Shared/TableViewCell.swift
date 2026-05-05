@@ -26,7 +26,7 @@ class TableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageV.layer.cornerRadius = imageV.frame.width / 2
+        imageV.layer.cornerRadius = imageV.frame.height / 2
         imageV.clipsToBounds = true
 
     }
@@ -35,16 +35,16 @@ class TableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-    func setup(_ league: LeagueModel) {
+    func setup(_ league: LeagueModel, placeholder: UIImage?) {
         labelTxt.text = league.leagueName
 
         if let urlString = league.leagueLogo,
            let url = URL(string: urlString) {
-
-            imageV.sd_setImage(with: url, placeholderImage: UIImage(named: "ball"))
+           
+            imageV.sd_setImage(with: url, placeholderImage: placeholder)
 
         } else {
-            imageV.image = UIImage(named: "ball")
+            imageV.image = placeholder
         }
     }
     func updateFavIcon(isFav : Bool)

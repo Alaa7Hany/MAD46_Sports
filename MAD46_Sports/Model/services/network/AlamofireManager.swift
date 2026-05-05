@@ -25,7 +25,6 @@ class AlamofireManager: NetworkService {
     func getEvents(sportName: String, from: String, to: String, leagueId: Int?, completion: @escaping ([Event]) -> Void) {
         var url = "\(Constants.API.baseURL)/\(sportName)?met=Fixtures&APIkey=\(apiKey)&from=\(from)&to=\(to)&timezone=Africa/Cairo"
         
-        // Safely append leagueId only if it exists
         if let id = leagueId {
             url += "&leagueId=\(id)"
         }

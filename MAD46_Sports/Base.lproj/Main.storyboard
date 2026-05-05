@@ -278,14 +278,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leagues" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5WT-Nu-cJa">
-                                <rect key="frame" x="0.0" y="80" width="414" height="40"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SR1-FO-ei9">
-                                <rect key="frame" x="0.0" y="144" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="156" width="414" height="740"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="goy-Qj-Flg" customClass="TableViewCell" customModule="MAD46_Sports" customModuleProvider="target">
@@ -298,17 +292,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="Searching " translatesAutoresizingMaskIntoConstraints="NO" id="khk-bj-E8o">
+                                <rect key="frame" x="0.0" y="100" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="E6e-eV-bkw" id="CHY-GX-adl"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yjW-37-S30"/>
                         <color key="backgroundColor" name="AppBackground"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="SR1-FO-ei9" secondAttribute="bottom" id="8Md-Na-gtZ"/>
-                            <constraint firstItem="5WT-Nu-cJa" firstAttribute="leading" secondItem="iTh-De-iRi" secondAttribute="leading" id="CWQ-gR-R3q"/>
-                            <constraint firstItem="SR1-FO-ei9" firstAttribute="top" secondItem="5WT-Nu-cJa" secondAttribute="bottom" constant="24" id="I8n-f8-8HX"/>
+                            <constraint firstItem="SR1-FO-ei9" firstAttribute="top" secondItem="khk-bj-E8o" secondAttribute="bottom" id="94a-H4-LEW"/>
+                            <constraint firstItem="khk-bj-E8o" firstAttribute="top" secondItem="iTh-De-iRi" secondAttribute="top" constant="100" id="Nff-zd-Ecn"/>
                             <constraint firstItem="SR1-FO-ei9" firstAttribute="leading" secondItem="iTh-De-iRi" secondAttribute="leading" id="PBU-uV-4o9"/>
-                            <constraint firstAttribute="trailing" secondItem="5WT-Nu-cJa" secondAttribute="trailing" id="bUB-IQ-QBf"/>
+                            <constraint firstItem="khk-bj-E8o" firstAttribute="leading" secondItem="SR1-FO-ei9" secondAttribute="leading" id="dpM-7W-iSH"/>
+                            <constraint firstItem="khk-bj-E8o" firstAttribute="centerX" secondItem="SR1-FO-ei9" secondAttribute="centerX" id="gDO-IQ-o7f"/>
                             <constraint firstItem="SR1-FO-ei9" firstAttribute="trailing" secondItem="iTh-De-iRi" secondAttribute="trailing" id="jde-a5-52L"/>
-                            <constraint firstAttribute="top" secondItem="5WT-Nu-cJa" secondAttribute="top" constant="-80" id="jix-gV-7Wk"/>
+                            <constraint firstItem="khk-bj-E8o" firstAttribute="trailing" secondItem="SR1-FO-ei9" secondAttribute="trailing" id="rHo-p2-l6W"/>
                         </constraints>
                     </view>
                     <connections>
