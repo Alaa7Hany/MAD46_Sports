@@ -18,12 +18,12 @@ class OnBoardingPresenter {
     }
     
     func setUpPages() {
-        pages = [
-            OnBoardingModel(title: "Welcome to Sports", desc: "Follow the latest sports news and tournaments all in one place.", image: "" ),
-            OnBoardingModel(title: "Accurate Statistics", desc: "Get detailed statistics and info about your favorite teams and players.", image: ""),
-            OnBoardingModel(title: "Never Miss a Match", desc: "Stay up to date with upcoming match schedules and sporting events.", image: "")
-        ]
-    }
+            pages = [
+                OnBoardingModel( desc: "Follow the latest sports news and tournaments all in one place.", image: "onboarding1"),
+                OnBoardingModel( desc: "Get detailed statistics and info about your favorite teams and players.", image: "onboarding2"),
+                OnBoardingModel( desc: "Stay up to date with upcoming match schedules and sporting events.", image: "onboarding3")
+            ]
+        }
     
     func getCountPages() -> Int { return pages.count }
     func getPage(at index: Int) -> OnBoardingModel { return pages[index] }

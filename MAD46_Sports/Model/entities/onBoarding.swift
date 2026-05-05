@@ -8,7 +8,7 @@
 import Foundation
 
 struct OnBoardingModel{
-   var  title : String
+ //  var  title : String
    var  desc : String
     var image : String
     
