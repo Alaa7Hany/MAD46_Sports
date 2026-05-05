@@ -49,6 +49,44 @@ class FavViewController: UIViewController, FavView {
             tableView.separatorStyle = .none
             tableView.reloadData()
         }
+    func confirmDeletion(at index: Int) {
+        let alert = UIAlertController(
+            title: "Remove from Favorites",
+            message: "Are you sure you want to remove this league from your favorites?",
+            preferredStyle: .alert
+        )
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+            guard let self = self else { return }
+            
+            let indexPath = IndexPath(row: index, section: 0)
+            
+            if let cell = self.tableView.cellForRow(at: indexPath) {
+                UIView.animate(withDuration: 0.3, animations: {
+                    cell.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                    cell.alpha = 0
+                }) { _ in
+                   
+                    self.presenter.removeFavorite(at: index)
+                    
+                    self.tableView.beginUpdates()
+                    self.tableView.deleteRows(at: [indexPath], with: .left)
+                    self.tableView.endUpdates()
+                    
+                    
+                    if self.presenter.getCount() == 0 {
+                        self.showEmptyState()
+                    }
+                }
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
 
@@ -76,10 +114,15 @@ extension FavViewController: UITableViewDataSource {
         
         cell.onFavTapped = { [weak self] in
             guard let self = self else { return }
-            self.presenter?.removeFavorite(at: indexPath.row)
+            self.confirmDeletion(at: indexPath.row)
         }
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.confirmDeletion(at: indexPath.row)
+        }
     }
 }
 
