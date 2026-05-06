@@ -87,24 +87,20 @@ class AppRouter: AppRouterProtocol {
             navigationController.isNavigationBarHidden = false
             navigationController.pushViewController(detailsVC, animated: true)
         }
-    
     func navigateToTeamDetails(sportName: String, teamId: Int, teamName: String) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-            guard let teamVC = storyboard.instantiateViewController(withIdentifier: "TeamViewController") as? TeamViewController else { return }
-            
-//
-//            teamVC.presenter = TeamDetailsPresenter(
-//                view: teamVC,
-//                networkService: AlamofireManager.shared,
-//                sportName: sportName,
-//                teamId: teamId,
-//                teamName: teamName
-//            )
-            
-            
-            navigationController.isNavigationBarHidden = false
-            navigationController.pushViewController(teamVC, animated: true)
-        }
+        guard let teamVC = storyboard.instantiateViewController(withIdentifier: "TeamTableViewController") as? TeamTableViewController else { return }
+
+        teamVC.presenter = TeamPresenter(
+            view: teamVC,
+            networkService: AlamofireManager.shared, 
+            sportName: sportName,
+            teamId: teamId,
+            teamName: teamName
+        )
+        
+        navigationController.isNavigationBarHidden = false
+        navigationController.pushViewController(teamVC, animated: true)
+    }
 }

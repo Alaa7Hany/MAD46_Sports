@@ -9,5 +9,5 @@ protocol NetworkService {
     
     func getParticipants(sportName: String, method: String, leagueId: Int?, completion: @escaping ([Participant]) -> Void)
     
-    func getRoster(sportName: String, teamId: Int, completion: @escaping ([Player]) -> Void)
+    func getRoster(sportName: String, teamId: Int, completion: @escaping ([PlayerModel]) -> Void)
 }

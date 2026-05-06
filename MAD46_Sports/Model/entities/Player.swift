@@ -33,6 +33,6 @@ struct Player: Decodable {
 }
 
 // Wrapper for the Alamofire response
-struct PlayerResponse: Decodable {
+struct PlayerResponsee: Decodable {
     let result: [Player]?
 }

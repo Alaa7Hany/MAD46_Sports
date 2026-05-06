@@ -139,9 +139,12 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     func didSelectParticipant(at index: Int) {
         let selected = participants[index]
         
-        // only navigate to teams
-        if let teamId = selected.key {
-//            router?.navigateToTeamDetails(sportName: sportName, teamId: teamId, teamName: selected.name ?? "Team")
+        if let id = selected.key {
+            router?.navigateToTeamDetails(
+                sportName: sportName,
+                teamId: id,
+                teamName: selected.name ?? "Team"
+            )
         }
     }
     
