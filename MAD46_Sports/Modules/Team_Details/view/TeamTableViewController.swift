@@ -17,10 +17,11 @@ class TeamTableViewController: UITableViewController, TeamView {
        var teamHeaderView     = TeamTableHeaderView.loadFromNib()
 
    
-       var emptyStateView = TeamEmptyStateView.loadFromNib()
+     private lazy var emptyStateView = TeamEmptyStateView.loadFromNib()
 
     var presenter : TeamPresenter!
-     let sections = TeamSection.allCases
+    private let sections = TeamSection.allCases
+    private var isLoadingData: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +52,10 @@ class TeamTableViewController: UITableViewController, TeamView {
     }
 
 
-        func updateEmptyState() {
+       private func updateEmptyState() {
         let isEmpty = visibleSections().isEmpty
 
-        if isEmpty {
+        if isEmpty && !isLoadingData {
             if emptyStateView.superview == nil {
                    emptyStateView.frame = CGRect(
                     x: 0,
@@ -99,15 +100,18 @@ class TeamTableViewController: UITableViewController, TeamView {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        visibleSections().count
+        if isLoadingData { return 1 }
+        return visibleSections().count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isLoadingData { return 5 }
         let sectionType = visibleSections()[section]
         return players(for: sectionType).count
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if isLoadingData { return nil }
         let sectionType = visibleSections()[section]
         guard let header = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: "TeamSectionHeader"
@@ -117,6 +121,7 @@ class TeamTableViewController: UITableViewController, TeamView {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if isLoadingData { return 0 }
         return 50
     }
 
@@ -136,6 +141,27 @@ class TeamTableViewController: UITableViewController, TeamView {
             ) as? TeamViewCell
         else {
             return UITableViewCell()
+        }
+
+        if isLoadingData {
+            cell.nameLabel.text = ""
+            cell.numberLabel.text = ""
+            cell.subtitleLabel.text = ""
+            cell.roleBadgeLabel.text = ""
+            cell.avatarImageView.image = nil
+            
+            cell.nameLabel.startShimmering()
+            cell.numberLabel.startShimmering()
+            cell.subtitleLabel.startShimmering()
+            cell.roleBadgeLabel.startShimmering()
+            cell.avatarImageView.startShimmering()
+            return cell
+        } else {
+            cell.nameLabel.stopShimmering()
+            cell.numberLabel.stopShimmering()
+            cell.subtitleLabel.stopShimmering()
+            cell.roleBadgeLabel.stopShimmering()
+            cell.avatarImageView.stopShimmering()
         }
 
         let sectionType = visibleSections()[indexPath.section]
@@ -173,6 +199,7 @@ class TeamTableViewController: UITableViewController, TeamView {
     
 
     func reloadData() {
+        self.isLoadingData = false
         let teamName = presenter.getTeamName().trimmingCharacters(in: .whitespacesAndNewlines)
         teamHeaderView.teamNameLabel.text = teamName.isEmpty ? "Unknown Team" : teamName
         

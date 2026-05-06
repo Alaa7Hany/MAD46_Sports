@@ -5,13 +5,12 @@ class LeagueDetailsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var presenter: LeagueDetailsPresenterProtocol!
-    private var activityIndicator: UIActivityIndicatorView!
     private var favoriteBarButton: UIBarButtonItem!
+    private var isLoadingData: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupLoadingIndicator()
         setupCollectionView()
         setupNavigationBar()
         
@@ -52,11 +51,7 @@ class LeagueDetailsViewController: UIViewController {
 extension LeagueDetailsViewController {
     
     private func setupLoadingIndicator() {
-        activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.color = .systemGreen
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
+        // Obsolete UIActivityIndicatorView
     }
 
     private func setupCollectionView() {
@@ -156,15 +151,15 @@ extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
     
     func startLoading() {
         DispatchQueue.main.async {
-            self.activityIndicator.startAnimating()
-            self.collectionView.isHidden = true
+            self.isLoadingData = true
+            self.collectionView.reloadData()
         }
     }
     
     func stopLoading() {
         DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
-            self.collectionView.isHidden = false
+            self.isLoadingData = false
+            self.collectionView.reloadData()
         }
     }
     
@@ -183,6 +178,12 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isLoadingData {
+            if section == 0 { return 1 }
+            else if section == 1 { return 3 }
+            else { return 5 }
+        }
+        
         if section == 0 { return presenter.getUpcomingEventsCount() }
         else if section == 1 { return presenter.getLatestEventsCount() }
         else { return presenter.getParticipantsCount() }
@@ -192,17 +193,52 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
         
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.upcomingEventCell, for: indexPath) as! UpcomingEventCell
-            cell.setup(with: presenter.getUpcomingEvent(at: indexPath.row))
+            if isLoadingData {
+                cell.lblHome.startShimmering()
+                cell.lblAway.startShimmering()
+                cell.lblDate.startShimmering()
+                cell.lblTime.startShimmering()
+                cell.imgHome.startShimmering()
+                cell.imgAway.startShimmering()
+            } else {
+                cell.lblHome.stopShimmering()
+                cell.lblAway.stopShimmering()
+                cell.lblDate.stopShimmering()
+                cell.lblTime.stopShimmering()
+                cell.imgHome.stopShimmering()
+                cell.imgAway.stopShimmering()
+                cell.setup(with: presenter.getUpcomingEvent(at: indexPath.row))
+            }
             return cell
             
         } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.latestEventCell, for: indexPath) as! LatestEventCell
-            cell.setup(with: presenter.getLatestEvent(at: indexPath.row))
+            if isLoadingData {
+                cell.lblHome.startShimmering()
+                cell.lblAway.startShimmering()
+                cell.lblDate.startShimmering()
+                cell.lblScore.startShimmering()
+                cell.imghome.startShimmering()
+                cell.imgaway.startShimmering()
+            } else {
+                cell.lblHome.stopShimmering()
+                cell.lblAway.stopShimmering()
+                cell.lblDate.stopShimmering()
+                cell.lblScore.stopShimmering()
+                cell.imghome.stopShimmering()
+                cell.imgaway.stopShimmering()
+                cell.setup(with: presenter.getLatestEvent(at: indexPath.row))
+            }
             return cell
             
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.teamCollectionCell, for: indexPath) as! TeamCell
-            cell.setup(with: presenter.getParticipant(at: indexPath.row).logo)
+            if isLoadingData {
+                cell.imageV.startShimmering()
+            } else {
+                cell.imageV.stopShimmering()
+                cell.setup(with: presenter.getParticipant(at: indexPath.row).logo)
+            }
             return cell
         }
     }
@@ -211,6 +247,7 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension LeagueDetailsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if isLoadingData { return }
         
         if indexPath.section == 2 {
             presenter.didSelectParticipant(at: indexPath.row)

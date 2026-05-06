@@ -4,6 +4,7 @@ class LeaguesViewController: UIViewController, LeaguesView {
 
     @IBOutlet weak var tableView: UITableView!
     var presenter: LeaguePresenter!
+    private var isLoadingData: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class LeaguesViewController: UIViewController, LeaguesView {
         }
     
     func showLeagues() {
+        self.isLoadingData = false
         tableView.reloadData()
     }
 }
@@ -39,11 +41,25 @@ class LeaguesViewController: UIViewController, LeaguesView {
 
 extension LeaguesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isLoadingData { return 6 }
         return presenter.getCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
+
+        if isLoadingData {
+            cell.labelTxt.text = ""
+            cell.imageV.image = nil
+            cell.favBtn.isHidden = true
+            cell.labelTxt.startShimmering()
+            cell.imageV.startShimmering()
+            return cell
+        } else {
+            cell.labelTxt.stopShimmering()
+            cell.imageV.stopShimmering()
+            cell.favBtn.isHidden = false
+        }
 
         let league = presenter.getLeague(at: indexPath.row)
 
@@ -67,6 +83,7 @@ extension LeaguesViewController: UITableViewDataSource {
 }
 extension LeaguesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if isLoadingData { return }
         tableView.deselectRow(at: indexPath, animated: true)
         
         presenter.didSelectLeague(at: indexPath.row)
