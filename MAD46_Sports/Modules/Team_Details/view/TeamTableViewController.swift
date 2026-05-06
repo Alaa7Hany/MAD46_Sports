@@ -13,14 +13,14 @@ protocol TeamView: AnyObject {
     func showError(message: String)
 }
 
-final class TeamTableViewController: UITableViewController, TeamView {
-     private lazy var teamHeaderView     = TeamTableHeaderView.loadFromNib()
+class TeamTableViewController: UITableViewController, TeamView {
+       var teamHeaderView     = TeamTableHeaderView.loadFromNib()
 
    
-    private lazy var emptyStateView = TeamEmptyStateView.loadFromNib()
+       var emptyStateView = TeamEmptyStateView.loadFromNib()
 
     var presenter : TeamPresenter!
-    private let sections = TeamSection.allCases
+     let sections = TeamSection.allCases
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +34,12 @@ final class TeamTableViewController: UITableViewController, TeamView {
  
     }
     
-    private func setupTableHeader() {
-        teamHeaderView.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 250)
+     func setupTableHeader() {
+        teamHeaderView.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 180)
         tableView.tableHeaderView = teamHeaderView
     }
 
-    private func configureTableView() {
+     func configureTableView() {
          tableView.register(
             UINib(nibName: "TeamViewCell", bundle: nil),
             forCellReuseIdentifier: "TeamViewCell"
@@ -51,8 +51,7 @@ final class TeamTableViewController: UITableViewController, TeamView {
     }
 
 
-   
-    private func updateEmptyState() {
+        func updateEmptyState() {
         let isEmpty = visibleSections().isEmpty
 
         if isEmpty {
@@ -86,7 +85,7 @@ final class TeamTableViewController: UITableViewController, TeamView {
 
      
 
-    private func players(for section: TeamSection) -> [PlayerModel] {
+     func players(for section: TeamSection) -> [PlayerModel] {
         switch section {
         case .goalkeepers: return presenter.getGoalkeepers()
         case .defenders: return presenter.getDefenders()
@@ -117,6 +116,18 @@ final class TeamTableViewController: UITableViewController, TeamView {
         return header
     }
 
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100 
+    }
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(
@@ -130,7 +141,14 @@ final class TeamTableViewController: UITableViewController, TeamView {
         let sectionType = visibleSections()[indexPath.section]
         let player = players(for: sectionType)[indexPath.row]
 
-        let placeholder = UIImage(named: "playerPlaceholder")
+        let sport = presenter.sportName.lowercased()
+        let placeholderName: String
+        if sport.contains("basketball") { placeholderName = "basketball" }
+        else if sport.contains("cricket") { placeholderName = "cricket" }
+        else if sport.contains("tennis") { placeholderName = "tennis" }
+        else { placeholderName = "football" }
+        
+        let placeholder = UIImage(named: placeholderName)
 
         let playerName = player.playerName?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         cell.nameLabel.text = playerName.isEmpty ? "Unknown Player" : playerName
@@ -157,11 +175,12 @@ final class TeamTableViewController: UITableViewController, TeamView {
     func reloadData() {
         let teamName = presenter.getTeamName().trimmingCharacters(in: .whitespacesAndNewlines)
         teamHeaderView.teamNameLabel.text = teamName.isEmpty ? "Unknown Team" : teamName
-        let placeholderName: String
         
-        if presenter.sportName.contains("basketball") { placeholderName = "basketball" }
-        else if presenter.sportName.contains("cricket") { placeholderName = "cricket" }
-        else if presenter.sportName.contains("tennis") { placeholderName = "tennis" }
+        let placeholderName: String
+        let sport = presenter.sportName.lowercased()
+        if sport.contains("basketball") { placeholderName = "basketball" }
+        else if sport.contains("cricket") { placeholderName = "cricket" }
+        else if sport.contains("tennis") { placeholderName = "tennis" }
         else { placeholderName = "football" }
         let placeholder = UIImage(named: placeholderName)
 
@@ -180,12 +199,12 @@ final class TeamTableViewController: UITableViewController, TeamView {
 
     func showError(message: String) {
         let alert = UIAlertController(
-            title: "⚠️  Something Went Wrong",
+            title: "  Something Went Wrong",
             message: "\n" + message,
             preferredStyle: .actionSheet
         )
         let titleAttr = NSAttributedString(
-            string: "⚠️  Something Went Wrong",
+            string: "  Something Went Wrong",
             attributes: [
                 .font: UIFont.systemFont(ofSize: 17, weight: .bold),
                 .foregroundColor: UIColor.systemOrange

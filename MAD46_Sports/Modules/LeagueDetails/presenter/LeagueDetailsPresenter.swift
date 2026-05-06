@@ -143,7 +143,8 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
             router?.navigateToTeamDetails(
                 sportName: sportName,
                 teamId: id,
-                teamName: selected.name ?? "Team"
+                teamName: selected.name ?? "Team",
+                teamLogo: selected.logo
             )
         }
     }

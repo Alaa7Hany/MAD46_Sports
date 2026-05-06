@@ -8,13 +8,15 @@ import Foundation
     var sportName: String
     var teamId: Int
     var teamName: String
+    var teamLogo: String?
 
-    init(view: TeamView, networkService: NetworkService, sportName: String, teamId: Int, teamName: String) {
+    init(view: TeamView, networkService: NetworkService, sportName: String, teamId: Int, teamName: String, teamLogo: String?) {
         self.view = view
         self.networkService = networkService
         self.sportName = sportName
         self.teamId = teamId
         self.teamName = teamName
+        self.teamLogo = teamLogo
     }
 
     func attachView(_ view: TeamView) {
@@ -46,7 +48,7 @@ import Foundation
     }
 
     func getTeamLogo() -> String {
-        return players.first?.playerLogo ?? ""
+        return teamLogo ?? players.first?.playerLogo ?? ""
     }
 
     private func normalizedPlayers(for type: String) -> [PlayerModel] {

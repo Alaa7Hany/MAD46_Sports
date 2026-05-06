@@ -14,12 +14,17 @@ class TeamTableHeaderView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-           teamLogoImageView.layer.borderColor = UIColor(white: 0, alpha: 0.1).cgColor
+        teamLogoImageView.layer.borderColor = UIColor(white: 0, alpha: 0.1).cgColor
+        teamLogoImageView.layer.borderWidth = 1.0
+        teamLogoImageView.layer.cornerRadius = 16
+        teamLogoImageView.layer.masksToBounds = true
+        teamLogoImageView.contentMode = .scaleAspectFill
     }
 
     static func loadFromNib() -> TeamTableHeaderView {
-        UINib(nibName: "TeamTableHeaderView", bundle: nil)
-            .instantiate(withOwner: nil, options: nil)
+        let nib = UINib(nibName: "TeamTableHeaderView", bundle: nil)
+        return  nib.instantiate(withOwner: nil, options: nil)
             .first as! TeamTableHeaderView
+        
     }
 }
