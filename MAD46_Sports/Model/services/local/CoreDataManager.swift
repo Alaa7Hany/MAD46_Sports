@@ -13,12 +13,12 @@ class CoreDataManager
     }
     
     
-    func saveLeague(id:Int16 ,name : String , logo :Data?)
-    {
+    func saveLeague(id: Int16, name: String, logo: String?, sportName: String) {
         let league = League(context: contex)
         league.leagueId = id
         league.leagueName = name
         league.leagueLogo = logo
+        league.sportName = sportName
         do {
            try contex.save()
             print("Saved successfully")
@@ -64,16 +64,28 @@ class CoreDataManager
         }
         
  
-        func toggleFavorite(id: Int16, name: String, logo: Data?) -> Bool {
+        func toggleFavorite(id: Int16, name: String, logo: String? , sportName: String) -> Bool {
             if let existingLeague = isFavorite(id: id) {
                
                 deleteLeague(league: existingLeague)
                 return false
             } else {
-                saveLeague(id: id, name: name, logo: logo)
+                saveLeague(id: id, name: name, logo: logo , sportName: sportName)
                 return true
             }
         }
-    
+    func toggleLeagueFavoriteStatus(apiLeague: LeagueModel, sportName: String) {
+        let leagueId = Int16(apiLeague.leagueKey ?? 0)
+        let leagueName = apiLeague.leagueName ?? "Unknown"
+        let logoUrlString = apiLeague.leagueLogo
+        
+        let isSaved = CoreDataManager.shared.toggleFavorite(id: leagueId, name: leagueName, logo: logoUrlString, sportName: sportName)
+        
+        if isSaved {
+            print("Saved successfully with URL")
+        } else {
+            print("Deleted successfully")
+        }
+    }
 
 }

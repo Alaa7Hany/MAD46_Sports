@@ -58,10 +58,7 @@ class LeaguePresenter {
     func didSelectLeague(at index: Int) {
         let selectedLeague = getLeague(at: index)
         
-        guard let id = selectedLeague.leagueKey,
-              let name = selectedLeague.leagueName else { return }
-        
-        router?.navigateToLeagueDetails(sportName: self.sport, leagueId: id, leagueName: name)
+        router?.navigateToLeagueDetails(sportName: self.sport, league: selectedLeague)
     }
     
     func isFavorite(at index: Int) -> Bool {
@@ -73,9 +70,11 @@ class LeaguePresenter {
     func toggleFavorite(at index: Int) -> Bool {
         let league = getLeague(at: index)
         
-        let id = Int16(league.leagueKey ?? 0)
-        let name = league.leagueName ?? ""
+        let isFav = isFavorite(at: index)
         
-        return CoreDataManager.shared.toggleFavorite(id: id, name: name, logo: nil)
+    
+        CoreDataManager.shared.toggleLeagueFavoriteStatus(apiLeague: league, sportName: self.sport)
+        
+        return !isFav
     }
 }

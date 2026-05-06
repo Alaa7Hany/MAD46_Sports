@@ -27,15 +27,15 @@ class FavPresenter {
     }
     
     func fetchFavorites() {
-            favoriteLeagues = CoreDataManager.shared.fetchLeague()
-            DispatchQueue.main.async { [weak self] in
-                if self?.favoriteLeagues.isEmpty == true {
-                    self?.view?.showEmptyState()
-                } else {
-                    self?.view?.showFavorites()
-                }
+        favoriteLeagues = CoreDataManager.shared.fetchLeague()
+        DispatchQueue.main.async { [weak self] in
+            if self?.favoriteLeagues.isEmpty == true {
+                self?.view?.showEmptyState()
+            } else {
+                self?.view?.showFavorites()
             }
         }
+    }
     
     func getCount() -> Int {
         return favoriteLeagues.count
@@ -51,12 +51,17 @@ class FavPresenter {
         
         fetchFavorites()
     }
-    
     func didSelectLeague(at index: Int) {
-        let league = favoriteLeagues[index]
-        guard let name = league.leagueName else { return }
-        
-      
-        router?.navigateToLeagueDetails(sportName:self.sport, leagueId: Int(league.leagueId), leagueName: name)
-    }
+            let coreDataLeague = favoriteLeagues[index]
+            
+            let name = coreDataLeague.leagueName ?? "Unknown League"
+            let savedSport = coreDataLeague.sportName ?? "football"
+            let id = Int(coreDataLeague.leagueId)
+            
+            let savedLogoUrl = coreDataLeague.leagueLogo
+            
+            let model = LeagueModel(leagueKey: id, leagueName: name, leagueLogo: savedLogoUrl)
+            
+            router?.navigateToLeagueDetails(sportName: savedSport, league: model)
+        }
 }

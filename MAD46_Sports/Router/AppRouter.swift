@@ -11,7 +11,7 @@ protocol AppRouterProtocol: AnyObject {
     func navigateToOnboarding()
     func navigateToMainApp()
     func navigateToLeagues(sportName: String)
-    func navigateToLeagueDetails(sportName: String, leagueId: Int, leagueName: String)
+    func navigateToLeagueDetails(sportName: String, league: LeagueModel)
     
     func navigateToTeamDetails(sportName: String, teamId: Int, teamName: String)
 }
@@ -72,22 +72,21 @@ class AppRouter: AppRouterProtocol {
         navigationController.pushViewController(leaguesVC, animated: true)
     }
     
-    func navigateToLeagueDetails(sportName: String, leagueId: Int, leagueName: String) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let detailsVC = storyboard.instantiateViewController(withIdentifier: Constants.ViewControllers.leagueDetailsVC) as? LeagueDetailsViewController else { return }
-        
-        detailsVC.presenter = LeagueDetailsPresenter(
-            view: detailsVC,
-            networkService: AlamofireManager.shared,
-            router: self,
-            sportName: sportName,
-            leagueId: leagueId,
-            leagueName: leagueName
-        )
-        
-        navigationController.isNavigationBarHidden = false
-        navigationController.pushViewController(detailsVC, animated: true)
-    }
+    func navigateToLeagueDetails(sportName: String, league: LeagueModel) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            guard let detailsVC = storyboard.instantiateViewController(withIdentifier: Constants.ViewControllers.leagueDetailsVC) as? LeagueDetailsViewController else { return }
+            
+            detailsVC.presenter = LeagueDetailsPresenter(
+                view: detailsVC,
+                networkService: AlamofireManager.shared,
+                router: self,
+                sportName: sportName,
+                league: league
+            )
+            
+            navigationController.isNavigationBarHidden = false
+            navigationController.pushViewController(detailsVC, animated: true)
+        }
     
     func navigateToTeamDetails(sportName: String, teamId: Int, teamName: String) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

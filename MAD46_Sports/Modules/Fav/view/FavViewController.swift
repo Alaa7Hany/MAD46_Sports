@@ -96,29 +96,34 @@ extension FavViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-        
-        guard let presenter = presenter else { return cell }
-        
-        let coreDataLeague = presenter.getLeague(at: indexPath.row)
-        
-        cell.labelTxt.text = coreDataLeague.leagueName
-        
-        if let logoData = coreDataLeague.leagueLogo {
-            cell.imageV.image = UIImage(data: logoData)
-        } else {
-            cell.imageV.image = UIImage(named: "ball")
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
+            
+            guard let presenter = presenter else { return cell }
+            
+            let coreDataLeague = presenter.getLeague(at: indexPath.row)
+            
+            cell.labelTxt.text = coreDataLeague.leagueName
+            
+            let sportType = coreDataLeague.sportName?.lowercased() ?? "football"
+            var placeholderName = sportType
+            
+            let placeholderImage = UIImage(named: placeholderName)
+            
+            if let logoUrlString = coreDataLeague.leagueLogo, let url = URL(string: logoUrlString) {
+                cell.imageV.sd_setImage(with: url, placeholderImage: placeholderImage)
+            } else {
+                cell.imageV.image = placeholderImage
+            }
+            
+            cell.updateFavIcon(isFav: true)
+            
+            cell.onFavTapped = { [weak self] in
+                guard let self = self else { return }
+                self.confirmDeletion(at: indexPath.row)
+            }
+            
+            return cell
         }
-        
-        cell.updateFavIcon(isFav: true)
-        
-        cell.onFavTapped = { [weak self] in
-            guard let self = self else { return }
-            self.confirmDeletion(at: indexPath.row)
-        }
-        
-        return cell
-    }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             self.confirmDeletion(at: indexPath.row)

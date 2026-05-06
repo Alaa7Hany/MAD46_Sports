@@ -32,20 +32,23 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     private let sportName: String
     private let leagueId: Int?
     private let leagueName: String
+    private let leagueModel: LeagueModel // ضفنا المتغير ده
     
     // MARK: - State
     private var upcomingEvents: [Event] = []
     private var latestEvents: [Event] = []
     private var participants: [Participant] = []
     
-    init(view: LeagueDetailsViewProtocol, networkService: NetworkService, router: AppRouterProtocol, sportName: String, leagueId: Int?, leagueName: String) {
-        self.view = view
-        self.networkService = networkService
-        self.router = router
-        self.sportName = sportName
-        self.leagueId = leagueId
-        self.leagueName = leagueName
-    }
+    init(view: LeagueDetailsViewProtocol, networkService: NetworkService, router: AppRouterProtocol, sportName: String, league: LeagueModel) {
+            self.view = view
+            self.networkService = networkService
+            self.router = router
+            self.sportName = sportName
+            
+            self.leagueModel = league
+            self.leagueId = league.leagueKey
+            self.leagueName = league.leagueName ?? "Unknown"
+        }
     
     func viewDidLoad() {
         view?.startLoading()
@@ -165,17 +168,13 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     }
 
     func toggleFavorite() -> Bool {
-        guard let id = self.leagueId else { return false }
-        
-        let id16 = Int16(id)
-        
-        let result = CoreDataManager.shared.toggleFavorite(
-            id: id16,
-            name: self.leagueName,
-            logo: nil
-        )
-        
-        return result
-    }
+            let isFav = isFavorite()
+            
+            CoreDataManager.shared.toggleLeagueFavoriteStatus(apiLeague: self.leagueModel, sportName: self.sportName)
+            
+            return !isFav
+        }
+    
+    
 }
 
