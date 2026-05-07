@@ -31,6 +31,7 @@ enum Constants {
         static let latestEventCell = "LatestEventCell"
         static let teamCollectionCell = "TeamCell"
         static let sectionHeaderView = "SectionHeaderView"
+        static let emptyStateCell = "EmptyStateCell"
     }
     
     enum Defaults{
@@ -44,5 +45,11 @@ enum Constants {
         static let darkMode = "sun.max.fill"
         static let soundOff = "speaker.wave.2.fill"
         static let soundOn = "speaker.slash.fill"
+        static let isFav = "star.fill"
+        static let noFav = "star"
+    }
+    
+    enum Lottie{
+        static let emptyEvents = "empty_events"
     }
 }

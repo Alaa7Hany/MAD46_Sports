@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UICollectionViewCell"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="EmptyStateCell" customModule="MAD46_Sports" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="196" height="186"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="196" height="186"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XaM-jZ-6uc">
+                        <rect key="frame" x="0.0" y="0.0" width="196" height="110.66666666666667"/>
+                        <color key="backgroundColor" name="AppBackground"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwi-ce-A8t">
+                        <rect key="frame" x="10" y="115.66666666666667" width="176" height="20.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="xwi-ce-A8t" secondAttribute="trailing" constant="10" id="9mT-k7-7VG"/>
+                <constraint firstItem="xwi-ce-A8t" firstAttribute="top" secondItem="XaM-jZ-6uc" secondAttribute="bottom" constant="5" id="AoP-5A-xUh"/>
+                <constraint firstItem="XaM-jZ-6uc" firstAttribute="trailing" secondItem="ZTg-uK-7eu" secondAttribute="trailing" id="CSh-cx-UQJ"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="leading" secondItem="XaM-jZ-6uc" secondAttribute="leading" id="DQR-PC-sPQ"/>
+                <constraint firstItem="xwi-ce-A8t" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="10" id="Nne-ob-KCj"/>
+                <constraint firstItem="xwi-ce-A8t" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" constant="-16" id="Rya-1C-SOV"/>
+                <constraint firstItem="xwi-ce-A8t" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="YI7-CB-0tL"/>
+                <constraint firstAttribute="top" secondItem="XaM-jZ-6uc" secondAttribute="top" id="hA4-Qz-31x"/>
+            </constraints>
+            <size key="customSize" width="196" height="186"/>
+            <connections>
+                <outlet property="animationContainerView" destination="XaM-jZ-6uc" id="Yeb-7f-CAM"/>
+                <outlet property="messageLabel" destination="xwi-ce-A8t" id="ufV-s2-0Uw"/>
+            </connections>
+            <point key="canvasLocation" x="250.38167938931298" y="68.309859154929583"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AppBackground">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
