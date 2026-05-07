@@ -172,12 +172,11 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     }
 
     func toggleFavorite() -> Bool {
-            let isFav = isFavorite()
-            
-            CoreDataManager.shared.toggleLeagueFavoriteStatus(apiLeague: self.leagueModel, sportName: self.sportName)
-            
-            return !isFav
-        }
+        let isFav = isFavorite()
+        CoreDataManager.shared.toggleLeagueFavoriteStatus(apiLeague: self.leagueModel, sportName: self.sportName)
+        
+        return !isFav
+    }
     
     
 }

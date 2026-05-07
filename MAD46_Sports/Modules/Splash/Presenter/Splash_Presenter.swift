@@ -10,7 +10,8 @@ class SplashPresenter {
     }
     
     func start() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+        SoundManager.shared.playSound(Constants.Sounds.cheering)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) { [weak self] in
             self?.timerDidFinish()
         }
     }

@@ -41,6 +41,7 @@ class LeagueDetailsViewController: UIViewController {
     }
 
     @objc private func favoriteButtonTapped() {
+        SoundManager.shared.playSound(Constants.Sounds.fav)
         let isFavNow = presenter.toggleFavorite()
         updateFavoriteIcon(isFav: isFavNow)
     }

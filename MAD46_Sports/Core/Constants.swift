@@ -27,7 +27,7 @@ enum Constants {
     enum Cells {
         static let sportCollectionCell = "SportCollectionViewCell"
         static let leagueTableCell = "LeagueTableViewCell"
-        static let upcomingEventCell = "UpcomingEventCell"  
+        static let upcomingEventCell = "UpcomingEventCell"
         static let latestEventCell = "LatestEventCell"
         static let teamCollectionCell = "TeamCell"
         static let sectionHeaderView = "SectionHeaderView"
@@ -51,5 +51,13 @@ enum Constants {
     
     enum Lottie{
         static let emptyEvents = "empty_events"
+    }
+
+    enum Sounds {
+        static let whistle = (name: "whistle", ext: "mp3")
+        static let cheering = (name: "cheering", ext: "mp3")
+        static let remove = (name: "paper", ext: "mp3")
+        static let fav = (name: "pop", ext: "mp3")
+        static let click = (name: "click", ext: "mp3")
     }
 }

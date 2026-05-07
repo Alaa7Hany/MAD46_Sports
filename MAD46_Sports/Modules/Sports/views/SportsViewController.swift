@@ -79,6 +79,8 @@ private extension SportsViewController {
 extension SportsViewController {
     
     @IBAction func onThemechanged(_ sender: UIButton) {
+        SoundManager.shared.playSound(Constants.Sounds.click)
+
         let isCurrentlyDark = UserDefaults.standard.bool(forKey: Constants.Defaults.themeKey)
         let newDarkModeState = !isCurrentlyDark
         
@@ -106,6 +108,8 @@ extension SportsViewController {
     }
     
     @IBAction func onSoundChanged(_ sender: UIButton) {
+        SoundManager.shared.playSound(Constants.Sounds.click)
+
         let isCurrentlyMuted = UserDefaults.standard.bool(forKey: Constants.Defaults.soundKey)
         
         let newMutedState = !isCurrentlyMuted

@@ -46,6 +46,7 @@ class FavPresenter {
     }
     
     func removeFavorite(at index: Int) {
+        SoundManager.shared.playSound(Constants.Sounds.remove)
         let league = favoriteLeagues[index]
         CoreDataManager.shared.deleteLeague(league: league)
         

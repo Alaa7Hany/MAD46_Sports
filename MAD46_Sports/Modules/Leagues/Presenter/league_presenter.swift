@@ -68,6 +68,7 @@ class LeaguePresenter {
     }
 
     func toggleFavorite(at index: Int) -> Bool {
+        SoundManager.shared.playSound(Constants.Sounds.fav)
         let league = getLeague(at: index)
         
         let isFav = isFavorite(at: index)

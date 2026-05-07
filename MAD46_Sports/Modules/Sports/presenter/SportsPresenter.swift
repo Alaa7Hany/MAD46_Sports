@@ -46,6 +46,7 @@ class SportsPresenter: SportsPresenterProtocol {
     
     func didSelectSport(at index: Int) {
         guard index < sportsList.count, let name = sportsList[index].sportName else { return }
+        SoundManager.shared.playSound(Constants.Sounds.whistle)
         router?.navigateToLeagues(sportName: name.lowercased())
     }
 }
