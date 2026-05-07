@@ -58,7 +58,7 @@ class AlamofireManager: NetworkService {
         }
     }
     
-    func getRoster(sportName: String, teamId: Int, completion: @escaping ([Player]) -> Void) {
+    func getRoster(sportName: String, teamId: Int, completion: @escaping ([PlayerModel]) -> Void) {
         let url = "\(Constants.API.baseURL)/\(sportName)?met=Players&APIkey=\(apiKey)&teamId=\(teamId)"
         
         AF.request(url).responseDecodable(of: PlayerResponse.self) { response in
