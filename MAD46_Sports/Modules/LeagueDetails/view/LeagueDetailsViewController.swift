@@ -194,19 +194,9 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.upcomingEventCell, for: indexPath) as! UpcomingEventCell
             if isLoadingData {
-                cell.lblHome.startShimmering()
-                cell.lblAway.startShimmering()
-                cell.lblDate.startShimmering()
-                cell.lblTime.startShimmering()
-                cell.imgHome.startShimmering()
-                cell.imgAway.startShimmering()
+           
             } else {
-                cell.lblHome.stopShimmering()
-                cell.lblAway.stopShimmering()
-                cell.lblDate.stopShimmering()
-                cell.lblTime.stopShimmering()
-                cell.imgHome.stopShimmering()
-                cell.imgAway.stopShimmering()
+         
                 cell.setup(with: presenter.getUpcomingEvent(at: indexPath.row))
             }
             return cell
@@ -214,19 +204,9 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
         } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.latestEventCell, for: indexPath) as! LatestEventCell
             if isLoadingData {
-                cell.lblHome.startShimmering()
-                cell.lblAway.startShimmering()
-                cell.lblDate.startShimmering()
-                cell.lblScore.startShimmering()
-                cell.imghome.startShimmering()
-                cell.imgaway.startShimmering()
+
             } else {
-                cell.lblHome.stopShimmering()
-                cell.lblAway.stopShimmering()
-                cell.lblDate.stopShimmering()
-                cell.lblScore.stopShimmering()
-                cell.imghome.stopShimmering()
-                cell.imgaway.stopShimmering()
+
                 cell.setup(with: presenter.getLatestEvent(at: indexPath.row))
             }
             return cell
@@ -234,9 +214,7 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.teamCollectionCell, for: indexPath) as! TeamCell
             if isLoadingData {
-                cell.imageV.startShimmering()
             } else {
-                cell.imageV.stopShimmering()
                 cell.setup(with: presenter.getParticipant(at: indexPath.row).logo)
             }
             return cell

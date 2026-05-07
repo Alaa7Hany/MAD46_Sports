@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SkeletonView
 
 class TableViewCell: UITableViewCell {
 
@@ -50,11 +51,16 @@ class TableViewCell: UITableViewCell {
     }
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        imageV.clipsToBounds = true
-
-    }
+            super.awakeFromNib()
+            
+            // 3️⃣ تحديد قيمة ثابتة للـ Radius عشان الأنيميشن يظهر بشكل دائري مظبوط
+            self.imageV.skeletonCornerRadius = 32
+            
+            self.isSkeletonable = true
+            self.contentView.isSkeletonable = true
+            self.labelTxt.isSkeletonable = true
+            self.imageV.isSkeletonable = true
+        }
     
     override func layoutSubviews() {
         super.layoutSubviews()

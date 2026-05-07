@@ -1,68 +1,68 @@
 import UIKit
-
+import SkeletonView
 class LeaguesViewController: UIViewController, LeaguesView {
+   
+    
 
     @IBOutlet weak var tableView: UITableView!
     var presenter: LeaguePresenter!
-    private var isLoadingData: Bool = true
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.tintColor = .appPrimary
-
-        
-        self.title = presenter.sport.capitalized
-        
-        let nib = UINib(nibName: "TableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "cell")
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        presenter.fetchLeague()
-        
-        
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
+            super.viewDidLoad()
             
-           
+            self.navigationController?.navigationBar.tintColor = .appPrimary
+            self.title = presenter.sport.capitalized
+            
+            let nib = UINib(nibName: "TableViewCell", bundle: nil)
+            tableView.register(nib, forCellReuseIdentifier: "cell")
+            
+            tableView.dataSource = self
+            tableView.delegate = self
+            
+            // 1️⃣ إخبار الـ TableView بالارتفاع الثابت عشان SkeletonView يعرف يرسم كام خلية
+            tableView.rowHeight = 100
+            tableView.estimatedRowHeight = 100
+            tableView.isSkeletonable = true
+            
+            // 2️⃣ إجبار الشاشة إنها تحسب الـ Bounds والمقاسات قبل ما نشغل الأنيميشن
+            self.view.layoutIfNeeded()
+                    
+            tableView.showAnimatedGradientSkeleton()
+            presenter.fetchLeague()
+        }
+    func hideLoading() {
+            tableView.hideSkeleton()
             tableView.reloadData()
         }
+        
+
+    
     
     func showLeagues() {
-        self.isLoadingData = false
+        tableView.hideSkeleton()
         tableView.reloadData()
     }
 }
 
 
-extension LeaguesViewController: UITableViewDataSource {
+extension LeaguesViewController: SkeletonTableViewDataSource {
+    
+  
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "cell"
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isLoadingData { return 6 }
         return presenter.getCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
 
-        if isLoadingData {
-            cell.labelTxt.text = ""
-            cell.imageV.image = nil
-            cell.favBtn.isHidden = true
-            cell.labelTxt.startShimmering()
-            cell.imageV.startShimmering()
-            return cell
-        } else {
-            cell.labelTxt.stopShimmering()
-            cell.imageV.stopShimmering()
-            cell.favBtn.isHidden = false
-        }
+      
+        cell.favBtn.isHidden = false
 
         let league = presenter.getLeague(at: indexPath.row)
-
         let placeholderImage = UIImage(named: presenter.sport)
 
         cell.setup(league, placeholder: placeholderImage)
@@ -72,9 +72,7 @@ extension LeaguesViewController: UITableViewDataSource {
 
         cell.onFavTapped = { [weak self] in
             guard let self = self else { return }
-            
             let newState = self.presenter.toggleFavorite(at: indexPath.row)
-            
             cell.updateFavIcon(isFav: newState)
         }
 
@@ -83,7 +81,6 @@ extension LeaguesViewController: UITableViewDataSource {
 }
 extension LeaguesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isLoadingData { return }
         tableView.deselectRow(at: indexPath, animated: true)
         
         presenter.didSelectLeague(at: indexPath.row)

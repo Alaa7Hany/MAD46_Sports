@@ -149,19 +149,10 @@ class TeamTableViewController: UITableViewController, TeamView {
             cell.subtitleLabel.text = ""
             cell.roleBadgeLabel.text = ""
             cell.avatarImageView.image = nil
-            
-            cell.nameLabel.startShimmering()
-            cell.numberLabel.startShimmering()
-            cell.subtitleLabel.startShimmering()
-            cell.roleBadgeLabel.startShimmering()
-            cell.avatarImageView.startShimmering()
+    
             return cell
         } else {
-            cell.nameLabel.stopShimmering()
-            cell.numberLabel.stopShimmering()
-            cell.subtitleLabel.stopShimmering()
-            cell.roleBadgeLabel.stopShimmering()
-            cell.avatarImageView.stopShimmering()
+       
         }
 
         let sectionType = visibleSections()[indexPath.section]

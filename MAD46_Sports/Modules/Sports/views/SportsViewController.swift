@@ -206,12 +206,10 @@ extension SportsViewController: UICollectionViewDataSource, UICollectionViewDele
         if isLoadingData {
             cell.lblName.text = ""
             cell.imageV.image = nil
-            cell.lblName.startShimmering()
-            cell.imageV.startShimmering()
+       
             return cell
         } else {
-            cell.lblName.stopShimmering()
-            cell.imageV.stopShimmering()
+       
         }
         
         let actualIndex = collectionView == bannerCollectionview ? (indexPath.row % presenter.getSportsCount()) : indexPath.row
