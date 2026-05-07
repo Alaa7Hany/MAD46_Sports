@@ -59,5 +59,20 @@ enum Constants {
         static let remove = (name: "paper", ext: "mp3")
         static let fav = (name: "pop", ext: "mp3")
         static let click = (name: "click", ext: "mp3")
+        static let basketball = (name: "basketball", ext: "mp3")
+        static let tennis = (name: "tennis", ext: "mp3")
+        
+        static func getSound(for sportName: String) -> (name: String, ext: String) {
+            switch sportName.lowercased() {
+            case "basketball":
+                return basketball
+            case "tennis", "cricket":
+                return tennis
+            case "football":
+                return whistle
+            default:
+                return whistle
+            }
+        }
     }
 }

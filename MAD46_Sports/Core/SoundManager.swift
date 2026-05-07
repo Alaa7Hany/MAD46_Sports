@@ -15,6 +15,10 @@ class SoundManager {
     private init() {}
     
     func playSound(_ sound: (name: String, ext: String)) {
+        let isMuted = UserDefaults.standard.bool(forKey: Constants.Defaults.soundKey)
+        
+        guard !isMuted else { return }
+        
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             
             guard let url = Bundle.main.url(forResource: sound.name, withExtension: sound.ext) else {
