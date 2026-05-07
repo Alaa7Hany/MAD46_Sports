@@ -17,67 +17,58 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            let count = presenter.getUpcomingEventsCount()
-            if count == 0 { return isLoadingData ? 3 : 1 }
-            return count
+            return isLoadingData ? 3 : max(1, presenter.getUpcomingEventsCount())
         } else if section == 1 {
-            let count = presenter.getLatestEventsCount()
-            if count == 0 { return isLoadingData ? 3 : 1 }
-            return count
+            return isLoadingData ? 3 : 1
         } else {
-            let count = presenter.getParticipantsCount()
-            if count == 0 { return isLoadingData ? 6 : 1 }
-            return count
+            return isLoadingData ? 6 : max(1, presenter.getParticipantsCount())
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.section == 0 {
+            if isLoadingData {
+                return collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.upcomingEventCell, for: indexPath) as! UpcomingEventCell
+            }
             if presenter.getUpcomingEventsCount() == 0 {
-                if isLoadingData {
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.upcomingEventCell, for: indexPath) as! UpcomingEventCell
-                    return cell
-                }
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.emptyStateCell, for: indexPath) as! EmptyStateCell
                 cell.setup(message: "No upcoming events", animationName: Constants.Lottie.emptyEvents)
                 return cell
             }
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.upcomingEventCell, for: indexPath) as! UpcomingEventCell
             cell.hideSkeleton()
             cell.setup(with: presenter.getUpcomingEvent(at: indexPath.row))
             return cell
             
         } else if indexPath.section == 1 {
+            if isLoadingData {
+                return collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.latestEventCell, for: indexPath) as! LatestEventCell
+            }
+            
             if presenter.getLatestEventsCount() == 0 {
-                if isLoadingData {
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.latestEventCell, for: indexPath) as! LatestEventCell
-                    return cell
-                }
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.emptyStateCell, for: indexPath) as! EmptyStateCell
                 cell.setup(message: "No recent results", animationName: Constants.Lottie.emptyEvents)
                 return cell
             }
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LatestEventsContainerCell", for: indexPath) as! LatestEventsContainerCell
-            
             let latestCount = presenter.getLatestEventsCount()
             let latestEvents = (0..<latestCount).map { presenter.getLatestEvent(at: $0) }
-            
             cell.setup(with: latestEvents)
-            
             return cell
             
         } else {
+            if isLoadingData {
+                return collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.teamCollectionCell, for: indexPath) as! TeamCell
+            }
             if presenter.getParticipantsCount() == 0 {
-                if isLoadingData {
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.teamCollectionCell, for: indexPath) as! TeamCell
-                    return cell
-                }
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.emptyStateCell, for: indexPath) as! EmptyStateCell
                 cell.setup(message: "No participants found", animationName: Constants.Lottie.emptyEvents)
                 return cell
             }
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.teamCollectionCell, for: indexPath) as! TeamCell
             cell.hideSkeleton()
             cell.setup(with: presenter.getParticipant(at: indexPath.row).logo)
