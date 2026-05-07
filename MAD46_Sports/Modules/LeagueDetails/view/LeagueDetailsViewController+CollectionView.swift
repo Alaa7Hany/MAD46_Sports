@@ -19,8 +19,8 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
             let count = presenter.getUpcomingEventsCount()
             return count == 0 ? 1 : count
         } else if section == 1 {
-            let count = presenter.getLatestEventsCount()
-            return count == 0 ? 1 : count
+
+            return 1
         } else {
             let count = presenter.getParticipantsCount()
             return count == 0 ? 1 : count
@@ -45,8 +45,14 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
                 cell.setup(message: "No recent results", animationName: Constants.Lottie.emptyEvents)
                 return cell
             }
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.latestEventCell, for: indexPath) as! LatestEventCell
-            cell.setup(with: presenter.getLatestEvent(at: indexPath.row))
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LatestEventsContainerCell", for: indexPath) as! LatestEventsContainerCell
+            
+            let latestCount = presenter.getLatestEventsCount()
+            let latestEvents = (0..<latestCount).map { presenter.getLatestEvent(at: $0) }
+            
+            cell.setup(with: latestEvents)
+            
             return cell
             
         } else {

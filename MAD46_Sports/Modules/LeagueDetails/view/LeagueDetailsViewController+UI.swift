@@ -34,6 +34,9 @@ extension LeagueDetailsViewController {
         let emptyNib = UINib(nibName: Constants.Cells.emptyStateCell, bundle: nil)
         collectionView.register(emptyNib, forCellWithReuseIdentifier: Constants.Cells.emptyStateCell)
         
+        let containerNib = UINib(nibName: "LatestEventsContainerCell", bundle: nil)
+        collectionView.register(containerNib, forCellWithReuseIdentifier: "LatestEventsContainerCell")
+        
         
         collectionView.backgroundColor = .systemGroupedBackground
         collectionView.dataSource = self
@@ -73,18 +76,20 @@ extension LeagueDetailsViewController {
                 section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 20, trailing: 16)
                 section.boundarySupplementaryItems = [header]
                 return section
-                
             } else if sectionIndex == 1 {
                 if self.presenter.getLatestEventsCount() == 0 { return getEmptySectionLayout() }
                 
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(100))
-                let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+                
+
+                let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(250))
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+                
                 let section = NSCollectionLayoutSection(group: group)
-                section.interGroupSpacing = 16
                 section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 20, trailing: 16)
                 section.boundarySupplementaryItems = [header]
+                
                 return section
                 
             } else {

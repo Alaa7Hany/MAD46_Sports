@@ -18,6 +18,6 @@ class SectionHeaderView: UICollectionReusableView {
     
     func setup(title: String){
         lblTitle.text = title
-        lblTitle.text = title.uppercased()
+        lblTitle.text = title
     }
 }
