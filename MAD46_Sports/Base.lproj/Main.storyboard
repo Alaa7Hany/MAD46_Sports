@@ -367,35 +367,23 @@
             </objects>
             <point key="canvasLocation" x="5872.5190839694651" y="-1382.3943661971832"/>
         </scene>
-        <!--Team View Controller-->
-        <scene sceneID="PML-WN-xt5">
+        <!--Team Table View Controller-->
+        <scene sceneID="bRq-S7-PFD">
             <objects>
-                <viewController storyboardIdentifier="TeamViewController" id="v9R-RI-g1G" customClass="TeamViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1fa-Zp-EYC">
+                <tableViewController storyboardIdentifier="TeamTableViewController" id="bRV-mr-Cgp" customClass="TeamTableViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="naX-po-cQD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="L9C-QW-NGP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jWR-ij-ESi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <connections>
+                            <outlet property="dataSource" destination="bRV-mr-Cgp" id="UwW-eW-Bqh"/>
+                            <outlet property="delegate" destination="bRV-mr-Cgp" id="vnD-Z2-tko"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dhq-tV-cmR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6988" y="-1385"/>
-        </scene>
-        <!--Fav View Controller-->
-        <scene sceneID="BR4-vH-4I9">
-            <objects>
-                <viewController id="5s9-Zh-1pB" customClass="FavViewController" customModule="MAD46_Sports" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="u1N-Gc-uZS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Xpm-Is-rhd"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eGB-lP-Mxq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7976" y="-1344"/>
+            <point key="canvasLocation" x="7179" y="-1368"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Mrp-aP-fiH">
