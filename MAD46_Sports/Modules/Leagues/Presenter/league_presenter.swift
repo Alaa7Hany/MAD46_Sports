@@ -62,6 +62,9 @@ class LeaguePresenter {
     func didSelectLeague(at index: Int) {
         let selectedLeague = getLeague(at: index)
         
+        let dynamicSound = Constants.Sounds.getSound(for: self.sport)
+        SoundManager.shared.playSound(dynamicSound)
+        
         router?.navigateToLeagueDetails(sportName: self.sport, league: selectedLeague)
     }
     
@@ -72,6 +75,7 @@ class LeaguePresenter {
     }
 
     func toggleFavorite(at index: Int) -> Bool {
+        SoundManager.shared.playSound(Constants.Sounds.fav)
         let league = getLeague(at: index)
         
         let isFav = isFavorite(at: index)

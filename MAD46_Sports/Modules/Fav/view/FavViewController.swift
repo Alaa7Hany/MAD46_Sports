@@ -28,27 +28,28 @@ class FavViewController: UIViewController, FavView {
         presenter?.fetchFavorites()
     }
     
-    func showFavorites() {
-            tableView.isHidden = false
-            tableView.backgroundView = nil
-            tableView.separatorStyle = .singleLine
-            tableView.reloadData()
-        }
+    func showEmptyState() {
+        tableView.isHidden = false
         
-        func showEmptyState() {
-            tableView.isHidden = false
-            
-            let emptyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            emptyLabel.text = "You haven't added any favorites yet! ⚽️"
-            emptyLabel.textColor = .gray
-            emptyLabel.textAlignment = .center
-            emptyLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-            emptyLabel.numberOfLines = 0
-            
-            tableView.backgroundView = emptyLabel
-            tableView.separatorStyle = .none
-            tableView.reloadData()
-        }
+ 
+        let emptyView = EmptyStateView(
+            message: "You haven't added any favorites yet! ⚽️",
+            animationName: Constants.Lottie.emptyEvents
+        )
+        
+        tableView.backgroundView = emptyView
+        tableView.separatorStyle = .none
+        tableView.reloadData()
+    }
+
+    func showFavorites() {
+        tableView.isHidden = false
+        
+        tableView.backgroundView = nil
+        tableView.separatorStyle = .singleLine
+        tableView.reloadData()
+    }
+    
     func confirmDeletion(at index: Int) {
         let alert = UIAlertController(
             title: "Remove from Favorites",

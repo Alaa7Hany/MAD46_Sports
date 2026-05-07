@@ -80,6 +80,8 @@ private extension SportsViewController {
 extension SportsViewController {
     
     @IBAction func onThemechanged(_ sender: UIButton) {
+        SoundManager.shared.playSound(Constants.Sounds.click)
+
         let isCurrentlyDark = UserDefaults.standard.bool(forKey: Constants.Defaults.themeKey)
         let newDarkModeState = !isCurrentlyDark
         
@@ -107,17 +109,19 @@ extension SportsViewController {
     }
     
     @IBAction func onSoundChanged(_ sender: UIButton) {
+            
         let isCurrentlyMuted = UserDefaults.standard.bool(forKey: Constants.Defaults.soundKey)
-        
         let newMutedState = !isCurrentlyMuted
         
         UserDefaults.standard.set(newMutedState, forKey: Constants.Defaults.soundKey)
         
+        if !newMutedState {
+            SoundManager.shared.playSound(Constants.Sounds.click)
+        }
+        
         let iconName = newMutedState ? Constants.Icons.soundOff : Constants.Icons.soundOn
         btnSound.setImage(UIImage(systemName: iconName), for: .normal)
         
-        
-        // animation
         sender.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
         UIView.animate(withDuration: 0.3,
                        delay: 0,
@@ -126,9 +130,6 @@ extension SportsViewController {
                        options: .allowUserInteraction, animations: {
             sender.transform = .identity
         })
-        ///////////////////////
-        
-        // TODO: Implement sound logic
     }
 }
 

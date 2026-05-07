@@ -19,29 +19,27 @@ class LeagueDetailsViewController: UIViewController {
     
     private func setupNavigationBar() {
         self.navigationController?.navigationBar.tintColor = .appPrimary
-        
         self.title = presenter.getLeagueName()
         
         favoriteBarButton = UIBarButtonItem(
-            image: UIImage(systemName: "heart"),
+            image: UIImage(systemName: Constants.Icons.noFav),
             style: .plain,
             target: self,
             action: #selector(favoriteButtonTapped)
         )
         favoriteBarButton.tintColor = .red
-        
         self.navigationItem.rightBarButtonItem = favoriteBarButton
         
-        let isFav = presenter.isFavorite()
-        updateFavoriteIcon(isFav: isFav)
+        updateFavoriteIcon(isFav: presenter.isFavorite())
     }
     
     private func updateFavoriteIcon(isFav: Bool) {
-        let imageName = isFav ? "heart.fill" : "heart"
+        let imageName = isFav ? Constants.Icons.isFav : Constants.Icons.noFav
         favoriteBarButton.image = UIImage(systemName: imageName)
     }
 
     @objc private func favoriteButtonTapped() {
+        SoundManager.shared.playSound(Constants.Sounds.fav)
         let isFavNow = presenter.toggleFavorite()
         updateFavoriteIcon(isFav: isFavNow)
     }
@@ -148,7 +146,6 @@ extension LeagueDetailsViewController {
 
 // MARK: - LeagueDetailsViewProtocol
 extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
-    
     func startLoading() {
         DispatchQueue.main.async {
             self.isLoadingData = true
