@@ -33,7 +33,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLV-Jr-eff">
                         <rect key="frame" x="266.66666666666669" y="29.000000000000004" width="53.333333333333314" height="34.333333333333343"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
                         <connections>
                             <action selector="onFav:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="O5f-ih-DD8"/>
                         </connections>
@@ -61,7 +61,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="AppSurface">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

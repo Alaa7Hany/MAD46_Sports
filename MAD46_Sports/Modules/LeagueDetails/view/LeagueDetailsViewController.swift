@@ -6,7 +6,6 @@ class LeagueDetailsViewController: UIViewController {
     
     var presenter: LeagueDetailsPresenterProtocol!
     
-    // Removed 'private' so extensions in other files can access them
     var activityIndicator: UIActivityIndicatorView!
     var favoriteBarButton: UIBarButtonItem!
     

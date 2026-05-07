@@ -87,7 +87,7 @@ class TableViewCell: UITableViewCell {
     }
     func updateFavIcon(isFav : Bool)
     {
-        let image = isFav ? "heart.fill" : "heart"
+        let image = isFav ? Constants.Icons.isFav : Constants.Icons.noFav
             favBtn.setImage(UIImage(systemName: image), for: .normal)
             favBtn.tintColor = .red
     }
