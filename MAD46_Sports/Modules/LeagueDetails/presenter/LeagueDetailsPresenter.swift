@@ -32,7 +32,7 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     private let sportName: String
     private let leagueId: Int?
     private let leagueName: String
-    private let leagueModel: LeagueModel // ضفنا المتغير ده
+    private let leagueModel: LeagueModel 
     
     // MARK: - State
     private var upcomingEvents: [Event] = []

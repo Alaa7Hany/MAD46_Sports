@@ -6,19 +6,15 @@
 //
 
 import UIKit
+import SkeletonView
 
 extension LeagueDetailsViewController {
     
     func setupLoadingIndicator() {
-        activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.color = .systemGreen
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-        view.addSubview(activityIndicator)
+
     }
 
     func setupCollectionView() {
-        // Register standard cells
         let upcomingNib = UINib(nibName: Constants.Cells.upcomingEventCell, bundle: nil)
         collectionView.register(upcomingNib, forCellWithReuseIdentifier: Constants.Cells.upcomingEventCell)
 
@@ -35,6 +31,7 @@ extension LeagueDetailsViewController {
         collectionView.register(emptyNib, forCellWithReuseIdentifier: Constants.Cells.emptyStateCell)
         
         
+        collectionView.isSkeletonable = true
         collectionView.backgroundColor = .systemGroupedBackground
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -48,7 +45,6 @@ extension LeagueDetailsViewController {
             let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
             let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
             
-            // Helper for Empty States
             func getEmptySectionLayout() -> NSCollectionLayoutSection {
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -61,7 +57,7 @@ extension LeagueDetailsViewController {
             }
             
             if sectionIndex == 0 {
-                if self.presenter.getUpcomingEventsCount() == 0 { return getEmptySectionLayout() }
+                if self.presenter.getUpcomingEventsCount() == 0 && !self.isLoadingData { return getEmptySectionLayout() }
                 
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -75,7 +71,7 @@ extension LeagueDetailsViewController {
                 return section
                 
             } else if sectionIndex == 1 {
-                if self.presenter.getLatestEventsCount() == 0 { return getEmptySectionLayout() }
+                if self.presenter.getLatestEventsCount() == 0 && !self.isLoadingData { return getEmptySectionLayout() }
                 
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -88,7 +84,7 @@ extension LeagueDetailsViewController {
                 return section
                 
             } else {
-                if self.presenter.getParticipantsCount() == 0 { return getEmptySectionLayout() }
+                if self.presenter.getParticipantsCount() == 0 && !self.isLoadingData { return getEmptySectionLayout() }
                 
                 let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
                 let item = NSCollectionLayoutItem(layoutSize: itemSize)

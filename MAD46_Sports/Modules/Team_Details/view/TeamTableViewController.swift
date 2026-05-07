@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SkeletonView
 
 protocol TeamView: AnyObject {
     func reloadData()
@@ -28,6 +29,9 @@ class TeamTableViewController: UITableViewController, TeamView {
         presenter.attachView(self)
         configureTableView()
         setupTableHeader()
+        
+        showHeaderSkeleton()
+        
         presenter.fetchTeamDetails()
     
         let nib = UINib(nibName: "TeamSectionHeaderView", bundle: nil)
@@ -51,6 +55,21 @@ class TeamTableViewController: UITableViewController, TeamView {
         )
     }
 
+    
+    private func showHeaderSkeleton() {
+        teamHeaderView.showAnimatedGradientSkeleton(
+            usingGradient: .init(baseColor: .systemGray6),
+            animation: nil,
+            transition: .crossDissolve(0.25)
+        )
+    }
+    
+    private func hideHeaderSkeleton() {
+        teamHeaderView.hideSkeleton(
+            reloadDataAfter: false,
+            transition: .crossDissolve(0.25)
+        )
+    }
 
        private func updateEmptyState() {
         let isEmpty = visibleSections().isEmpty
@@ -144,15 +163,7 @@ class TeamTableViewController: UITableViewController, TeamView {
         }
 
         if isLoadingData {
-            cell.nameLabel.text = ""
-            cell.numberLabel.text = ""
-            cell.subtitleLabel.text = ""
-            cell.roleBadgeLabel.text = ""
-            cell.avatarImageView.image = nil
-    
             return cell
-        } else {
-       
         }
 
         let sectionType = visibleSections()[indexPath.section]
@@ -168,6 +179,7 @@ class TeamTableViewController: UITableViewController, TeamView {
         let placeholder = UIImage(named: placeholderName)
 
         let playerName = player.playerName?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        cell.nameLabel.numberOfLines = 2
         cell.nameLabel.text = playerName.isEmpty ? "Unknown Player" : playerName
 
         let playerNumber = player.playerNumber?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
@@ -188,9 +200,23 @@ class TeamTableViewController: UITableViewController, TeamView {
         return cell
     }
     
+    // MARK: - Per-cell Skeleton via willDisplay
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if isLoadingData {
+            cell.showAnimatedGradientSkeleton(
+                usingGradient: .init(baseColor: .systemGray6),
+                animation: nil,
+                transition: .crossDissolve(0.25)
+            )
+        }
+    }
+    
 
     func reloadData() {
         self.isLoadingData = false
+        
+        hideHeaderSkeleton()
+        
         let teamName = presenter.getTeamName().trimmingCharacters(in: .whitespacesAndNewlines)
         teamHeaderView.teamNameLabel.text = teamName.isEmpty ? "Unknown Team" : teamName
         
@@ -216,6 +242,10 @@ class TeamTableViewController: UITableViewController, TeamView {
     
 
     func showError(message: String) {
+        self.isLoadingData = false
+        hideHeaderSkeleton()
+        tableView.reloadData()
+        
         let alert = UIAlertController(
             title: "  Something Went Wrong",
             message: "\n" + message,

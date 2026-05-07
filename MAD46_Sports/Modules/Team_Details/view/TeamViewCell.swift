@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 final class TeamViewCell: UITableViewCell {
 
@@ -19,12 +20,23 @@ final class TeamViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         configureAppearance()
+        configureSkeletonable()
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         numberLabel.layer.cornerRadius = numberLabel.bounds.height / 2
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.height / 2
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        hideSkeleton()
+        avatarImageView.image = nil
+        nameLabel.text = nil
+        subtitleLabel.text = nil
+        numberLabel.text = nil
+        roleBadgeLabel.text = nil
     }
 
     private func configureAppearance() {
@@ -53,7 +65,6 @@ final class TeamViewCell: UITableViewCell {
 
         nameLabel.textColor = UIColor(red: 0.07, green: 0.09, blue: 0.20, alpha: 1)
         nameLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        nameLabel.numberOfLines = 2
 
         subtitleLabel.textColor = .secondaryLabel
         subtitleLabel.font = .systemFont(ofSize: 15, weight: .regular)
@@ -63,5 +74,33 @@ final class TeamViewCell: UITableViewCell {
         roleBadgeLabel.textAlignment = .center
         roleBadgeLabel.layer.cornerRadius = 8
         roleBadgeLabel.clipsToBounds = true
+    }
+    
+    private func configureSkeletonable() {
+        isSkeletonable = true
+        contentView.isSkeletonable = true
+        cardView.isSkeletonable = true
+        
+     
+        if let stackView = nameLabel.superview {
+            stackView.isSkeletonable = true
+        }
+        
+        numberLabel.isSkeletonable = true
+        numberLabel.linesCornerRadius = 16
+        
+        avatarImageView.isSkeletonable = true
+        avatarImageView.skeletonCornerRadius = 20
+        
+        nameLabel.numberOfLines = 1
+        nameLabel.isSkeletonable = true
+        nameLabel.linesCornerRadius = 5
+        nameLabel.lastLineFillPercent = 70
+        
+        subtitleLabel.isSkeletonable = true
+        subtitleLabel.linesCornerRadius = 5
+        subtitleLabel.lastLineFillPercent = 50
+        
+        roleBadgeLabel.isSkeletonable = false
     }
 }

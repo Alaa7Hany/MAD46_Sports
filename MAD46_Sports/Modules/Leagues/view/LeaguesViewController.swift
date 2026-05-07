@@ -19,12 +19,10 @@ class LeaguesViewController: UIViewController, LeaguesView {
             tableView.dataSource = self
             tableView.delegate = self
             
-            // 1️⃣ إخبار الـ TableView بالارتفاع الثابت عشان SkeletonView يعرف يرسم كام خلية
             tableView.rowHeight = 100
             tableView.estimatedRowHeight = 100
             tableView.isSkeletonable = true
             
-            // 2️⃣ إجبار الشاشة إنها تحسب الـ Bounds والمقاسات قبل ما نشغل الأنيميشن
             self.view.layoutIfNeeded()
                     
             tableView.showAnimatedGradientSkeleton()

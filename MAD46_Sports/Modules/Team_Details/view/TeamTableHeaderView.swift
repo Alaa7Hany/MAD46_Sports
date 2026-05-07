@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class TeamTableHeaderView: UIView {
 
@@ -19,6 +20,12 @@ class TeamTableHeaderView: UIView {
         teamLogoImageView.layer.cornerRadius = 16
         teamLogoImageView.layer.masksToBounds = true
         teamLogoImageView.contentMode = .scaleAspectFill
+        
+        isSkeletonable = true
+        teamLogoImageView.isSkeletonable = true
+        teamLogoImageView.skeletonCornerRadius = 16
+        teamNameLabel.isSkeletonable = true
+        teamNameLabel.linesCornerRadius = 8
     }
 
     static func loadFromNib() -> TeamTableHeaderView {

@@ -22,7 +22,6 @@ class LeaguePresenter {
         self.sport = sportName
         self.router = router
     }
-    // في LeaguePresenter.swift
     func fetchLeague() {
         AlamofireManager.shared.getLeagues(sportName: sport) { [weak self] leagues in
             guard let self = self else { return }

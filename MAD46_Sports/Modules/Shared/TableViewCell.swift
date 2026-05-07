@@ -53,7 +53,6 @@ class TableViewCell: UITableViewCell {
     override func awakeFromNib() {
             super.awakeFromNib()
             
-            // 3️⃣ تحديد قيمة ثابتة للـ Radius عشان الأنيميشن يظهر بشكل دائري مظبوط
             self.imageV.skeletonCornerRadius = 32
             
             self.isSkeletonable = true
