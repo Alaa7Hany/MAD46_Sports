@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SkeletonView
 
 protocol TeamView: AnyObject {
     func reloadData()
@@ -17,16 +18,20 @@ class TeamTableViewController: UITableViewController, TeamView {
        var teamHeaderView     = TeamTableHeaderView.loadFromNib()
 
    
-       var emptyStateView = TeamEmptyStateView.loadFromNib()
+     private lazy var emptyStateView = TeamEmptyStateView.loadFromNib()
 
     var presenter : TeamPresenter!
-     let sections = TeamSection.allCases
+    private let sections = TeamSection.allCases
+    private var isLoadingData: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(self)
         configureTableView()
         setupTableHeader()
+        
+        showHeaderSkeleton()
+        
         presenter.fetchTeamDetails()
     
         let nib = UINib(nibName: "TeamSectionHeaderView", bundle: nil)
@@ -50,11 +55,26 @@ class TeamTableViewController: UITableViewController, TeamView {
         )
     }
 
+    
+    private func showHeaderSkeleton() {
+        teamHeaderView.showAnimatedGradientSkeleton(
+            usingGradient: .init(baseColor: .systemGray6),
+            animation: nil,
+            transition: .crossDissolve(0.25)
+        )
+    }
+    
+    private func hideHeaderSkeleton() {
+        teamHeaderView.hideSkeleton(
+            reloadDataAfter: false,
+            transition: .crossDissolve(0.25)
+        )
+    }
 
-        func updateEmptyState() {
+       private func updateEmptyState() {
         let isEmpty = visibleSections().isEmpty
 
-        if isEmpty {
+        if isEmpty && !isLoadingData {
             if emptyStateView.superview == nil {
                    emptyStateView.frame = CGRect(
                     x: 0,
@@ -99,15 +119,18 @@ class TeamTableViewController: UITableViewController, TeamView {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        visibleSections().count
+        if isLoadingData { return 1 }
+        return visibleSections().count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isLoadingData { return 5 }
         let sectionType = visibleSections()[section]
         return players(for: sectionType).count
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if isLoadingData { return nil }
         let sectionType = visibleSections()[section]
         guard let header = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: "TeamSectionHeader"
@@ -117,6 +140,7 @@ class TeamTableViewController: UITableViewController, TeamView {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if isLoadingData { return 0 }
         return 50
     }
 
@@ -138,6 +162,10 @@ class TeamTableViewController: UITableViewController, TeamView {
             return UITableViewCell()
         }
 
+        if isLoadingData {
+            return cell
+        }
+
         let sectionType = visibleSections()[indexPath.section]
         let player = players(for: sectionType)[indexPath.row]
 
@@ -151,6 +179,7 @@ class TeamTableViewController: UITableViewController, TeamView {
         let placeholder = UIImage(named: placeholderName)
 
         let playerName = player.playerName?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        cell.nameLabel.numberOfLines = 2
         cell.nameLabel.text = playerName.isEmpty ? "Unknown Player" : playerName
 
         let playerNumber = player.playerNumber?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
@@ -171,8 +200,23 @@ class TeamTableViewController: UITableViewController, TeamView {
         return cell
     }
     
+    // MARK: - Per-cell Skeleton via willDisplay
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if isLoadingData {
+            cell.showAnimatedGradientSkeleton(
+                usingGradient: .init(baseColor: .systemGray6),
+                animation: nil,
+                transition: .crossDissolve(0.25)
+            )
+        }
+    }
+    
 
     func reloadData() {
+        self.isLoadingData = false
+        
+        hideHeaderSkeleton()
+        
         let teamName = presenter.getTeamName().trimmingCharacters(in: .whitespacesAndNewlines)
         teamHeaderView.teamNameLabel.text = teamName.isEmpty ? "Unknown Team" : teamName
         
@@ -198,6 +242,10 @@ class TeamTableViewController: UITableViewController, TeamView {
     
 
     func showError(message: String) {
+        self.isLoadingData = false
+        hideHeaderSkeleton()
+        tableView.reloadData()
+        
         let alert = UIAlertController(
             title: "  Something Went Wrong",
             message: "\n" + message,

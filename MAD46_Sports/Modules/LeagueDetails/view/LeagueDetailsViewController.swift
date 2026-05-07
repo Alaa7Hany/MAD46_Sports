@@ -1,18 +1,17 @@
 import UIKit
+import SkeletonView
 
 class LeagueDetailsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
     var presenter: LeagueDetailsPresenterProtocol!
-    
-    var activityIndicator: UIActivityIndicatorView!
-    var favoriteBarButton: UIBarButtonItem!
+    private var favoriteBarButton: UIBarButtonItem!
+    var isLoadingData: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupLoadingIndicator()
         setupCollectionView()
         setupNavigationBar()
         
@@ -47,19 +46,21 @@ class LeagueDetailsViewController: UIViewController {
     }
 }
 
+
 // MARK: - LeagueDetailsViewProtocol
 extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
     func startLoading() {
         DispatchQueue.main.async {
-            self.activityIndicator.startAnimating()
-            self.collectionView.isHidden = true
+            self.isLoadingData = true
+            self.collectionView.reloadData()
         }
     }
     
     func stopLoading() {
         DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
-            self.collectionView.isHidden = false
+            self.isLoadingData = false
+            self.collectionView.collectionViewLayout.invalidateLayout()
+            self.collectionView.reloadData()
         }
     }
     
@@ -69,3 +70,4 @@ extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
         }
     }
 }
+

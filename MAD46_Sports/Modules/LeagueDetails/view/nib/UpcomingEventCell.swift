@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SkeletonView
 
 class UpcomingEventCell: UICollectionViewCell {
 
@@ -31,6 +32,30 @@ class UpcomingEventCell: UICollectionViewCell {
         contentView.layer.masksToBounds = true
         contentView.backgroundColor = .secondarySystemGroupedBackground
         
+        isSkeletonable = true
+        contentView.isSkeletonable = true
+        lblTime.isSkeletonable = true
+        lblDate.isSkeletonable = true
+        lblAway.isSkeletonable = true
+        lblHome.isSkeletonable = true
+        imgAway.isSkeletonable = true
+        imgHome.isSkeletonable = true
+        
+        lblTime.linesCornerRadius = 5
+        lblDate.linesCornerRadius = 5
+        lblAway.linesCornerRadius = 5
+        lblHome.linesCornerRadius = 5
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        hideSkeleton()
+        imgHome.image = nil
+        imgAway.image = nil
+        lblHome.text = nil
+        lblAway.text = nil
+        lblDate.text = nil
+        lblTime.text = nil
     }
 
     func setup(with event: Event) {

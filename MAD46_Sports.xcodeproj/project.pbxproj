@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1270430B2FA261470024020C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 1270430A2FA261470024020C /* Lottie */; };
+		6DCF58C72FA2BA4500B9724C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6DCF58C62FA2BA4500B9724C /* Lottie */; };
+		D25FEF542FACADA200DA6881 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = D25FEF532FACADA200DA6881 /* SkeletonView */; };
 		D28E3D892FA0C53E00B10A4E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D28E3D882FA0C53E00B10A4E /* SDWebImage */; };
 		D28E3D8B2FA0C53E00B10A4E /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D28E3D8A2FA0C53E00B10A4E /* SDWebImageMapKit */; };
 		D28E3D8E2FA0C57B00B10A4E /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = D28E3D8D2FA0C57B00B10A4E /* Reachability */; };
@@ -77,10 +78,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1270430B2FA261470024020C /* Lottie in Frameworks */,
+				6DCF58C72FA2BA4500B9724C /* Lottie in Frameworks */,
 				D28E3D8B2FA0C53E00B10A4E /* SDWebImageMapKit in Frameworks */,
 				D28E3DAB2FA0E7F300B10A4E /* Alamofire in Frameworks */,
 				D28E3D8E2FA0C57B00B10A4E /* Reachability in Frameworks */,
+				D25FEF542FACADA200DA6881 /* SkeletonView in Frameworks */,
 				D28E3D892FA0C53E00B10A4E /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,7 +150,8 @@
 				D28E3D8A2FA0C53E00B10A4E /* SDWebImageMapKit */,
 				D28E3D8D2FA0C57B00B10A4E /* Reachability */,
 				D28E3DAA2FA0E7F300B10A4E /* Alamofire */,
-				1270430A2FA261470024020C /* Lottie */,
+				6DCF58C62FA2BA4500B9724C /* Lottie */,
+				D25FEF532FACADA200DA6881 /* SkeletonView */,
 			);
 			productName = MAD46_Sports;
 			productReference = 124DF03A2FA0BDB2007647D6 /* MAD46_Sports.app */;
@@ -236,7 +239,8 @@
 				D28E3D872FA0C53E00B10A4E /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				D28E3D8C2FA0C57B00B10A4E /* XCRemoteSwiftPackageReference "Reachability" */,
 				D28E3DA92FA0E7F300B10A4E /* XCRemoteSwiftPackageReference "Alamofire" */,
-				127043092FA261470024020C /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				6DCF58C52FA2BA4500B9724C /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				D25FEF522FACADA200DA6881 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 124DF03B2FA0BDB2007647D6 /* Products */;
@@ -597,12 +601,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		127043092FA261470024020C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		6DCF58C52FA2BA4500B9724C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.6.0;
+			};
+		};
+		D25FEF522FACADA200DA6881 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
 			};
 		};
 		D28E3D872FA0C53E00B10A4E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
@@ -632,10 +644,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1270430A2FA261470024020C /* Lottie */ = {
+		6DCF58C62FA2BA4500B9724C /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 127043092FA261470024020C /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = 6DCF58C52FA2BA4500B9724C /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		D25FEF532FACADA200DA6881 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D25FEF522FACADA200DA6881 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 		D28E3D882FA0C53E00B10A4E /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;

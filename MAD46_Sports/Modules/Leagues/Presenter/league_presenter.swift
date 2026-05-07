@@ -3,6 +3,7 @@ import Foundation
 
 protocol LeaguesView: AnyObject {
     func showLeagues()
+    func hideLoading()
 }
 
 class LeaguePresenter {
@@ -21,18 +22,20 @@ class LeaguePresenter {
         self.sport = sportName
         self.router = router
     }
-    
     func fetchLeague() {
         AlamofireManager.shared.getLeagues(sportName: sport) { [weak self] leagues in
             guard let self = self else { return }
-            self.leagues = leagues
             
-            DispatchQueue.main.async {
-                self.view?.showLeagues()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                if leagues.isEmpty {
+                    self.view?.hideLoading()
+                } else {
+                    self.leagues = leagues
+                    self.view?.showLeagues()
+                }
             }
         }
     }
-    
    
     func filterLeagues(searchText: String) {
         if searchText.isEmpty {

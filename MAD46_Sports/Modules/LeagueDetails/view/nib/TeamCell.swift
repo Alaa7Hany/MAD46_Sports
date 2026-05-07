@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SkeletonView
 
 protocol LeagueDetailsViewProtocol: AnyObject {
     func displayData()
@@ -24,12 +25,23 @@ class TeamCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.tertiaryLabel.cgColor
         contentView.layer.masksToBounds = true
         imageV.clipsToBounds = true
+        
+        isSkeletonable = true
+        contentView.isSkeletonable = true
+        imageV.isSkeletonable = true
+        imageV.skeletonCornerRadius = 35  
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layoutIfNeeded()
         contentView.layer.cornerRadius = contentView.bounds.height / 2
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        hideSkeleton()
+        imageV.image = nil
     }
     
     func setup(with logoUrlString: String?) {

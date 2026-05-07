@@ -1,43 +1,55 @@
 import UIKit
-
+import SkeletonView
 class LeaguesViewController: UIViewController, LeaguesView {
+   
+    
 
     @IBOutlet weak var tableView: UITableView!
     var presenter: LeaguePresenter!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.tintColor = .appPrimary
-
-        
-        self.title = presenter.sport.capitalized
-        
-        let nib = UINib(nibName: "TableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "cell")
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        presenter.fetchLeague()
-        
-        
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
+            super.viewDidLoad()
             
-           
+            self.navigationController?.navigationBar.tintColor = .appPrimary
+            self.title = presenter.sport.capitalized
+            
+            let nib = UINib(nibName: "TableViewCell", bundle: nil)
+            tableView.register(nib, forCellReuseIdentifier: "cell")
+            
+            tableView.dataSource = self
+            tableView.delegate = self
+            
+            tableView.rowHeight = 100
+            tableView.estimatedRowHeight = 100
+            tableView.isSkeletonable = true
+            
+            self.view.layoutIfNeeded()
+                    
+            tableView.showAnimatedGradientSkeleton()
+            presenter.fetchLeague()
+        }
+    func hideLoading() {
+            tableView.hideSkeleton()
             tableView.reloadData()
         }
+        
+
+    
     
     func showLeagues() {
+        tableView.hideSkeleton()
         tableView.reloadData()
     }
 }
 
 
-extension LeaguesViewController: UITableViewDataSource {
+extension LeaguesViewController: SkeletonTableViewDataSource {
+    
+  
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "cell"
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.getCount()
     }
@@ -45,8 +57,10 @@ extension LeaguesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
 
-        let league = presenter.getLeague(at: indexPath.row)
+      
+        cell.favBtn.isHidden = false
 
+        let league = presenter.getLeague(at: indexPath.row)
         let placeholderImage = UIImage(named: presenter.sport)
 
         cell.setup(league, placeholder: placeholderImage)
@@ -56,9 +70,7 @@ extension LeaguesViewController: UITableViewDataSource {
 
         cell.onFavTapped = { [weak self] in
             guard let self = self else { return }
-            
             let newState = self.presenter.toggleFavorite(at: indexPath.row)
-            
             cell.updateFavIcon(isFav: newState)
         }
 

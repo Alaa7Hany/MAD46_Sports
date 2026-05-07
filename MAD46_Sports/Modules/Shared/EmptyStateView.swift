@@ -12,7 +12,6 @@ class EmptyStateView: UIView {
     private var animationView: LottieAnimationView!
     private var messageLabel: UILabel!
     
-    // Custom initializer
     init(message: String, animationName: String) {
         super.init(frame: .zero)
         setupUI(message: message, animationName: animationName)

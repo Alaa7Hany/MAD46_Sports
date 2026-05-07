@@ -19,6 +19,7 @@ class SportsViewController: UIViewController {
     private var bannerTimer: Timer?
     private var currentBannerIndex = 0
     private let infiniteMultiplier = 1000
+    private var isLoadingData: Bool = true
 
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -174,6 +175,7 @@ private extension SportsViewController {
 // MARK: - SportsViewProtocol
 extension SportsViewController: SportsViewProtocol {
     func displaySports() {
+        self.isLoadingData = false
         DispatchQueue.main.async {
             self.collectionView.reloadData()
             self.bannerCollectionview.reloadData()
@@ -192,6 +194,7 @@ extension SportsViewController: SportsViewProtocol {
 extension SportsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isLoadingData { return 6 }
         if collectionView == bannerCollectionview {
             return presenter.getSportsCount() * infiniteMultiplier
         }
@@ -200,6 +203,15 @@ extension SportsViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.sportCollectionCell, for: indexPath) as! SportCollectionViewCell
+        
+        if isLoadingData {
+            cell.lblName.text = ""
+            cell.imageV.image = nil
+       
+            return cell
+        } else {
+       
+        }
         
         let actualIndex = collectionView == bannerCollectionview ? (indexPath.row % presenter.getSportsCount()) : indexPath.row
         let sport = presenter.getSport(at: actualIndex)
