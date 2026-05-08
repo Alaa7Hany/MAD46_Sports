@@ -30,7 +30,6 @@ class AppRouter: AppRouterProtocol {
         if NetworkMonitor.shared.isConnected {
             action()
         } else {
-            // Use the extension on the top-most view controller
             navigationController.topViewController?.showNoInternetAlert()
         }
     }

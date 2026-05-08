@@ -67,3 +67,9 @@
 "GAME_SCORE_VALUE" = "Score: %@";
 "GAME_CLOSE" = "Close";
 
+//Alert
+"NO_INTERNET" = "No Internet Connection";
+"NO_INTERNET_MSG" = "Please check your connection and try again.";
+
+
+

@@ -10,8 +10,8 @@ import UIKit
 extension UIViewController {
     func showNoInternetAlert() {
         let alert = UIAlertController(
-            title: "No Internet Connection",
-            message: "Please check your connection and try again.",
+            title: NSLocalizedString("NO_INTERNET" , comment: ""),
+            message: NSLocalizedString("NO_INTERNET_MSG", comment: ""),
             preferredStyle: .alert
         )
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

@@ -39,6 +39,8 @@
 "Cricket" = "الكريكيت";
 
 
+
+
 "LEAGUE_PARTICIPATING_PLAYERS" = "اللاعبون المشاركون";
 "LEAGUE_PARTICIPATING_TEAMS" = "الفرق المشاركة";
 
@@ -66,4 +68,8 @@
 "GAME_SCORE_ZERO" = "النتيجة: 0";
 "GAME_SCORE_VALUE" = "النتيجة: %@";
 "GAME_CLOSE" = "إغلاق";
+
+//Alert
+"NO_INTERNET" = "لا يوجد اتصال";
+"NO_INTERNET_MSG" = "الرجاء التأكد من الاتصال بالانتدنت";
 
