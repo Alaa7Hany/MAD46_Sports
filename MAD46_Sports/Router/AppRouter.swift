@@ -34,9 +34,7 @@ class AppRouter: AppRouterProtocol {
     }
     
     func navigateToOnboarding() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let onboardingVC = storyboard.instantiateViewController(withIdentifier: Constants.ViewControllers.onBoardingVC) as? OnBoardingViewController else { return }
-        
+        let onboardingVC = OnBoardingViewController()
         onboardingVC.presenter = OnBoardingPresenter(view: onboardingVC, router: self)
         navigationController.pushViewController(onboardingVC, animated: true)
     }

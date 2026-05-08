@@ -1,6 +1,5 @@
 
 import Foundation
-import UIKit
 
 protocol OnBoardingView: AnyObject {
 }
@@ -19,9 +18,9 @@ class OnBoardingPresenter {
     
     func setUpPages() {
             pages = [
-                OnBoardingModel( desc: "Follow the latest sports news and tournaments all in one place.", image: "onboarding1"),
-                OnBoardingModel( desc: "Get detailed statistics and info about your favorite teams and players.", image: "onboarding2"),
-                OnBoardingModel( desc: "Stay up to date with upcoming match schedules and sporting events.", image: "onboarding3")
+                OnBoardingModel(title: "Welcome to MAD46 Sports", desc: "Follow the latest sports news and tournaments all in one place.", image: "onboarding1"),
+                OnBoardingModel(title: "Track Your Teams", desc: "Get detailed statistics and info about your favorite teams and players.", image: "onboarding2"),
+                OnBoardingModel(title: "Never Miss a Match", desc: "Stay up to date with upcoming match schedules and sporting events.", image: "onboarding3")
             ]
         }
     
