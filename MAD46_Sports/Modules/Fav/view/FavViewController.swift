@@ -106,7 +106,7 @@ extension FavViewController: UITableViewDataSource {
             cell.labelTxt.text = coreDataLeague.leagueName
             
             let sportType = coreDataLeague.sportName?.lowercased() ?? "football"
-            var placeholderName = sportType
+            let placeholderName = sportType
             
             let placeholderImage = UIImage(named: placeholderName)
             
