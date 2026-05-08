@@ -30,16 +30,35 @@ class LeaguesViewController: UIViewController, LeaguesView {
         }
     func hideLoading() {
             tableView.hideSkeleton()
+            
+
+            let emptyView = EmptyStateView(
+                message: "No leagues available for \(presenter.sport.capitalized).",
+                animationName: Constants.Lottie.emptyEvents
+            )
+            tableView.backgroundView = emptyView
+            tableView.separatorStyle = .none
+            
             tableView.reloadData()
         }
         
-
-    
-    
-    func showLeagues() {
-        tableView.hideSkeleton()
-        tableView.reloadData()
-    }
+        func showLeagues() {
+            tableView.hideSkeleton()
+            
+            if presenter.getCount() == 0 {
+                let emptyView = EmptyStateView(
+                    message: "No leagues found matching your search.",
+                    animationName: Constants.Lottie.emptyEvents
+                )
+                tableView.backgroundView = emptyView
+                tableView.separatorStyle = .none
+            } else {
+                tableView.backgroundView = nil
+                tableView.separatorStyle = .singleLine
+            }
+            
+            tableView.reloadData()
+        }
 }
 
 
