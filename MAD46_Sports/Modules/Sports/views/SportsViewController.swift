@@ -301,4 +301,20 @@ extension SportsViewController {
             cell.alpha = 1
         })
     }
+    
+    
+    // MARK: - Easter Egg Trigger
+        override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+            if motion == .motionShake {
+                // Vibrate the phone to let them know they found a secret!
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.success)
+                
+                // Present the mini-game
+                let gameVC = BasketballGameViewController()
+                gameVC.modalPresentationStyle = .overFullScreen
+                gameVC.modalTransitionStyle = .crossDissolve
+                self.present(gameVC, animated: true, completion: nil)
+            }
+        }
 }
