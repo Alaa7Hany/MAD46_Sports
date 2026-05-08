@@ -8,21 +8,21 @@ class AlamofireManager: NetworkService {
     
     private let apiKey = "3d09c674e733e4b354da276ca0b78cef806ec1d665b06e7924739b017f6c22a5"
     
-    func getLeagues(sportName: String, completion: @escaping ([LeagueModel]) -> Void) {
+    func getLeagues(sportName: String, completion: @escaping (Result<[LeagueModel], Error>) -> Void) {
         let url = "\(Constants.API.baseURL)/\(sportName)?met=Leagues&APIkey=\(apiKey)"
         
         AF.request(url).responseDecodable(of: LeagueResponse.self) { response in
            switch response.result {
            case .success(let data):
-               completion(data.result ?? [])
+               completion(.success(data.result ?? []))
            case .failure(let error):
                print("getLeagues error: \(error)")
-               completion([])
+               completion(.failure(error))
             }
         }
     }
     
-    func getEvents(sportName: String, from: String, to: String, leagueId: Int?, completion: @escaping ([Event]) -> Void) {
+    func getEvents(sportName: String, from: String, to: String, leagueId: Int?, completion: @escaping (Result<[Event], Error>) -> Void) {
         var url = "\(Constants.API.baseURL)/\(sportName)?met=Fixtures&APIkey=\(apiKey)&from=\(from)&to=\(to)&timezone=Africa/Cairo"
         
         if let id = leagueId {
@@ -32,15 +32,15 @@ class AlamofireManager: NetworkService {
         AF.request(url).responseDecodable(of: EventResponse.self) { response in
            switch response.result {
            case .success(let data):
-               completion(data.result ?? [])
+               completion(.success(data.result ?? []))
            case .failure(let error):
                print("getEvents error: \(error)")
-               completion([])
+               completion(.failure(error))
             }
         }
     }
     
-    func getParticipants(sportName: String, method: String, leagueId: Int?, completion: @escaping ([Participant]) -> Void) {
+    func getParticipants(sportName: String, method: String, leagueId: Int?, completion: @escaping (Result<[Participant], Error>) -> Void) {
         var url = "\(Constants.API.baseURL)/\(sportName)?met=\(method)&APIkey=\(apiKey)"
         
         if let id = leagueId {
@@ -50,24 +50,24 @@ class AlamofireManager: NetworkService {
         AF.request(url).responseDecodable(of: ParticipantResponse.self) { response in
            switch response.result {
            case .success(let data):
-               completion(data.result ?? [])
+               completion(.success(data.result ?? []))
            case .failure(let error):
                print("getParticipants error: \(error)")
-               completion([])
+               completion(.failure(error))
             }
         }
     }
     
-    func getRoster(sportName: String, teamId: Int, completion: @escaping ([PlayerModel]) -> Void) {
+    func getRoster(sportName: String, teamId: Int, completion: @escaping (Result<[PlayerModel], Error>) -> Void) {
         let url = "\(Constants.API.baseURL)/\(sportName)?met=Players&APIkey=\(apiKey)&teamId=\(teamId)"
         
         AF.request(url).responseDecodable(of: PlayerResponse.self) { response in
             switch response.result {
             case .success(let data):
-                completion(data.result ?? [])
+                completion(.success(data.result ?? []))
             case .failure(let error):
                 print("getRoster error: \(error)")
-                completion([])
+                completion(.failure(error))
             }
         }
     }

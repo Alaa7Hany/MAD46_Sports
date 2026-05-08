@@ -69,38 +69,58 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
         }
     }
     
-    // MARK: - Isolated Network Calls
     private func fetchParticipants(group: DispatchGroup) {
-        group.enter()
-        let method = sportName.lowercased() == "tennis" ? "Players" : "Teams"
-        
-        networkService.getParticipants(sportName: sportName, method: method, leagueId: leagueId) { [weak self] fetched in
-            self?.participants = fetched
-            group.leave()
+            group.enter()
+            let method = sportName.lowercased() == "tennis" ? "Players" : "Teams"
+            
+            networkService.getParticipants(sportName: sportName, method: method, leagueId: leagueId) { [weak self] result in
+                defer { group.leave() }
+                guard let self = self else { return }
+                
+                switch result {
+                case .success(let fetched):
+                    self.participants = fetched
+                case .failure(let error):
+                    print("Error fetching participants: \(error.localizedDescription)")
+                    self.participants = []
+                }
+            }
         }
-    }
-    
     private func fetchLatestEvents(group: DispatchGroup) {
             group.enter()
             let from = DateHelper.getPastDateString(for: sportName)
             let to = DateHelper.getTodayString()
             
-            networkService.getEvents(sportName: sportName, from: from, to: to, leagueId: leagueId) { [weak self] events in
+            networkService.getEvents(sportName: sportName, from: from, to: to, leagueId: leagueId) { [weak self] result in
+                defer { group.leave() }
                 guard let self = self else { return }
-                self.latestEvents = self.filterPast(events: events)
-                group.leave()
+                
+                switch result {
+                case .success(let events):
+                    self.latestEvents = self.filterPast(events: events)
+                case .failure(let error):
+                    print("Error fetching latest events: \(error.localizedDescription)")
+                    self.latestEvents = []
+                }
             }
         }
         
-        private func fetchUpcomingEvents(group: DispatchGroup) {
+    private func fetchUpcomingEvents(group: DispatchGroup) {
             group.enter()
             let from = DateHelper.getTodayString()
             let to = DateHelper.getFutureDateString(for: sportName)
             
-            networkService.getEvents(sportName: sportName, from: from, to: to, leagueId: leagueId) { [weak self] events in
+            networkService.getEvents(sportName: sportName, from: from, to: to, leagueId: leagueId) { [weak self] result in
+                defer { group.leave() }
                 guard let self = self else { return }
-                self.upcomingEvents = self.filterUpcoming(events: events)
-                group.leave()
+                
+                switch result {
+                case .success(let events):
+                    self.upcomingEvents = self.filterUpcoming(events: events)
+                case .failure(let error):
+                    print("Error fetching upcoming events: \(error.localizedDescription)")
+                    self.upcomingEvents = []
+                }
             }
         }
     

@@ -23,19 +23,26 @@ class LeaguePresenter {
         self.router = router
     }
     func fetchLeague() {
-        AlamofireManager.shared.getLeagues(sportName: sport) { [weak self] leagues in
-            guard let self = self else { return }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                if leagues.isEmpty {
-                    self.view?.hideLoading()
-                } else {
-                    self.leagues = leagues
-                    self.view?.showLeagues()
+            AlamofireManager.shared.getLeagues(sportName: sport) { [weak self] result in
+                guard let self = self else { return }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    switch result {
+                    case .success(let leagues):
+                        if leagues.isEmpty {
+                            self.view?.hideLoading()
+                        } else {
+                            self.leagues = leagues
+                            self.view?.showLeagues()
+                        }
+                    case .failure(let error):
+                        print("Error fetching leagues: \(error.localizedDescription)")
+                        self.view?.hideLoading()
+
+                    }
                 }
             }
         }
-    }
    
     func filterLeagues(searchText: String) {
         if searchText.isEmpty {
