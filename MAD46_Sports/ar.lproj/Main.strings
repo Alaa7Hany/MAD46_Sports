@@ -1,0 +1,24 @@
+/* 
+  Main.strings
+  MAD46_Sports
+
+  Created by AI Assistant.
+*/
+
+/* Class = "UILabel"; text = "Fav Leagues"; ObjectID = "SKD-z7-EPi"; */
+"SKD-z7-EPi.text" = "الدوريات المفضلة";
+
+/* Class = "UITabBarItem"; title = "Favorites"; ObjectID = "YpV-aX-7rg"; */
+"YpV-aX-7rg.title" = "المفضلة";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "sKG-x2-0py"; */
+"sKG-x2-0py.title" = "الرئيسية";
+
+/* Class = "UISearchBar"; placeholder = "Searching "; ObjectID = "khk-bj-E8o"; */
+"khk-bj-E8o.placeholder" = "البحث ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "IVf-GM-kgs"; */
+"IVf-GM-kgs.normalTitle" = "زر";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Rxe-IS-qZX"; */
+"Rxe-IS-qZX.normalTitle" = "زر";

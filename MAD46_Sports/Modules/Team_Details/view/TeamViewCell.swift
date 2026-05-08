@@ -68,6 +68,11 @@ final class TeamViewCell: UITableViewCell {
 
         subtitleLabel.textColor = .secondaryLabel
         subtitleLabel.font = .systemFont(ofSize: 15, weight: .regular)
+        
+        let isRTL = UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
+        let alignment: NSTextAlignment = isRTL ? .right : .left
+        nameLabel.textAlignment = alignment
+        subtitleLabel.textAlignment = alignment
 
         roleBadgeLabel.textColor = .white
         roleBadgeLabel.font = .systemFont(ofSize: 12, weight: .bold)

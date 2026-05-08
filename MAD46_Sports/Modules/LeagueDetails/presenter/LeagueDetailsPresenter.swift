@@ -47,7 +47,7 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
             
             self.leagueModel = league
             self.leagueId = league.leagueKey
-            self.leagueName = league.leagueName ?? "Unknown"
+            self.leagueName = league.leagueName ?? NSLocalizedString("UNKNOWN", comment: "")
         }
     
     func viewDidLoad() {
@@ -175,7 +175,7 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     }
     
     func getParticipantSectionTitle() -> String {
-        return sportName.lowercased() == "tennis" ? "Participating Players" : "Participating Teams"
+        return sportName.lowercased() == "tennis" ? NSLocalizedString("LEAGUE_PARTICIPATING_PLAYERS", comment: "") : NSLocalizedString("LEAGUE_PARTICIPATING_TEAMS", comment: "")
     }
         
     func didTapFavorite() {

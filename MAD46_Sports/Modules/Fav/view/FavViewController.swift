@@ -33,7 +33,7 @@ class FavViewController: UIViewController, FavView {
         
  
         let emptyView = EmptyStateView(
-            message: "You haven't added any favorites yet! ⚽️",
+            message: NSLocalizedString("FAV_EMPTY_STATE", comment: ""),
             animationName: Constants.Lottie.emptyEvents
         )
         
@@ -52,12 +52,12 @@ class FavViewController: UIViewController, FavView {
     
     func confirmDeletion(at index: Int) {
         let alert = UIAlertController(
-            title: "Remove from Favorites",
-            message: "Are you sure you want to remove this league from your favorites?",
+            title: NSLocalizedString("FAV_REMOVE_TITLE", comment: ""),
+            message: NSLocalizedString("FAV_REMOVE_MESSAGE", comment: ""),
             preferredStyle: .alert
         )
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+        let deleteAction = UIAlertAction(title: NSLocalizedString("FAV_DELETE", comment: ""), style: .destructive) { [weak self] _ in
             guard let self = self else { return }
             
             let indexPath = IndexPath(row: index, section: 0)
@@ -82,7 +82,7 @@ class FavViewController: UIViewController, FavView {
             }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("FAV_CANCEL", comment: ""), style: .cancel, handler: nil)
         alert.addAction(deleteAction)
         alert.addAction(cancelAction)
         

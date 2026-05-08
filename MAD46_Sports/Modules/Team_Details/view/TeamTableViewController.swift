@@ -180,13 +180,13 @@ class TeamTableViewController: UITableViewController, TeamView {
 
         let playerName = player.playerName?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         cell.nameLabel.numberOfLines = 2
-        cell.nameLabel.text = playerName.isEmpty ? "Unknown Player" : playerName
+        cell.nameLabel.text = playerName.isEmpty ? NSLocalizedString("UNKNOWN_PLAYER", comment: "") : playerName
 
         let playerNumber = player.playerNumber?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         cell.numberLabel.text = playerNumber.isEmpty ? "-" : playerNumber
 
         let playerAge = player.playerAge?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        cell.subtitleLabel.text = playerAge.isEmpty ? "Age: --" : "Age: \(playerAge)"
+        cell.subtitleLabel.text = playerAge.isEmpty ? NSLocalizedString("AGE_UNKNOWN", comment: "") : String(format: NSLocalizedString("AGE_VALUE", comment: ""), playerAge)
 
         cell.roleBadgeLabel.text = sectionType.badgeText
         cell.roleBadgeLabel.backgroundColor = sectionType.badgeColor
@@ -218,7 +218,7 @@ class TeamTableViewController: UITableViewController, TeamView {
         hideHeaderSkeleton()
         
         let teamName = presenter.getTeamName().trimmingCharacters(in: .whitespacesAndNewlines)
-        teamHeaderView.teamNameLabel.text = teamName.isEmpty ? "Unknown Team" : teamName
+        teamHeaderView.teamNameLabel.text = teamName.isEmpty ? NSLocalizedString("UNKNOWN_TEAM", comment: "") : teamName
         
         let placeholderName: String
         let sport = presenter.sportName.lowercased()
@@ -247,12 +247,12 @@ class TeamTableViewController: UITableViewController, TeamView {
         tableView.reloadData()
         
         let alert = UIAlertController(
-            title: "  Something Went Wrong",
+            title: NSLocalizedString("TEAM_ERROR_TITLE", comment: ""),
             message: "\n" + message,
             preferredStyle: .actionSheet
         )
         let titleAttr = NSAttributedString(
-            string: "  Something Went Wrong",
+            string: NSLocalizedString("TEAM_ERROR_TITLE", comment: ""),
             attributes: [
                 .font: UIFont.systemFont(ofSize: 17, weight: .bold),
                 .foregroundColor: UIColor.systemOrange
@@ -267,7 +267,7 @@ class TeamTableViewController: UITableViewController, TeamView {
         )
         alert.setValue(titleAttr, forKey: "attributedTitle")
         alert.setValue(msgAttr,   forKey: "attributedMessage")
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("TEAM_ERROR_OK", comment: ""), style: .cancel))
         present(alert, animated: true)
     }
     

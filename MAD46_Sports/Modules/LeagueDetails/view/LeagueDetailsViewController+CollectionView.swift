@@ -33,7 +33,7 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
             }
             if presenter.getUpcomingEventsCount() == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.emptyStateCell, for: indexPath) as! EmptyStateCell
-                cell.setup(message: "No upcoming events", animationName: Constants.Lottie.emptyEvents)
+                cell.setup(message: NSLocalizedString("LEAGUE_NO_UPCOMING_EVENTS", comment: ""), animationName: Constants.Lottie.emptyEvents)
                 return cell
             }
             
@@ -49,7 +49,7 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
             
             if presenter.getLatestEventsCount() == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.emptyStateCell, for: indexPath) as! EmptyStateCell
-                cell.setup(message: "No recent results", animationName: Constants.Lottie.emptyEvents)
+                cell.setup(message: NSLocalizedString("LEAGUE_NO_RECENT_RESULTS", comment: ""), animationName: Constants.Lottie.emptyEvents)
                 return cell
             }
             
@@ -65,7 +65,7 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
             }
             if presenter.getParticipantsCount() == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.emptyStateCell, for: indexPath) as! EmptyStateCell
-                cell.setup(message: "No participants found", animationName: Constants.Lottie.emptyEvents)
+                cell.setup(message: NSLocalizedString("LEAGUE_NO_PARTICIPANTS", comment: ""), animationName: Constants.Lottie.emptyEvents)
                 return cell
             }
             
@@ -88,9 +88,9 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
         ) as! SectionHeaderView
         
         if indexPath.section == 0 {
-            header.setup(title: "Upcoming Events")
+            header.setup(title: NSLocalizedString("LEAGUE_UPCOMING_EVENTS", comment: ""))
         } else if indexPath.section == 1 {
-            header.setup(title: "Latest Results")
+            header.setup(title: NSLocalizedString("LEAGUE_LATEST_RESULTS", comment: ""))
         } else {
             header.setup(title: presenter.getParticipantSectionTitle())
         }

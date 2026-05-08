@@ -1,0 +1,69 @@
+/* Onboarding */
+"ONBOARDING_TITLE_1" = "Welcome to MAD46 Sports";
+"ONBOARDING_DESC_1" = "Follow the latest sports news and tournaments all in one place.";
+"ONBOARDING_TITLE_2" = "Track Your Teams";
+"ONBOARDING_DESC_2" = "Get detailed statistics and info about your favorite teams and players.";
+"ONBOARDING_TITLE_3" = "Never Miss a Match";
+"ONBOARDING_DESC_3" = "Stay up to date with upcoming match schedules and sporting events.";
+"ONBOARDING_GET_STARTED" = "Get Started";
+"ONBOARDING_SKIP" = "Skip";
+
+/* Leagues */
+"LEAGUES_NO_DATA" = "No leagues available for %@.";
+"LEAGUES_SEARCH_EMPTY" = "No leagues found matching your search.";
+
+/* League Details */
+"LEAGUE_UPCOMING_EVENTS" = "Upcoming Events";
+"LEAGUE_LATEST_RESULTS" = "Latest Results";
+"LEAGUE_NO_UPCOMING_EVENTS" = "No upcoming events";
+"LEAGUE_NO_RECENT_RESULTS" = "No recent results";
+"LEAGUE_NO_PARTICIPANTS" = "No participants found";
+
+/* Teams */
+"TEAM_ERROR_TITLE" = "  Something Went Wrong";
+"TEAM_ERROR_OK" = "OK";
+"TEAM_NO_PLAYERS" = "No players found for this team.";
+"TEAM_LOAD_ERROR" = "Failed to load players data.";
+
+/* Favorites */
+"FAV_REMOVE_TITLE" = "Remove from Favorites";
+"FAV_DELETE" = "Delete";
+"FAV_CANCEL" = "Cancel";
+"FAV_EMPTY_STATE" = "You haven't added any favorites yet! ⚽️";
+"FAV_REMOVE_MESSAGE" = "Are you sure you want to remove this league from your favorites?";
+
+/* Sports */
+"Football" = "Football";
+"Basketball" = "Basketball";
+"Tennis" = "Tennis";
+"Cricket" = "Cricket";
+
+
+"LEAGUE_PARTICIPATING_PLAYERS" = "Participating Players";
+"LEAGUE_PARTICIPATING_TEAMS" = "Participating Teams";
+
+
+/* Team Sections */
+"TEAM_SECTION_GOALKEEPERS" = "GOALKEEPERS";
+"TEAM_SECTION_DEFENDERS" = "DEFENDERS";
+"TEAM_SECTION_MIDFIELDERS" = "MIDFIELDERS";
+"TEAM_SECTION_FORWARDS" = "FORWARDS";
+
+"TEAM_BADGE_GK" = "GK";
+"TEAM_BADGE_DEF" = "DEF";
+"TEAM_BADGE_MID" = "MID";
+"TEAM_BADGE_FWD" = "FWD";
+
+/* General / Unknown States */
+"UNKNOWN_PLAYER" = "Unknown Player";
+"UNKNOWN_TEAM" = "Unknown Team";
+"UNKNOWN_LEAGUE" = "Unknown League";
+"UNKNOWN" = "Unknown";
+"AGE_UNKNOWN" = "Age: --";
+"AGE_VALUE" = "Age: %@";
+
+/* Basketball Game */
+"GAME_SCORE_ZERO" = "Score: 0";
+"GAME_SCORE_VALUE" = "Score: %@";
+"GAME_CLOSE" = "Close";
+

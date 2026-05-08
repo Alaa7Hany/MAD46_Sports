@@ -10,6 +10,7 @@ class DateHelper {
     
     static func getTodayString() -> String {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: Date())
     }
@@ -29,6 +30,7 @@ class DateHelper {
     
     static func getPastDateString(for sport: String) -> String {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd"
         
         let offset = getMonthOffset(for: sport)
@@ -39,6 +41,7 @@ class DateHelper {
     
     static func getFutureDateString(for sport: String) -> String {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy-MM-dd"
         
         let offset = getMonthOffset(for: sport)

@@ -18,9 +18,9 @@ class OnBoardingPresenter {
     
     func setUpPages() {
             pages = [
-                OnBoardingModel(title: "Welcome to MAD46 Sports", desc: "Follow the latest sports news and tournaments all in one place.", image: "onboarding1"),
-                OnBoardingModel(title: "Track Your Teams", desc: "Get detailed statistics and info about your favorite teams and players.", image: "onboarding2"),
-                OnBoardingModel(title: "Never Miss a Match", desc: "Stay up to date with upcoming match schedules and sporting events.", image: "onboarding3")
+                OnBoardingModel(title: NSLocalizedString("ONBOARDING_TITLE_1", comment: ""), desc: NSLocalizedString("ONBOARDING_DESC_1", comment: ""), image: "onboarding1"),
+                OnBoardingModel(title: NSLocalizedString("ONBOARDING_TITLE_2", comment: ""), desc: NSLocalizedString("ONBOARDING_DESC_2", comment: ""), image: "onboarding2"),
+                OnBoardingModel(title: NSLocalizedString("ONBOARDING_TITLE_3", comment: ""), desc: NSLocalizedString("ONBOARDING_DESC_3", comment: ""), image: "onboarding3")
             ]
         }
     

@@ -34,14 +34,14 @@ import Foundation
                      switch result {
                      case .success(let playersList):
                          if playersList.isEmpty {
-                             self.view?.showError(message: "No players found for this team.")
+                             self.view?.showError(message: NSLocalizedString("TEAM_NO_PLAYERS", comment: ""))
                          } else {
                              self.players = playersList
                              self.view?.reloadData()
                          }
                      case .failure(let error):
                          print("Error fetching roster: \(error.localizedDescription)")
-                         self.view?.showError(message: "Failed to load players data.")
+                         self.view?.showError(message: NSLocalizedString("TEAM_LOAD_ERROR", comment: ""))
                      }
                  }
              }

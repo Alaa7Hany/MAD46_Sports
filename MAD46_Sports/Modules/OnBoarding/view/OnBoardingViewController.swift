@@ -138,7 +138,7 @@ class OnBoardingViewController: UIViewController, OnBoardingView {
     
     private lazy var getStartedButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Get Started", for: .normal)
+        button.setTitle(NSLocalizedString("ONBOARDING_GET_STARTED", comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(named: "AppPrimary") ?? .systemBlue
@@ -157,7 +157,7 @@ class OnBoardingViewController: UIViewController, OnBoardingView {
     
     private lazy var skipButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Skip", for: .normal)
+        button.setTitle(NSLocalizedString("ONBOARDING_SKIP", comment: ""), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(named: "AppPrimary") ?? .systemBlue

@@ -53,14 +53,14 @@ class BasketballGameViewController: UIViewController {
 
     // MARK: - Setup
     private func setupUI() {
-        closeButton.setTitle("Close", for: .normal)
+        closeButton.setTitle(NSLocalizedString("GAME_CLOSE", comment: ""), for: .normal)
         closeButton.tintColor = .white
         closeButton.titleLabel?.font = .boldSystemFont(ofSize: 18)
         closeButton.frame = CGRect(x: 20, y: 50, width: 80, height: 40)
         closeButton.addTarget(self, action: #selector(closeGame), for: .touchUpInside)
         view.addSubview(closeButton)
         
-        scoreLabel.text = "Score: 0"
+        scoreLabel.text = NSLocalizedString("GAME_SCORE_ZERO", comment: "")
         scoreLabel.textColor = .white
         scoreLabel.font = .boldSystemFont(ofSize: 24)
         scoreLabel.frame = CGRect(x: view.bounds.width - 120, y: 50, width: 100, height: 40)
@@ -185,7 +185,7 @@ class BasketballGameViewController: UIViewController {
     private func scored() {
         isBallThrown = false
         score += 1
-        scoreLabel.text = "Score: \(score)"
+        scoreLabel.text = String(format: NSLocalizedString("GAME_SCORE_VALUE", comment: ""), "\(score)")
         
         UIView.animate(withDuration: 0.1, animations: {
             self.hoop.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)

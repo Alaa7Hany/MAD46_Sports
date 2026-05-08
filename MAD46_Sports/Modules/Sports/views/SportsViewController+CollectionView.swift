@@ -85,7 +85,7 @@ extension SportsViewController: UICollectionViewDataSource, UICollectionViewDele
         let actualIndex = collectionView == bannerCollectionview ? (indexPath.row % presenter.getSportsCount()) : indexPath.row
         let sport = presenter.getSport(at: actualIndex)
         
-        cell.lblName.text = sport.sportName
+        cell.lblName.text = NSLocalizedString(sport.sportName ?? "", comment: "")
         cell.imageV.image = UIImage(named: sport.sportThumb ?? "")
         return cell
     }

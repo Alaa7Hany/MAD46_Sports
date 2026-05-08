@@ -76,7 +76,7 @@ class CoreDataManager
         }
     func toggleLeagueFavoriteStatus(apiLeague: LeagueModel, sportName: String) {
         let leagueId = Int16(apiLeague.leagueKey ?? 0)
-        let leagueName = apiLeague.leagueName ?? "Unknown"
+        let leagueName = apiLeague.leagueName ?? NSLocalizedString("UNKNOWN", comment: "")
         let logoUrlString = apiLeague.leagueLogo
         
         let isSaved = CoreDataManager.shared.toggleFavorite(id: leagueId, name: leagueName, logo: logoUrlString, sportName: sportName)

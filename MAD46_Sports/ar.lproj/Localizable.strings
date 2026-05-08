@@ -1,0 +1,69 @@
+/* Onboarding */
+"ONBOARDING_TITLE_1" = "مرحبًا بك في رياضة MAD46";
+"ONBOARDING_DESC_1" = "تابع أحدث الأخبار الرياضية والبطولات في مكان واحد.";
+"ONBOARDING_TITLE_2" = "تتبع فرقك المفضلة";
+"ONBOARDING_DESC_2" = "احصل على إحصائيات ومعلومات مفصلة حول فرقك ولاعبيك المفضلين.";
+"ONBOARDING_TITLE_3" = "لا تفوت أي مباراة";
+"ONBOARDING_DESC_3" = "ابق على اطلاع دائم بمواعيد المباريات القادمة والأحداث الرياضية.";
+"ONBOARDING_GET_STARTED" = "ابدأ الآن";
+"ONBOARDING_SKIP" = "تخطي";
+
+/* Leagues */
+"LEAGUES_NO_DATA" = "لا توجد دوريات متاحة لـ %@.";
+"LEAGUES_SEARCH_EMPTY" = "لم يتم العثور على دوريات تطابق بحثك.";
+
+/* League Details */
+"LEAGUE_UPCOMING_EVENTS" = "الأحداث القادمة";
+"LEAGUE_LATEST_RESULTS" = "أحدث النتائج";
+"LEAGUE_NO_UPCOMING_EVENTS" = "لا توجد أحداث قادمة";
+"LEAGUE_NO_RECENT_RESULTS" = "لا توجد نتائج حديثة";
+"LEAGUE_NO_PARTICIPANTS" = "لم يتم العثور على مشاركين";
+
+/* Teams */
+"TEAM_ERROR_TITLE" = "  حدث خطأ ما";
+"TEAM_ERROR_OK" = "موافق";
+"TEAM_NO_PLAYERS" = "لم يتم العثور على لاعبين لهذا الفريق.";
+"TEAM_LOAD_ERROR" = "فشل في تحميل بيانات اللاعبين.";
+
+/* Favorites */
+"FAV_REMOVE_TITLE" = "إزالة من المفضلة";
+"FAV_DELETE" = "حذف";
+"FAV_CANCEL" = "إلغاء";
+"FAV_EMPTY_STATE" = "لم تقم بإضافة أي مفضلة بعد! ⚽️";
+"FAV_REMOVE_MESSAGE" = "هل أنت متأكد أنك تريد إزالة هذا الدوري من مفضلتك؟";
+
+/* Sports */
+"Football" = "كرة القدم";
+"Basketball" = "كرة السلة";
+"Tennis" = "التنس";
+"Cricket" = "الكريكيت";
+
+
+"LEAGUE_PARTICIPATING_PLAYERS" = "اللاعبون المشاركون";
+"LEAGUE_PARTICIPATING_TEAMS" = "الفرق المشاركة";
+
+
+/* Team Sections */
+"TEAM_SECTION_GOALKEEPERS" = "حراس المرمى";
+"TEAM_SECTION_DEFENDERS" = "المدافعون";
+"TEAM_SECTION_MIDFIELDERS" = "خط الوسط";
+"TEAM_SECTION_FORWARDS" = "المهاجمون";
+
+"TEAM_BADGE_GK" = "حارس";
+"TEAM_BADGE_DEF" = "مدافع";
+"TEAM_BADGE_MID" = "وسط";
+"TEAM_BADGE_FWD" = "مهاجم";
+
+/* General / Unknown States */
+"UNKNOWN_PLAYER" = "لاعب غير معروف";
+"UNKNOWN_TEAM" = "فريق غير معروف";
+"UNKNOWN_LEAGUE" = "دوري غير معروف";
+"UNKNOWN" = "غير معروف";
+"AGE_UNKNOWN" = "العمر: --";
+"AGE_VALUE" = "العمر: %@";
+
+/* Basketball Game */
+"GAME_SCORE_ZERO" = "النتيجة: 0";
+"GAME_SCORE_VALUE" = "النتيجة: %@";
+"GAME_CLOSE" = "إغلاق";
+

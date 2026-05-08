@@ -16,10 +16,10 @@ enum TeamSection: Int, CaseIterable {
 
     var title: String {
         switch self {
-        case .goalkeepers: return "GOALKEEPERS"
-        case .defenders: return "DEFENDERS"
-        case .midfielders: return "MIDFIELDERS"
-        case .forwards: return "FORWARDS"
+        case .goalkeepers: return NSLocalizedString("TEAM_SECTION_GOALKEEPERS", comment: "")
+        case .defenders: return NSLocalizedString("TEAM_SECTION_DEFENDERS", comment: "")
+        case .midfielders: return NSLocalizedString("TEAM_SECTION_MIDFIELDERS", comment: "")
+        case .forwards: return NSLocalizedString("TEAM_SECTION_FORWARDS", comment: "")
         }
     }
 
@@ -34,10 +34,10 @@ enum TeamSection: Int, CaseIterable {
 
     var badgeText: String {
         switch self {
-        case .goalkeepers: return "GK"
-        case .defenders: return "DEF"
-        case .midfielders: return "MID"
-        case .forwards: return "FWD"
+        case .goalkeepers: return NSLocalizedString("TEAM_BADGE_GK", comment: "")
+        case .defenders: return NSLocalizedString("TEAM_BADGE_DEF", comment: "")
+        case .midfielders: return NSLocalizedString("TEAM_BADGE_MID", comment: "")
+        case .forwards: return NSLocalizedString("TEAM_BADGE_FWD", comment: "")
         }
     }
 

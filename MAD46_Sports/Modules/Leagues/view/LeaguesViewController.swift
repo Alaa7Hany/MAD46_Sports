@@ -11,7 +11,7 @@ class LeaguesViewController: UIViewController, LeaguesView {
             super.viewDidLoad()
             
             self.navigationController?.navigationBar.tintColor = .appPrimary
-            self.title = presenter.sport.capitalized
+            self.title = NSLocalizedString(presenter.sport.capitalized, comment: "")
             
             let nib = UINib(nibName: "TableViewCell", bundle: nil)
             tableView.register(nib, forCellReuseIdentifier: "cell")
@@ -33,7 +33,7 @@ class LeaguesViewController: UIViewController, LeaguesView {
             
 
             let emptyView = EmptyStateView(
-                message: "No leagues available for \(presenter.sport.capitalized).",
+                message: String(format: NSLocalizedString("LEAGUES_NO_DATA", comment: ""), presenter.sport.capitalized),
                 animationName: Constants.Lottie.emptyEvents
             )
             tableView.backgroundView = emptyView
@@ -47,7 +47,7 @@ class LeaguesViewController: UIViewController, LeaguesView {
             
             if presenter.getCount() == 0 {
                 let emptyView = EmptyStateView(
-                    message: "No leagues found matching your search.",
+                    message: NSLocalizedString("LEAGUES_SEARCH_EMPTY", comment: ""),
                     animationName: Constants.Lottie.emptyEvents
                 )
                 tableView.backgroundView = emptyView

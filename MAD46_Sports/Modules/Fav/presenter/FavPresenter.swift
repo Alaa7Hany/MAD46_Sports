@@ -55,7 +55,7 @@ class FavPresenter {
     func didSelectLeague(at index: Int) {
             let coreDataLeague = favoriteLeagues[index]
             
-            let name = coreDataLeague.leagueName ?? "Unknown League"
+            let name = coreDataLeague.leagueName ?? NSLocalizedString("UNKNOWN_LEAGUE", comment: "")
             let savedSport = coreDataLeague.sportName ?? "football"
             let id = Int(coreDataLeague.leagueId)
             
