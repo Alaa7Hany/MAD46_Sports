@@ -15,8 +15,21 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="IV2-cb-btZ">
+                                <rect key="frame" x="98.333333333333329" y="352.66666666666669" width="196.33333333333343" height="196.66666666666669"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IV2-cb-btZ" secondAttribute="height" multiplier="1:1" id="yDi-9T-GWz"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="IV2-cb-btZ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="74O-ec-bdv"/>
+                            <constraint firstItem="IV2-cb-btZ" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="9hX-qL-Slx"/>
+                            <constraint firstItem="IV2-cb-btZ" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="1:2" id="V5x-dA-wHv"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -25,6 +38,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="logo" width="1024" height="1024"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
