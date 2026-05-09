@@ -78,13 +78,12 @@ extension SportsViewController: SportsViewProtocol {
     func displaySports() {
         self.isLoadingData = false
         DispatchQueue.main.async {
-            let count = self.presenter.getSportsCount()
+            
+            let count = self.presenter.getBannersCount()
             self.pageControl.numberOfPages = count
             
             self.collectionView.reloadData()
             self.bannerCollectionview.reloadData()
-            
-            let count = self.presenter.getBannersCount()
             if count > 0 {
                 let middleIndex = (count * self.infiniteMultiplier) / 2
                 self.currentBannerIndex = middleIndex - (middleIndex % count)
