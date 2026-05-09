@@ -33,10 +33,10 @@ class SportCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 10
         self.layer.masksToBounds = false
         
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.15
+        self.layer.shadowColor = UIColor.appPrimary.cgColor
+        self.layer.shadowOpacity = 0.25
         self.layer.shadowOffset = CGSize(width: 0, height: 4)
-        self.layer.shadowRadius = 10
+        self.layer.shadowRadius = 8
         
         imageV.layer.cornerRadius = 10
         imageV.clipsToBounds = true

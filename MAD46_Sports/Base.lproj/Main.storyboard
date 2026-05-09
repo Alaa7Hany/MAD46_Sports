@@ -109,10 +109,10 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="u4z-rk-W4H">
-                                <rect key="frame" x="16" y="151" width="382" height="150"/>
+                                <rect key="frame" x="16" y="151" width="382" height="190"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="CI9-WJ-FLS"/>
+                                    <constraint firstAttribute="height" constant="190" id="CI9-WJ-FLS"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hI9-Mm-af3">
                                     <size key="itemSize" width="128" height="128"/>
