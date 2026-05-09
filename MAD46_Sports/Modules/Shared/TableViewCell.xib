@@ -19,14 +19,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ExP-hT-WRC">
-                        <rect key="frame" x="10" y="14" width="64" height="64"/>
+                        <rect key="frame" x="10" y="11" width="70" height="70"/>
                         <color key="backgroundColor" name="AppSurface"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="70" id="4GW-Z8-fJQ"/>
                             <constraint firstAttribute="width" secondItem="ExP-hT-WRC" secondAttribute="height" multiplier="1:1" id="Li9-zq-g52"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Eh-63-cob">
-                        <rect key="frame" x="83.999999999999986" y="35.666666666666664" width="177.66666666666663" height="21"/>
+                        <rect key="frame" x="90" y="35.666666666666664" width="171.66666666666663" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -47,7 +48,6 @@
                     <constraint firstItem="ExP-hT-WRC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="7bw-PP-8pf"/>
                     <constraint firstItem="cLV-Jr-eff" firstAttribute="leading" secondItem="0Eh-63-cob" secondAttribute="trailing" constant="5" id="B0w-qA-INf"/>
                     <constraint firstAttribute="trailing" secondItem="cLV-Jr-eff" secondAttribute="trailing" id="DRy-Fs-9RT"/>
-                    <constraint firstItem="ExP-hT-WRC" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.2" id="Hrw-TR-tDL"/>
                     <constraint firstItem="0Eh-63-cob" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="IUc-Cw-6Ve"/>
                     <constraint firstItem="cLV-Jr-eff" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="OmC-r3-Rxr"/>
                     <constraint firstItem="cLV-Jr-eff" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:6" id="we9-03-Jme"/>
