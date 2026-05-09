@@ -18,7 +18,6 @@ protocol LeagueDetailsViewProtocol: AnyObject {
 class TeamCell: UICollectionViewCell {
 
     @IBOutlet weak var imageV: UIImageView!
-    // Shadow container placed behind imageV
     private let imageShadowView = UIView()
     private var shadowLayerAdded = false
 
@@ -28,7 +27,6 @@ class TeamCell: UICollectionViewCell {
         contentView.backgroundColor = UIColor(named: "AppSurface") ?? .systemBackground
         contentView.layer.masksToBounds = false
         
-        // Insert shadow container behind imageV
         if let superView = imageV.superview, !shadowLayerAdded {
             superView.insertSubview(imageShadowView, belowSubview: imageV)
             shadowLayerAdded = true
@@ -50,12 +48,10 @@ class TeamCell: UICollectionViewCell {
         let size = min(imageV.bounds.width, imageV.bounds.height)
         let radius = size / 2
         
-        // Circle Image
         imageV.layer.cornerRadius = radius
         imageV.layer.borderWidth = 1.5
         imageV.layer.borderColor = UIColor.appPrimary.withAlphaComponent(0.3).cgColor
         
-        // Shadow View
         imageShadowView.frame = imageV.frame
         imageShadowView.backgroundColor = UIColor(named: "AppSurface") ?? .systemBackground
         imageShadowView.layer.cornerRadius = radius
@@ -66,8 +62,7 @@ class TeamCell: UICollectionViewCell {
         imageShadowView.layer.shadowOffset = CGSize(width: 0, height: 3)
         imageShadowView.layer.shadowRadius = 5
         
-        // Circular cell background
-        contentView.layer.cornerRadius = 12 // Keeping it slightly rounded but not a full circle for the cell itself, only the image should be circular like Teams
+        contentView.layer.cornerRadius = 12 
         contentView.clipsToBounds = true
     }
     

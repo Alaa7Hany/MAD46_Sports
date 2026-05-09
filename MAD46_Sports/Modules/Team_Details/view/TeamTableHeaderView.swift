@@ -15,15 +15,21 @@ class TeamTableHeaderView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        teamLogoImageView.layer.borderColor = UIColor(white: 0, alpha: 0.1).cgColor
-        teamLogoImageView.layer.borderWidth = 1.0
-        teamLogoImageView.layer.cornerRadius = 16
+        backgroundColor = .clear
+        
+        teamLogoImageView.layer.borderColor = UIColor.appPrimary.withAlphaComponent(0.3).cgColor
+        teamLogoImageView.layer.borderWidth = 2.0
+        teamLogoImageView.layer.cornerRadius = 48
         teamLogoImageView.layer.masksToBounds = true
         teamLogoImageView.contentMode = .scaleAspectFill
+        teamLogoImageView.backgroundColor = .appSurface
+        
+        teamNameLabel.textColor = .appText
+        teamNameLabel.font = .systemFont(ofSize: 28, weight: .bold)
         
         isSkeletonable = true
         teamLogoImageView.isSkeletonable = true
-        teamLogoImageView.skeletonCornerRadius = 16
+        teamLogoImageView.skeletonCornerRadius = 48
         teamNameLabel.isSkeletonable = true
         teamNameLabel.linesCornerRadius = 8
     }
