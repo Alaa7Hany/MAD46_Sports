@@ -7,15 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12B590692FACDB6B00017371 /* basketball.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12B590612FACDB6B00017371 /* basketball.mp3 */; };
-		12B5906A2FACDB6B00017371 /* pop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12B590652FACDB6B00017371 /* pop.mp3 */; };
-		12B5906B2FACDB6B00017371 /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12B590632FACDB6B00017371 /* click.mp3 */; };
-		12B5906C2FACDB6B00017371 /* tennis.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12B590662FACDB6B00017371 /* tennis.mp3 */; };
-		12B5906D2FACDB6B00017371 /* paper.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12B590642FACDB6B00017371 /* paper.mp3 */; };
-		12B5906E2FACDB6B00017371 /* whistle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12B590672FACDB6B00017371 /* whistle.mp3 */; };
-		12B5906F2FACDB6B00017371 /* cheering.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12B590622FACDB6B00017371 /* cheering.mp3 */; };
+		6D2007F02FAFA18C0015A96B /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 6D2007EF2FAFA18C0015A96B /* SkeletonView */; };
 		6DCF58C72FA2BA4500B9724C /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6DCF58C62FA2BA4500B9724C /* Lottie */; };
-		D25FEF542FACADA200DA6881 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = D25FEF532FACADA200DA6881 /* SkeletonView */; };
 		D28E3D892FA0C53E00B10A4E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D28E3D882FA0C53E00B10A4E /* SDWebImage */; };
 		D28E3D8B2FA0C53E00B10A4E /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D28E3D8A2FA0C53E00B10A4E /* SDWebImageMapKit */; };
 		D28E3D8E2FA0C57B00B10A4E /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = D28E3D8D2FA0C57B00B10A4E /* Reachability */; };
@@ -45,13 +38,6 @@
 		124DF03A2FA0BDB2007647D6 /* MAD46_Sports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAD46_Sports.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		124DF0532FA0BDB4007647D6 /* MAD46_SportsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAD46_SportsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		124DF05D2FA0BDB4007647D6 /* MAD46_SportsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAD46_SportsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		12B590612FACDB6B00017371 /* basketball.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = basketball.mp3; sourceTree = "<group>"; };
-		12B590622FACDB6B00017371 /* cheering.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cheering.mp3; sourceTree = "<group>"; };
-		12B590632FACDB6B00017371 /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
-		12B590642FACDB6B00017371 /* paper.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = paper.mp3; sourceTree = "<group>"; };
-		12B590652FACDB6B00017371 /* pop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pop.mp3; sourceTree = "<group>"; };
-		12B590662FACDB6B00017371 /* tennis.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tennis.mp3; sourceTree = "<group>"; };
-		12B590672FACDB6B00017371 /* whistle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = whistle.mp3; sourceTree = "<group>"; };
 		D28E3D9C2FA0CAF800B10A4E /* League+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "League+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D28E3D9D2FA0CAF800B10A4E /* League+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "League+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,7 +82,7 @@
 				D28E3D8B2FA0C53E00B10A4E /* SDWebImageMapKit in Frameworks */,
 				D28E3DAB2FA0E7F300B10A4E /* Alamofire in Frameworks */,
 				D28E3D8E2FA0C57B00B10A4E /* Reachability in Frameworks */,
-				D25FEF542FACADA200DA6881 /* SkeletonView in Frameworks */,
+				6D2007F02FAFA18C0015A96B /* SkeletonView in Frameworks */,
 				D28E3D892FA0C53E00B10A4E /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,7 +107,6 @@
 		124DF0312FA0BDB2007647D6 = {
 			isa = PBXGroup;
 			children = (
-				12B590682FACDB6B00017371 /* Sounds */,
 				D28E3D9C2FA0CAF800B10A4E /* League+CoreDataClass.swift */,
 				D28E3D9D2FA0CAF800B10A4E /* League+CoreDataProperties.swift */,
 				124DF03C2FA0BDB2007647D6 /* MAD46_Sports */,
@@ -139,20 +124,6 @@
 				124DF05D2FA0BDB4007647D6 /* MAD46_SportsUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		12B590682FACDB6B00017371 /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				12B590612FACDB6B00017371 /* basketball.mp3 */,
-				12B590622FACDB6B00017371 /* cheering.mp3 */,
-				12B590632FACDB6B00017371 /* click.mp3 */,
-				12B590642FACDB6B00017371 /* paper.mp3 */,
-				12B590652FACDB6B00017371 /* pop.mp3 */,
-				12B590662FACDB6B00017371 /* tennis.mp3 */,
-				12B590672FACDB6B00017371 /* whistle.mp3 */,
-			);
-			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,7 +151,7 @@
 				D28E3D8D2FA0C57B00B10A4E /* Reachability */,
 				D28E3DAA2FA0E7F300B10A4E /* Alamofire */,
 				6DCF58C62FA2BA4500B9724C /* Lottie */,
-				D25FEF532FACADA200DA6881 /* SkeletonView */,
+				6D2007EF2FAFA18C0015A96B /* SkeletonView */,
 			);
 			productName = MAD46_Sports;
 			productReference = 124DF03A2FA0BDB2007647D6 /* MAD46_Sports.app */;
@@ -247,7 +218,6 @@
 					};
 					124DF0522FA0BDB4007647D6 = {
 						CreatedOnToolsVersion = 16.3;
-						LastSwiftMigration = 1630;
 						TestTargetID = 124DF0392FA0BDB2007647D6;
 					};
 					124DF05C2FA0BDB4007647D6 = {
@@ -271,7 +241,7 @@
 				D28E3D8C2FA0C57B00B10A4E /* XCRemoteSwiftPackageReference "Reachability" */,
 				D28E3DA92FA0E7F300B10A4E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				6DCF58C52FA2BA4500B9724C /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				D25FEF522FACADA200DA6881 /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				6D2007EE2FAFA18C0015A96B /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 124DF03B2FA0BDB2007647D6 /* Products */;
@@ -290,13 +260,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12B590692FACDB6B00017371 /* basketball.mp3 in Resources */,
-				12B5906A2FACDB6B00017371 /* pop.mp3 in Resources */,
-				12B5906B2FACDB6B00017371 /* click.mp3 in Resources */,
-				12B5906C2FACDB6B00017371 /* tennis.mp3 in Resources */,
-				12B5906D2FACDB6B00017371 /* paper.mp3 in Resources */,
-				12B5906E2FACDB6B00017371 /* whistle.mp3 in Resources */,
-				12B5906F2FACDB6B00017371 /* cheering.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,7 +328,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MAD46_Sports/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "League-Lens";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -393,7 +355,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MAD46_Sports/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "League-Lens";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -535,7 +496,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -544,8 +504,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "iti.MAD46-SportsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MAD46_Sports.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MAD46_Sports";
@@ -556,7 +514,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -565,7 +522,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "iti.MAD46-SportsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MAD46_Sports.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MAD46_Sports";
@@ -646,20 +602,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6D2007EE2FAFA18C0015A96B /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
 		6DCF58C52FA2BA4500B9724C /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.6.0;
-			};
-		};
-		D25FEF522FACADA200DA6881 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.31.0;
 			};
 		};
 		D28E3D872FA0C53E00B10A4E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
@@ -689,15 +645,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6D2007EF2FAFA18C0015A96B /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D2007EE2FAFA18C0015A96B /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
+		};
 		6DCF58C62FA2BA4500B9724C /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6DCF58C52FA2BA4500B9724C /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		D25FEF532FACADA200DA6881 /* SkeletonView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D25FEF522FACADA200DA6881 /* XCRemoteSwiftPackageReference "SkeletonView" */;
-			productName = SkeletonView;
 		};
 		D28E3D882FA0C53E00B10A4E /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -31,6 +31,8 @@
 "FAV_CANCEL" = "Cancel";
 "FAV_EMPTY_STATE" = "You haven't added any favorites yet! ⚽️";
 "FAV_REMOVE_MESSAGE" = "Are you sure you want to remove this league from your favorites?";
+"FAV_TITLE" = "Favorite Leagues";
+"Other" = "Other";
 
 /* Sports */
 "Football" = "Football";
