@@ -14,7 +14,7 @@ extension UIViewController {
             message: NSLocalizedString("NO_INTERNET_MSG", comment: ""),
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
 }

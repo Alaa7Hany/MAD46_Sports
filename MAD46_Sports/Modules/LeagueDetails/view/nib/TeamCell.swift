@@ -9,12 +9,6 @@ import UIKit
 import SDWebImage
 import SkeletonView
 
-protocol LeagueDetailsViewProtocol: AnyObject {
-    func displayData()
-    func startLoading()
-    func stopLoading()
-}
-
 class TeamCell: UICollectionViewCell {
 
     @IBOutlet weak var imageV: UIImageView!

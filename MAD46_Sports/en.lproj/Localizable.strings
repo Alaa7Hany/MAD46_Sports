@@ -70,6 +70,8 @@
 //Alert
 "NO_INTERNET" = "No Internet Connection";
 "NO_INTERNET_MSG" = "Please check your connection and try again.";
-
+"Coming_Soon" = "Coming Soon";
+"Coming_feature" = "This feature will be available in next updates.";
+"OK" = "OK";
 
 
