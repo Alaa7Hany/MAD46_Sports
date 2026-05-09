@@ -58,6 +58,7 @@ class TeamCell: UICollectionViewCell {
         
         contentView.layer.cornerRadius = 12 
         contentView.clipsToBounds = true
+        contentView.applySubtlePrimaryGradient(radius: 12)
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

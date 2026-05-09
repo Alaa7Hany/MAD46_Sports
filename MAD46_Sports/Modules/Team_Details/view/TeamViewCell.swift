@@ -35,6 +35,8 @@ final class TeamViewCell: UITableViewCell {
         
         avatarShadowView.frame = avatarImageView.frame
         avatarShadowView.layer.cornerRadius = avatarRadius
+        
+        cardView.applySubtlePrimaryGradient(radius: 16)
     }
     
     override func prepareForReuse() {

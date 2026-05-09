@@ -22,6 +22,7 @@ class SportCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer.frame = self.bounds
+        self.applySubtlePrimaryGradient(radius: 10)
     }
     
     func configureCell(name: String, image: String){

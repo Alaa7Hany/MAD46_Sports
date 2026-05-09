@@ -73,11 +73,13 @@ class TableViewCell: UITableViewCell {
         
         // Card shadow
         contentView.layer.cornerRadius = 14
-        contentView.layer.shadowColor = UIColor.appPrimary.cgColor
-        contentView.layer.shadowOpacity = 0.1
+        contentView.layer.shadowColor = UIColor.black.cgColor
+        contentView.layer.shadowOpacity = 0.2
         contentView.layer.shadowOffset = CGSize(width: 0, height: 3)
         contentView.layer.shadowRadius = 6
         contentView.layer.masksToBounds = false
+        
+        contentView.applySubtlePrimaryGradient(radius: 14)
         
         self.layoutIfNeeded()
         
@@ -87,7 +89,7 @@ class TableViewCell: UITableViewCell {
         imageV.contentMode = .scaleAspectFill
         
         imageV.layer.borderWidth = 1.5
-        imageV.layer.borderColor = UIColor.appPrimary.withAlphaComponent(0.3).cgColor
+        imageV.layer.borderColor = (UIColor(named: "AppPrimary") ?? .systemGreen).withAlphaComponent(0.3).cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

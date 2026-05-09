@@ -24,7 +24,7 @@ class UpcomingEventCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = .secondarySystemGroupedBackground
+        backgroundColor = .clear
         layer.cornerRadius = 12
         
         layer.shadowColor = UIColor.appPrimary.cgColor
@@ -35,7 +35,7 @@ class UpcomingEventCell: UICollectionViewCell {
         
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
-        contentView.backgroundColor = .secondarySystemGroupedBackground
+        contentView.backgroundColor = UIColor(named: "AppSurface") ?? .secondarySystemGroupedBackground
         
         if !shadowLayerAdded {
             contentView.insertSubview(homeShadowView, belowSubview: imgHome)
@@ -93,6 +93,8 @@ class UpcomingEventCell: UICollectionViewCell {
         
         awayShadowView.frame = imgAway.frame
         awayShadowView.layer.cornerRadius = awayRadius
+        
+        contentView.applySubtlePrimaryGradient(radius: 12)
     }
 
     override func prepareForReuse() {
