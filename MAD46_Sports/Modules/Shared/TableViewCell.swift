@@ -68,25 +68,26 @@ class TableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let margins = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        let margins = UIEdgeInsets(top: 6, left: 16, bottom: 4, right: 16)
         contentView.frame = contentView.frame.inset(by: margins)
         
-        contentView.layer.cornerRadius = 16
+        // Card shadow
+        contentView.layer.cornerRadius = 14
         contentView.layer.shadowColor = UIColor.appPrimary.cgColor
-        contentView.layer.shadowOpacity = 0.25
-        contentView.layer.shadowOffset = CGSize(width: 0, height: 4)
-        contentView.layer.shadowRadius = 8
+        contentView.layer.shadowOpacity = 0.1
+        contentView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        contentView.layer.shadowRadius = 6
         contentView.layer.masksToBounds = false
         
         self.layoutIfNeeded()
         
-        let radius = min(imageV.bounds.width, imageV.bounds.height) / 2
-        imageV.layer.cornerRadius = radius
+        let size = min(imageV.bounds.width, imageV.bounds.height)
+        imageV.layer.cornerRadius = size / 2
+        imageV.clipsToBounds = true
+        imageV.contentMode = .scaleAspectFill
         
         imageV.layer.borderWidth = 1.5
-      
-        imageV.layer.borderColor = UIColor.systemGray4.cgColor
-     
+        imageV.layer.borderColor = UIColor.appPrimary.withAlphaComponent(0.3).cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
