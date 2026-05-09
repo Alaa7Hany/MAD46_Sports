@@ -18,19 +18,30 @@ class UpcomingEventCell: UICollectionViewCell {
     @IBOutlet weak var imgAway: UIImageView!
     @IBOutlet weak var imgHome: UIImageView!
     
+    private let homeShadowView = UIView()
+    private let awayShadowView = UIView()
+    private var shadowLayerAdded = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = .secondarySystemGroupedBackground
         layer.cornerRadius = 12
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.08
-        layer.shadowOffset = CGSize(width: 0, height: 2)
-        layer.shadowRadius = 4
+        
+        layer.shadowColor = UIColor.appPrimary.cgColor
+        layer.shadowOpacity = 0.15
+        layer.shadowOffset = CGSize(width: 0, height: 4)
+        layer.shadowRadius = 8
         layer.masksToBounds = false
         
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
         contentView.backgroundColor = .secondarySystemGroupedBackground
+        
+        if !shadowLayerAdded {
+            contentView.insertSubview(homeShadowView, belowSubview: imgHome)
+            contentView.insertSubview(awayShadowView, belowSubview: imgAway)
+            shadowLayerAdded = true
+        }
         
         isSkeletonable = true
         contentView.isSkeletonable = true
@@ -50,24 +61,38 @@ class UpcomingEventCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // Making images perfectly circular like Teams
         let homeSize = min(imgHome.bounds.width, imgHome.bounds.height)
-        imgHome.layer.cornerRadius = homeSize / 2
+        let homeRadius = homeSize / 2
+        imgHome.layer.cornerRadius = homeRadius
         
         let awaySize = min(imgAway.bounds.width, imgAway.bounds.height)
-        imgAway.layer.cornerRadius = awaySize / 2
+        let awayRadius = awaySize / 2
+        imgAway.layer.cornerRadius = awayRadius
         
         imgHome.clipsToBounds = true
         imgAway.clipsToBounds = true
-        
         imgHome.contentMode = .scaleAspectFill
         imgAway.contentMode = .scaleAspectFill
         
-        // Adding a subtle border and shadow for a premium Teams-like look
         imgHome.layer.borderWidth = 1.5
         imgAway.layer.borderWidth = 1.5
         imgHome.layer.borderColor = UIColor.appPrimary.withAlphaComponent(0.3).cgColor
         imgAway.layer.borderColor = UIColor.appPrimary.withAlphaComponent(0.3).cgColor
+        
+        [homeShadowView, awayShadowView].forEach {
+            $0.backgroundColor = .secondarySystemGroupedBackground
+            $0.layer.masksToBounds = false
+            $0.layer.shadowColor = UIColor.appPrimary.cgColor
+            $0.layer.shadowOpacity = 0.2
+            $0.layer.shadowOffset = CGSize(width: 0, height: 3)
+            $0.layer.shadowRadius = 6
+        }
+        
+        homeShadowView.frame = imgHome.frame
+        homeShadowView.layer.cornerRadius = homeRadius
+        
+        awayShadowView.frame = imgAway.frame
+        awayShadowView.layer.cornerRadius = awayRadius
     }
 
     override func prepareForReuse() {

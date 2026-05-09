@@ -16,6 +16,9 @@ final class TeamViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var roleBadgeLabel: UILabel!
+    
+    private let avatarShadowView = UIView()
+    private var shadowLayerAdded = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +29,12 @@ final class TeamViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         numberLabel.layer.cornerRadius = numberLabel.bounds.height / 2
-        avatarImageView.layer.cornerRadius = avatarImageView.bounds.height / 2
+        
+        let avatarRadius = avatarImageView.bounds.height / 2
+        avatarImageView.layer.cornerRadius = avatarRadius
+        
+        avatarShadowView.frame = avatarImageView.frame
+        avatarShadowView.layer.cornerRadius = avatarRadius
     }
     
     override func prepareForReuse() {
@@ -44,29 +52,41 @@ final class TeamViewCell: UITableViewCell {
         contentView.backgroundColor = .clear
         selectionStyle = .none
 
-        cardView.backgroundColor = .white
+        cardView.backgroundColor = .appSurface
         cardView.layer.cornerRadius = 16
         cardView.layer.masksToBounds = false
-        cardView.layer.shadowColor = UIColor(red: 0.08, green: 0.10, blue: 0.30, alpha: 1).cgColor
-        cardView.layer.shadowOpacity = 0.10
+        cardView.layer.shadowColor = UIColor.appPrimary.cgColor
+        cardView.layer.shadowOpacity = 0.12
         cardView.layer.shadowOffset = CGSize(width: 0, height: 4)
         cardView.layer.shadowRadius = 10
-           cardView.layer.borderWidth = 0
+        cardView.layer.borderWidth = 0
 
-        numberLabel.backgroundColor = UIColor(red: 0.93, green: 0.95, blue: 0.98, alpha: 1)
-        numberLabel.textColor = UIColor(red: 0.18, green: 0.42, blue: 0.92, alpha: 1)
+        // Avatar Shadow
+        if !shadowLayerAdded {
+            cardView.insertSubview(avatarShadowView, belowSubview: avatarImageView)
+            shadowLayerAdded = true
+        }
+        avatarShadowView.backgroundColor = .appSurface
+        avatarShadowView.layer.masksToBounds = false
+        avatarShadowView.layer.shadowColor = UIColor.appPrimary.cgColor
+        avatarShadowView.layer.shadowOpacity = 0.15
+        avatarShadowView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        avatarShadowView.layer.shadowRadius = 5
+
+        numberLabel.backgroundColor = UIColor.appPrimary.withAlphaComponent(0.1)
+        numberLabel.textColor = .appPrimary
         numberLabel.font = .systemFont(ofSize: 16, weight: .bold)
         numberLabel.textAlignment = .center
         numberLabel.clipsToBounds = true
 
-        avatarImageView.backgroundColor = UIColor(red: 0.93, green: 0.95, blue: 0.98, alpha: 1)
+        avatarImageView.backgroundColor = UIColor.appSecondaryText.withAlphaComponent(0.1)
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.clipsToBounds = true
 
-        nameLabel.textColor = UIColor(red: 0.07, green: 0.09, blue: 0.20, alpha: 1)
+        nameLabel.textColor = .appText
         nameLabel.font = .systemFont(ofSize: 18, weight: .bold)
 
-        subtitleLabel.textColor = .secondaryLabel
+        subtitleLabel.textColor = .appSecondaryText
         subtitleLabel.font = .systemFont(ofSize: 15, weight: .regular)
         
         let isRTL = UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft

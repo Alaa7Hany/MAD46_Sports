@@ -17,18 +17,31 @@ class LatestEventCell: UICollectionViewCell {
     @IBOutlet weak var lblScore: UILabel!
     @IBOutlet weak var imgaway: UIImageView!
     @IBOutlet weak var imghome: UIImageView!
+    
+    private let homeShadowView = UIView()
+    private let awayShadowView = UIView()
+    private var shadowLayerAdded = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = .secondarySystemGroupedBackground
         self.layer.cornerRadius = 12
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.08
-        self.layer.shadowOffset = CGSize(width: 0, height: 2)
-        self.layer.shadowRadius = 4
+        
+        self.layer.shadowColor = UIColor.appPrimary.cgColor
+        self.layer.shadowOpacity = 0.15
+        self.layer.shadowOffset = CGSize(width: 0, height: 4)
+        self.layer.shadowRadius = 8
         self.layer.masksToBounds = false
+        
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
         contentView.backgroundColor = .secondarySystemGroupedBackground
+        
+        if !shadowLayerAdded {
+            contentView.insertSubview(homeShadowView, belowSubview: imghome)
+            contentView.insertSubview(awayShadowView, belowSubview: imgaway)
+            shadowLayerAdded = true
+        }
         
         isSkeletonable = true
         contentView.isSkeletonable = true
@@ -48,24 +61,38 @@ class LatestEventCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // Making images perfectly circular like Teams
         let homeSize = min(imghome.bounds.width, imghome.bounds.height)
-        imghome.layer.cornerRadius = homeSize / 2
+        let homeRadius = homeSize / 2
+        imghome.layer.cornerRadius = homeRadius
         
         let awaySize = min(imgaway.bounds.width, imgaway.bounds.height)
-        imgaway.layer.cornerRadius = awaySize / 2
+        let awayRadius = awaySize / 2
+        imgaway.layer.cornerRadius = awayRadius
         
         imghome.clipsToBounds = true
         imgaway.clipsToBounds = true
-        
         imghome.contentMode = .scaleAspectFill
         imgaway.contentMode = .scaleAspectFill
         
-        // Adding a subtle border and shadow for a premium look
         imghome.layer.borderWidth = 1.5
         imgaway.layer.borderWidth = 1.5
         imghome.layer.borderColor = UIColor.appPrimary.withAlphaComponent(0.3).cgColor
         imgaway.layer.borderColor = UIColor.appPrimary.withAlphaComponent(0.3).cgColor
+        
+        [homeShadowView, awayShadowView].forEach {
+            $0.backgroundColor = .secondarySystemGroupedBackground
+            $0.layer.masksToBounds = false
+            $0.layer.shadowColor = UIColor.appPrimary.cgColor
+            $0.layer.shadowOpacity = 0.2
+            $0.layer.shadowOffset = CGSize(width: 0, height: 3)
+            $0.layer.shadowRadius = 6
+        }
+        
+        homeShadowView.frame = imghome.frame
+        homeShadowView.layer.cornerRadius = homeRadius
+        
+        awayShadowView.frame = imgaway.frame
+        awayShadowView.layer.cornerRadius = awayRadius
     }
 
     override func prepareForReuse() {

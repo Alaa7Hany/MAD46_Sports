@@ -53,7 +53,6 @@ extension LatestEventsContainerCell: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.latestEventCell, for: indexPath) as! LatestEventCell
         
-        // Configure your existing cell
         cell.setup(with: latestEvents[indexPath.row])
         return cell
     }

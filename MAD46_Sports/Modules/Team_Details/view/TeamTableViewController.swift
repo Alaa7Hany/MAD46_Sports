@@ -26,6 +26,11 @@ class TeamTableViewController: UITableViewController, TeamView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .appBackground
+        tableView.backgroundColor = .appBackground
+        tableView.separatorStyle = .none
+        
         presenter.attachView(self)
         configureTableView()
         setupTableHeader()
