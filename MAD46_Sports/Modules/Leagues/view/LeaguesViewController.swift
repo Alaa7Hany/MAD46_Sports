@@ -22,6 +22,7 @@ class LeaguesViewController: UIViewController, LeaguesView {
             tableView.rowHeight = 100
             tableView.estimatedRowHeight = 100
             tableView.isSkeletonable = true
+            tableView.separatorStyle = .none
             
             self.view.layoutIfNeeded()
                     
@@ -54,7 +55,7 @@ class LeaguesViewController: UIViewController, LeaguesView {
                 tableView.separatorStyle = .none
             } else {
                 tableView.backgroundView = nil
-                tableView.separatorStyle = .singleLine
+                tableView.separatorStyle = .none
             }
             
             tableView.reloadData()

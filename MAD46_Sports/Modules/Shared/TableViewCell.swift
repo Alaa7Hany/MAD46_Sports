@@ -53,6 +53,10 @@ class TableViewCell: UITableViewCell {
     override func awakeFromNib() {
             super.awakeFromNib()
             
+            self.selectionStyle = .none
+            self.contentView.backgroundColor = UIColor(named: "AppSurface") ?? .systemBackground
+            self.backgroundColor = .clear
+            
             self.imageV.skeletonCornerRadius = 32
             
             self.isSkeletonable = true
@@ -63,6 +67,17 @@ class TableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        let margins = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        contentView.frame = contentView.frame.inset(by: margins)
+        
+        contentView.layer.cornerRadius = 16
+        contentView.layer.shadowColor = UIColor.appPrimary.cgColor
+        contentView.layer.shadowOpacity = 0.25
+        contentView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        contentView.layer.shadowRadius = 8
+        contentView.layer.masksToBounds = false
+        
         self.layoutIfNeeded()
         
         let radius = min(imageV.bounds.width, imageV.bounds.height) / 2
