@@ -20,7 +20,6 @@ class BasketballGameViewController: UIViewController {
     private var isBallThrown = false
     private var displayLink: CADisplayLink?
     
-    // Tracks the invisible "slingshot"
     private var touchStartPoint: CGPoint = .zero
 
     override func viewDidLoad() {
@@ -99,13 +98,12 @@ class BasketballGameViewController: UIViewController {
                               from: CGPoint(x: width, y: height),
                               to: CGPoint(x: width, y: -2000))
         
-        // ENHANCED PHYSICS PROPERTIES
         bounce = UIDynamicItemBehavior(items: [ball])
-        bounce.elasticity = 0.65       // Natural rubber bounce
-        bounce.friction = 0.4          // Grabs the wall slightly when bouncing
-        bounce.density = 2.0           // Makes the ball feel heavier
-        bounce.angularResistance = 0.2 // Allows it to spin smoothly
-        bounce.allowsRotation = true   // Allows the emoji to physically rotate
+        bounce.elasticity = 0.65
+        bounce.friction = 0.4
+        bounce.density = 2.0
+        bounce.angularResistance = 0.2
+        bounce.allowsRotation = true
     }
 
     private func setupGesture() {
@@ -127,7 +125,6 @@ class BasketballGameViewController: UIViewController {
                 let dx = touchEndPoint.x - touchStartPoint.x
                 let dy = touchEndPoint.y - touchStartPoint.y
                 
-                // Only allow upward throws
                 guard dy < 0 else { return }
                 
                 isBallThrown = true
@@ -136,11 +133,9 @@ class BasketballGameViewController: UIViewController {
                 animator.addBehavior(collision)
                 animator.addBehavior(bounce)
                 
-                // BOUNCED UP THE FORCE: Lowered the divisor from 35 to 25
                 var pushX = dx / 25
                 var pushY = dy / 25
                 
-                // RAISED THE CAP: Increased max force from 12.0 to 16.0
                 let maxForce: CGFloat = 16.0
                 pushX = max(min(pushX, maxForce), -maxForce)
                 pushY = max(min(pushY, maxForce), -maxForce)
@@ -149,7 +144,6 @@ class BasketballGameViewController: UIViewController {
                 push.pushDirection = CGVector(dx: pushX, dy: pushY)
                 animator.addBehavior(push)
                 
-                // THE SPIN: Calculates spin based on the horizontal angle of the swipe
                 let spinAmount = dx / 25.0
                 bounce.addAngularVelocity(spinAmount, for: ball)
                 
@@ -171,7 +165,6 @@ class BasketballGameViewController: UIViewController {
             return
         }
         
-        // THE CLEAN RESET: Wait until the ball fully drops past the bottom of the screen
         let screen = view.bounds
         if ball.center.y > screen.height + 80 ||
            ball.center.x < -100 ||

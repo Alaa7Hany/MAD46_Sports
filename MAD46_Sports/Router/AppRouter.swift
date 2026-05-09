@@ -53,6 +53,14 @@ class AppRouter: AppRouterProtocol {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let tabBarController = storyboard.instantiateViewController(withIdentifier: Constants.ViewControllers.mainTabBarVC) as? UITabBarController else { return }
         
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(named: "AppBackground") ?? .systemBackground
+        tabBarController.tabBar.standardAppearance = appearance
+        if #available(iOS 15.0, *) {
+            tabBarController.tabBar.scrollEdgeAppearance = appearance
+        }
+        
         if let tabs = tabBarController.viewControllers {
             for vc in tabs {
                 if let sportsVC = vc as? SportsViewController {

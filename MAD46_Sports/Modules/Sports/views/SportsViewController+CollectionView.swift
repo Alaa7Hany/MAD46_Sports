@@ -59,6 +59,7 @@ extension SportsViewController {
         currentBannerIndex += 1
         let indexPath = IndexPath(item: currentBannerIndex, section: 0)
         bannerCollectionview.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        pageControl.currentPage = currentBannerIndex % count
     }
 }
 
@@ -95,7 +96,6 @@ extension SportsViewController: UICollectionViewDataSource, UICollectionViewDele
         presenter.didSelectSport(at: actualIndex)
     }
     
-    // Passive Animations
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard collectionView == self.collectionView else { return }
         
@@ -129,7 +129,7 @@ extension SportsViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return collectionView == bannerCollectionview ? .zero : UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        return collectionView == bannerCollectionview ? .zero : UIEdgeInsets(top: 25, left: 10, bottom: 10, right: 10)
     }
 }
 
@@ -148,6 +148,10 @@ extension SportsViewController {
             guard pageWidth > 0 else { return }
             
             currentBannerIndex = Int(round(scrollView.contentOffset.x / pageWidth))
+            let count = presenter.getSportsCount()
+            if count > 0 {
+                pageControl.currentPage = currentBannerIndex % count
+            }
             startBannerTimer()
         }
     }
@@ -158,6 +162,10 @@ extension SportsViewController {
             guard pageWidth > 0 else { return }
             
             currentBannerIndex = Int(round(scrollView.contentOffset.x / pageWidth))
+            let count = presenter.getSportsCount()
+            if count > 0 {
+                pageControl.currentPage = currentBannerIndex % count
+            }
             startBannerTimer()
         }
     }
