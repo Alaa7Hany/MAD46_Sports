@@ -40,7 +40,7 @@ class TeamCell: UICollectionViewCell {
         isSkeletonable = true
         contentView.isSkeletonable = true
         imageV.isSkeletonable = true
-        imageV.skeletonCornerRadius = 35  
+        imageV.skeletonCornerRadius = 42.5  
     }
     
     override func layoutSubviews() {
@@ -67,7 +67,8 @@ class TeamCell: UICollectionViewCell {
         imageShadowView.layer.shadowRadius = 5
         
         // Circular cell background
-        contentView.layer.cornerRadius = contentView.bounds.height / 2
+        contentView.layer.cornerRadius = 12 // Keeping it slightly rounded but not a full circle for the cell itself, only the image should be circular like Teams
+        contentView.clipsToBounds = true
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

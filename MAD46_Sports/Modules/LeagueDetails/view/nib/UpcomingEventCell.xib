@@ -62,19 +62,19 @@
                 <constraint firstItem="pct-cQ-cCH" firstAttribute="height" secondItem="sOT-8b-UeT" secondAttribute="height" id="4Wb-kY-kto"/>
                 <constraint firstItem="4Aa-yM-rqB" firstAttribute="centerX" secondItem="sOT-8b-UeT" secondAttribute="centerX" id="5Cl-cl-V0Y"/>
                 <constraint firstItem="GQf-uP-dCz" firstAttribute="centerX" secondItem="bSH-r2-DzL" secondAttribute="centerX" id="Ax2-t0-HKz"/>
-                <constraint firstItem="pct-cQ-cCH" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="BYo-IS-e0h"/>
-                <constraint firstItem="bKj-X7-YHi" firstAttribute="top" secondItem="pct-cQ-cCH" secondAttribute="bottom" constant="5" id="C5a-dh-JCa"/>
+                <constraint firstItem="pct-cQ-cCH" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-10" id="BYo-IS-e0h"/>
+                <constraint firstItem="bKj-X7-YHi" firstAttribute="top" secondItem="pct-cQ-cCH" secondAttribute="bottom" constant="10" id="C5a-dh-JCa"/>
                 <constraint firstItem="sOT-8b-UeT" firstAttribute="top" secondItem="bSH-r2-DzL" secondAttribute="bottom" constant="-38" id="Eer-rx-n6t"/>
-                <constraint firstItem="sOT-8b-UeT" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.28" id="FPX-9e-XpQ"/>
+                <constraint firstItem="sOT-8b-UeT" firstAttribute="width" secondItem="sOT-8b-UeT" secondAttribute="height" multiplier="1:1" id="FPX-9e-XpQ"/>
                 <constraint firstItem="sOT-8b-UeT" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="20" id="LbG-Be-R2y"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="pct-cQ-cCH" secondAttribute="trailing" constant="20" id="OZi-o7-GrV"/>
                 <constraint firstItem="bSH-r2-DzL" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="TKL-Hs-H6W"/>
-                <constraint firstItem="4Aa-yM-rqB" firstAttribute="top" secondItem="sOT-8b-UeT" secondAttribute="bottom" constant="5" id="VQs-FS-zXm"/>
-                <constraint firstItem="sOT-8b-UeT" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.45" id="c8l-Mu-yMd"/>
+                <constraint firstItem="4Aa-yM-rqB" firstAttribute="top" secondItem="sOT-8b-UeT" secondAttribute="bottom" constant="10" id="VQs-FS-zXm"/>
+                <constraint firstItem="sOT-8b-UeT" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.56" id="c8l-Mu-yMd"/>
                 <constraint firstItem="cAB-6W-I3H" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="e71-ZE-OX9"/>
                 <constraint firstItem="bKj-X7-YHi" firstAttribute="centerX" secondItem="pct-cQ-cCH" secondAttribute="centerX" id="frJ-lJ-mxw"/>
                 <constraint firstItem="cAB-6W-I3H" firstAttribute="top" secondItem="GQf-uP-dCz" secondAttribute="bottom" constant="2" id="fyG-wv-QMw"/>
-                <constraint firstItem="sOT-8b-UeT" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="iKL-VN-eb3"/>
+                <constraint firstItem="sOT-8b-UeT" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-10" id="iKL-VN-eb3"/>
                 <constraint firstItem="GQf-uP-dCz" firstAttribute="top" secondItem="bSH-r2-DzL" secondAttribute="bottom" constant="4" id="m74-7O-kii"/>
                 <constraint firstItem="pct-cQ-cCH" firstAttribute="width" secondItem="sOT-8b-UeT" secondAttribute="width" id="yZd-cV-qpG"/>
             </constraints>

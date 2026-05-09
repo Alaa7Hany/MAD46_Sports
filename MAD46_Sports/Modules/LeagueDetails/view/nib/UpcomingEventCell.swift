@@ -47,6 +47,29 @@ class UpcomingEventCell: UICollectionViewCell {
         lblHome.linesCornerRadius = 5
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // Making images perfectly circular like Teams
+        let homeSize = min(imgHome.bounds.width, imgHome.bounds.height)
+        imgHome.layer.cornerRadius = homeSize / 2
+        
+        let awaySize = min(imgAway.bounds.width, imgAway.bounds.height)
+        imgAway.layer.cornerRadius = awaySize / 2
+        
+        imgHome.clipsToBounds = true
+        imgAway.clipsToBounds = true
+        
+        imgHome.contentMode = .scaleAspectFill
+        imgAway.contentMode = .scaleAspectFill
+        
+        // Adding a subtle border and shadow for a premium Teams-like look
+        imgHome.layer.borderWidth = 1.5
+        imgAway.layer.borderWidth = 1.5
+        imgHome.layer.borderColor = UIColor.appPrimary.withAlphaComponent(0.3).cgColor
+        imgAway.layer.borderColor = UIColor.appPrimary.withAlphaComponent(0.3).cgColor
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
         hideSkeleton()

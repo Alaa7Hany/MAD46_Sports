@@ -45,6 +45,29 @@ class LatestEventCell: UICollectionViewCell {
         lblScore.linesCornerRadius = 5
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // Making images perfectly circular like Teams
+        let homeSize = min(imghome.bounds.width, imghome.bounds.height)
+        imghome.layer.cornerRadius = homeSize / 2
+        
+        let awaySize = min(imgaway.bounds.width, imgaway.bounds.height)
+        imgaway.layer.cornerRadius = awaySize / 2
+        
+        imghome.clipsToBounds = true
+        imgaway.clipsToBounds = true
+        
+        imghome.contentMode = .scaleAspectFill
+        imgaway.contentMode = .scaleAspectFill
+        
+        // Adding a subtle border and shadow for a premium look
+        imghome.layer.borderWidth = 1.5
+        imgaway.layer.borderWidth = 1.5
+        imghome.layer.borderColor = UIColor.appPrimary.withAlphaComponent(0.3).cgColor
+        imgaway.layer.borderColor = UIColor.appPrimary.withAlphaComponent(0.3).cgColor
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
         hideSkeleton()
