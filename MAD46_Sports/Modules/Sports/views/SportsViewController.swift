@@ -84,6 +84,7 @@ extension SportsViewController: SportsViewProtocol {
             self.collectionView.reloadData()
             self.bannerCollectionview.reloadData()
             
+            let count = self.presenter.getBannersCount()
             if count > 0 {
                 let middleIndex = (count * self.infiniteMultiplier) / 2
                 self.currentBannerIndex = middleIndex - (middleIndex % count)

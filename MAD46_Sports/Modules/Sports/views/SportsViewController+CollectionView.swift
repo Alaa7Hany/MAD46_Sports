@@ -21,9 +21,10 @@ extension SportsViewController {
             flowLayout.estimatedItemSize = .zero
         }
         
+        let bannerNib = UINib(nibName: Constants.Cells.bannerCell, bundle: nil)
         bannerCollectionview.delegate = self
         bannerCollectionview.dataSource = self
-        bannerCollectionview.register(nib, forCellWithReuseIdentifier: Constants.Cells.sportCollectionCell)
+        bannerCollectionview.register(bannerNib, forCellWithReuseIdentifier: Constants.Cells.bannerCell)
         bannerCollectionview.isPagingEnabled = true
         bannerCollectionview.showsHorizontalScrollIndicator = false
         
@@ -45,7 +46,7 @@ extension SportsViewController {
     }
 
     func scrollToNextBanner() {
-        let count = presenter.getSportsCount()
+        let count = presenter.getBannersCount()
         guard count > 0 else { return }
         
         let totalItems = count * infiniteMultiplier
@@ -69,31 +70,48 @@ extension SportsViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isLoadingData { return 6 }
         if collectionView == bannerCollectionview {
-            return presenter.getSportsCount() * infiniteMultiplier
+            return presenter.getBannersCount() * infiniteMultiplier
         }
         return presenter.getSportsCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.sportCollectionCell, for: indexPath) as! SportCollectionViewCell
-        
-        if isLoadingData {
-            cell.lblName.text = ""
-            cell.imageV.image = nil
+            
+        if collectionView == bannerCollectionview {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.bannerCell, for: indexPath) as! BannerCollectionViewCell
+            
+            if isLoadingData {
+                cell.bannerImageView.image = nil
+                return cell
+            }
+            
+            let actualIndex = indexPath.row % presenter.getBannersCount()
+            let imageName = presenter.getBanner(at: actualIndex)
+            cell.bannerImageView.image = UIImage(named: imageName)
+            
+            return cell
+            
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cells.sportCollectionCell, for: indexPath) as! SportCollectionViewCell
+            
+            if isLoadingData {
+                cell.lblName.text = ""
+                cell.imageV.image = nil
+                return cell
+            }
+            
+            let sport = presenter.getSport(at: indexPath.row)
+            cell.lblName.text = NSLocalizedString(sport.sportName ?? "", comment: "")
+            cell.imageV.image = UIImage(named: sport.sportThumb ?? "")
             return cell
         }
-        
-        let actualIndex = collectionView == bannerCollectionview ? (indexPath.row % presenter.getSportsCount()) : indexPath.row
-        let sport = presenter.getSport(at: actualIndex)
-        
-        cell.lblName.text = NSLocalizedString(sport.sportName ?? "", comment: "")
-        cell.imageV.image = UIImage(named: sport.sportThumb ?? "")
-        return cell
-    }
+        }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let actualIndex = collectionView == bannerCollectionview ? (indexPath.row % presenter.getSportsCount()) : indexPath.row
-        presenter.didSelectSport(at: actualIndex)
+        if collectionView == bannerCollectionview {
+            return
+        }
+        presenter.didSelectSport(at: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
