@@ -1,6 +1,13 @@
 import UIKit
 import SkeletonView
 
+protocol LeagueDetailsViewProtocol: AnyObject {
+    func displayData()
+    func startLoading()
+    func stopLoading()
+    func showFeatureNotAvailableAlert()
+}
+
 class LeagueDetailsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -67,6 +74,18 @@ extension LeagueDetailsViewController: LeagueDetailsViewProtocol {
     func displayData() {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+        }
+    }
+    
+    func showFeatureNotAvailableAlert() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(
+                title: NSLocalizedString("Coming_Soon", comment: ""),
+                message: NSLocalizedString("Coming_feature", comment: ""),
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }

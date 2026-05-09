@@ -155,17 +155,20 @@ class LeagueDetailsPresenter: LeagueDetailsPresenterProtocol {
     func getParticipantsCount() -> Int { return participants.count }
     func getParticipant(at index: Int) -> Participant { return participants[index] }
     
-    // MARK: - Navigation Logic
     func didSelectParticipant(at index: Int) {
-        let selected = participants[index]
-        
-        if let id = selected.key {
-            router?.navigateToTeamDetails(
-                sportName: sportName,
-                teamId: id,
-                teamName: selected.name ?? "Team",
-                teamLogo: selected.logo
-            )
+        if sportName.lowercased() == "football" {
+            let selected = participants[index]
+            
+            if let id = selected.key {
+                router?.navigateToTeamDetails(
+                    sportName: sportName,
+                    teamId: id,
+                    teamName: selected.name ?? "Team",
+                    teamLogo: selected.logo
+                )
+            }
+        } else {
+            view?.showFeatureNotAvailableAlert()
         }
     }
     
