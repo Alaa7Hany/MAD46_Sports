@@ -6,7 +6,7 @@ class AlamofireManager: NetworkService {
     static let shared = AlamofireManager()
     private init() {}
     
-    private let apiKey = "3d09c674e733e4b354da276ca0b78cef806ec1d665b06e7924739b017f6c22a5"
+    private let apiKey = "5e5d5ed9020e58178636ce410d6a03d5fddeace3d6fbd6286450c8a1f9f333f5"
     
     func getLeagues(sportName: String, completion: @escaping (Result<[LeagueModel], Error>) -> Void) {
         let url = "\(Constants.API.baseURL)/\(sportName)?met=Leagues&APIkey=\(apiKey)"
