@@ -32,6 +32,7 @@ enum Constants {
         static let teamCollectionCell = "TeamCell"
         static let sectionHeaderView = "SectionHeaderView"
         static let emptyStateCell = "EmptyStateCell"
+        static let bannerCell = "BannerCollectionViewCell"
     }
     
     enum Defaults{

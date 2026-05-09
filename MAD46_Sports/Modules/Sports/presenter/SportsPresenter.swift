@@ -11,6 +11,8 @@ protocol SportsPresenterProtocol {
     func getSportsCount() -> Int
     func getSport(at index: Int) -> Sport
     func didSelectSport(at index: Int)
+    func getBannersCount() -> Int
+    func getBanner(at index: Int) -> String
 }
 
 class SportsPresenter: SportsPresenterProtocol {
@@ -19,6 +21,7 @@ class SportsPresenter: SportsPresenterProtocol {
     private weak var router: AppRouterProtocol?
     
     private var sportsList: [Sport] = []
+    private var bannerImages: [String] = []
     
     init(view: SportsViewProtocol, router: AppRouterProtocol) {
         self.view = view
@@ -32,6 +35,7 @@ class SportsPresenter: SportsPresenterProtocol {
             Sport(sportName: "Tennis", sportThumb: "tennis"),
             Sport(sportName: "Cricket", sportThumb: "cricket")
         ]
+        bannerImages = ["banner1", "banner2", "banner3", "banner4"]
         
         view?.displaySports()
     }
@@ -51,5 +55,13 @@ class SportsPresenter: SportsPresenterProtocol {
         SoundManager.shared.playSound(dynamicSound)
         
         router?.navigateToLeagues(sportName: name.lowercased())
+    }
+
+    func getBannersCount() -> Int {
+        return bannerImages.count
+    }
+    
+    func getBanner(at index: Int) -> String {
+        return bannerImages[index]
     }
 }
